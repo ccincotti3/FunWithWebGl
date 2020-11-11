@@ -55,12 +55,12 @@ class ShaderUtil {
 
     static domShaderProgram(gl, vectID, fragID, doValidate) {
           // Get the shader sources
-          const vShaderSrc = ShaderUtil.domShaderSrc(vectID); if(!vShaderSrc) { handleError("vShaderSrc not found") }
-          const fShaderSrc = ShaderUtil.domShaderSrc(fragID); if(!fShaderSrc) { handleError("fShaderSrc not found")}
+          const vShaderSrc = ShaderUtil.domShaderSrc(vectID); if(!vShaderSrc) { return ShaderUtil.handleError("vShaderSrc not found") }
+          const fShaderSrc = ShaderUtil.domShaderSrc(fragID); if(!fShaderSrc) { return ShaderUtil.handleError("fShaderSrc not found")}
   
           // Compile the shaders from the sources
-          const vShader = ShaderUtil.createShader(gl, vShaderSrc, gl.VERTEX_SHADER);  if(!vShader) { handleError("vShader not created")}
-          const fShader = ShaderUtil.createShader(gl, fShaderSrc, gl.FRAGMENT_SHADER); if(!fShader) { handleError("fShader no created")}
+          const vShader = ShaderUtil.createShader(gl, vShaderSrc, gl.VERTEX_SHADER);  if(!vShader) { return ShaderUtil.handleError("vShader not created")}
+          const fShader = ShaderUtil.createShader(gl, fShaderSrc, gl.FRAGMENT_SHADER); if(!fShader) { return ShaderUtil.handleError("fShader no created")}
   
           // link the two shaders and create a program
           const shaderProg = ShaderUtil.createProgram(gl, vShader, fShader, doValidate)
@@ -68,7 +68,7 @@ class ShaderUtil {
           return shaderProg
     }
 
-    handleError(...err) {
+    static handleError(...err) {
         console.error(err)
         return null
     }

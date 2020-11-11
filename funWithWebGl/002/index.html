@@ -19,11 +19,13 @@
         const gl = GLInstance().fSetSize(500, 500).fClear();
 
         const shaderProg = ShaderUtil.domShaderProgram(gl, "vertex_shader", "fragment_shader", true)
+        if(!shaderProg) { return null; }
 
         // 4. Get Location of Uniforms and Attributes.
         gl.useProgram(shaderProg);
         const aPositionLoc = gl.getAttribLocation(shaderProg, "a_position"),
-            uPointSizeLoc = gl.getUniformLocation(shaderProg, "uPointSize");
+            uPointSizeLoc = gl.getUniformLocation(shaderProg, "uPointSize"),
+            uAngleLoc = gl.getUniformLocation(shaderProg, "uAngle");
         gl.useProgram(null);
 
         //............................................
@@ -47,11 +49,15 @@
         // Render vars
         const RLoop = new RenderLoop(onRender).start();
         let gPointSize = 0;
+        let angle= 0;
         const gPointStep = 3;
+        const gAngleStep = (Math.PI / 180.0) * 90; // 90 deg's to radians
 
         function onRender(dt) {
             gPointSize += gPointStep * dt
             const size = (Math.sin(gPointSize) * 10) + 30
+            angle += gAngleStep * dt 
+            gl.uniform1f(uAngleLoc, angle);		//Store data to the shader's uniform variable uPointSize
             gl.uniform1f(uPointSizeLoc, size);		//Store data to the shader's uniform variable uPointSize
             gl.fClear();
             gl.drawArrays(gl.POINTS, 0, gVertsCount);						//Draw the points
@@ -66,10 +72,17 @@
     in vec3 a_position;
     
     uniform float uPointSize;
+    uniform float uAngle;
 
     void main(void){
         gl_PointSize = uPointSize;
-        gl_Position = vec4(a_position, 1.0);
+        //gl_Position = vec4(a_position, 1.0);
+        gl_Position = vec4(
+            cos(uAngle) * 0.8 + a_position.x,
+            sin(uAngle) * 0.8 + a_position.y,
+            a_position.z,
+            1.0
+        );
     }
 </script>
 
