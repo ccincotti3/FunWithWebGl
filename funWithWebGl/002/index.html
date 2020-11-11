@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,36 +22,43 @@
 
         // 4. Get Location of Uniforms and Attributes.
         gl.useProgram(shaderProg);
-        const aPositionLoc	= gl.getAttribLocation(shaderProg,"a_position"),
-            uPointSizeLoc	= gl.getUniformLocation(shaderProg,"uPointSize");
+        const aPositionLoc = gl.getAttribLocation(shaderProg, "a_position"),
+            uPointSizeLoc = gl.getUniformLocation(shaderProg, "uPointSize");
         gl.useProgram(null);
 
         //............................................
         //Set Up Data Buffers
-        const aryVerts = new Float32Array([0,0,0]),
+        const aryVerts = new Float32Array([0, 0, 0]),
             bufVerts = gl.fCreateArrayBuffer(aryVerts);
-        
         const gVertsCount = aryVerts.length / 3 // 3 floats per vertex
 
         //............................................
         //Set Up For Drawing
         gl.useProgram(shaderProg);				//Activate the Shader
-        gl.uniform1f(uPointSizeLoc,50.0);		//Store data to the shader's uniform variable uPointSize
 
         //how its down without VAOs
-        gl.bindBuffer(gl.ARRAY_BUFFER,bufVerts);					//Tell gl which buffer we want to use at the moment
+        gl.bindBuffer(gl.ARRAY_BUFFER, bufVerts);					//Tell gl which buffer we want to use at the moment
         gl.enableVertexAttribArray(aPositionLoc);					//Enable the position attribute in the shader
-        gl.vertexAttribPointer(aPositionLoc,3,gl.FLOAT,false,0,0);	//Set which buffer the attribute will pull its data from
-        gl.bindBuffer(gl.ARRAY_BUFFER,null);						//Done setting up the buffer
+        gl.vertexAttribPointer(aPositionLoc, 3, gl.FLOAT, false, 0, 0);	//Set which buffer the attribute will pull its data from
+        gl.bindBuffer(gl.ARRAY_BUFFER, null);						//Done setting up the buffer
 
+
+        //.............................................
+        // Render vars
         const RLoop = new RenderLoop(onRender).start();
-        
+        let gPointSize = 0;
+        const gPointStep = 3;
+
         function onRender(dt) {
+            gPointSize += gPointStep * dt
+            const size = (Math.sin(gPointSize) * 10) + 30
+            gl.uniform1f(uPointSizeLoc, size);		//Store data to the shader's uniform variable uPointSize
             gl.fClear();
-            gl.drawArrays(gl.POINTS, 0, 1);						//Draw the points
+            gl.drawArrays(gl.POINTS, 0, gVertsCount);						//Draw the points
         }
     }
 </script>
+
 <body>
     <!-- <canvas id="canvas-gl"></canvas> opt to creating in gl.js for intellisense -->
 </body>
@@ -74,4 +82,5 @@
         finalColor = vec4(0.0, 0.0, 0.0, 1.0);
     }
 </script>
+
 </html>
