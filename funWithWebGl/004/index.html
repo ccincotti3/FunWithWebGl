@@ -15,15 +15,14 @@
 <script src="sh.js"></script>
 <script src="RenderLoop.js"></script>
 <script src="Model.js"></script>
+<script src="Primatives.js"></script>
 <script>
     window.onload = () => {
         const gl = GLInstance().fSetSize(500, 500).fClear();
 
         const gShader = new TestShader(gl, [0.8,0.8,0.8,   1,0,0,  0,1,0,   0,0,1]); // adding colors
 
-        const mesh = gl.fCreateMeshVAO("lines", null, [0,1,0, 0,-1,0,     -1,0,0, 1,0,0]) // 2 lines
-        mesh.drawMode = gl.LINES;
-
+        const mesh = Primatives.GridAxis.createMesh(gl);
         const gModel = new Model(mesh);
 
         const RLoop = new RenderLoop(onRender).start();
