@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>001 - FunWithWebGL</title>
+    <title>005 - FunWithWebGL</title>
     <style>
         body {
             background-color: teal;
@@ -12,8 +12,10 @@
     </style>
 </head>
 <script src="gl.js"></script>
+<script src="Math.js"></script>
 <script src="sh.js"></script>
 <script src="RenderLoop.js"></script>
+<script src="Transform.js"></script>
 <script src="Model.js"></script>
 <script src="Primatives.js"></script>
 <script>
@@ -23,7 +25,10 @@
         const gShader = new TestShader(gl, [0.8,0.8,0.8,   1,0,0,  0,1,0,   0,0,1]); // adding colors
 
         const mesh = Primatives.GridAxis.createMesh(gl);
-        const gModel = new Model(mesh);
+        const gModel = new Model(mesh)
+                       .setScale(0.4, 0.4, 0.4)
+                       .setRotation(0, 0, 45)
+                       .setPosition(0.8,0.8,0)
 
         const RLoop = new RenderLoop(onRender).start();
 
@@ -34,7 +39,7 @@
 
         function onRender(dt) {
             gl.fClear();
-            gShader.activate().renderModel(gModel) // Slimmed down, we dont need set func, we're not changing colors per frame.
+            gShader.activate().renderModel(gModel.preRender())
         }
     }
 
@@ -58,16 +63,16 @@
 </body>
 <script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
     in vec3 a_position;
-    layout(location=4) in float a_color; //Will hold the 4th custom position of the custom position buffer
-    // We can do this in webgl2, previous lessons we did not take advantage of this.
+    layout(location=4) in float a_color;
 
-    uniform vec3 uColor[4]; // this is that array at the beginning of our test shader.
+    uniform vec3 uColor[4];
+    uniform mat4 uMVMatrix;
 
-    out lowp vec4 color; // no reason to use lowp but why not, lets make efficient
+    out lowp vec4 color;
 
     void main(void){
-        color = vec4(uColor[ int(a_color)], 1.0); // need to cast to int to index into array. a_color is the 4th float, and what we're using to index
-        gl_Position = vec4(a_position, 1.0);
+        color = vec4(uColor[ int(a_color)], 1.0);
+        gl_Position = uMVMatrix * vec4(a_position, 1.0);
     }
 </script>
 
