@@ -1,0 +1,4 @@
+Continuing from lesson 002
+
+Look into how cosine and tanget are calculated on a cartesian plane. 
+And how tangents approach infinity at PI / 2 and 3 PI / 2
