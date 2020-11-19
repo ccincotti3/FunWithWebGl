@@ -30,8 +30,7 @@
         const gShader = new TestShader(gl, [0.8,0.8,0.8,   1,0,0,  0,1,0,   0,0,1]); // adding colors
         gShader.activate().setPerspective(gCamera.projectionMatrix).deactivate(); //push projection to shader
 
-        const mesh = Primatives.GridAxis.createMesh(gl);
-        const gModel = new Model(mesh)
+        const gModel = Primatives.GridAxis.createModel(gl, true);
 
         const RLoop = new RenderLoop(onRender).start();
 

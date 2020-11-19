@@ -1,7 +1,8 @@
 const Primatives = {}
 
 Primatives.GridAxis = class {
-    static createMesh(gl) {
+    static createModel(gl, inclAxis) { return new Model(Primatives.GridAxis.createMesh(gl, inclAxis)) }
+    static createMesh(gl, inclAxis) {
         // const verts = [ 0, 0.5, 0, 0,  0, -0.5, 0, 1 ]
         //Dynamiclly create a grid
 		var verts = [],
@@ -10,32 +11,68 @@ Primatives.GridAxis = class {
         step = size / div,	// Steps between each line, just a number we increment by for each line in the grid.
         half = size / 2;	// From origin the starting position is half the size.
 
-    var p;	//Temp variable for position value.
-    for(var i=0; i <= div; i++){
-        //Vertical line
-        p = -half + (i * step);
-        verts.push(p);		//x1
-        verts.push(half);	//y1
-        verts.push(0);		//z1
-        verts.push(0);		//c2
+        var p;	//Temp variable for position value.
+        for(var i=0; i <= div; i++){
+            //Vertical line
+            p = -half + (i * step);
+            verts.push(p);		//x1
+            verts.push(0);		//y1
+            verts.push(half);	//z1
+            verts.push(0);		//c2
 
-        verts.push(p);		//x2
-        verts.push(-half);	//y2
-        verts.push(0);		//z2
-        verts.push(1);		//c2
+            verts.push(p);		//x2
+            verts.push(0);	    //y2
+            verts.push(-half);	//z2
+            verts.push(0);		//c2
 
-        //Horizontal line
-        p = half - (i * step);
-        verts.push(-half);	//x1
-        verts.push(p);		//y1
-        verts.push(0);		//z1
-        verts.push(0);		//c1
+            //Horizontal line
+            p = half - (i * step);
+            verts.push(-half);	//x1
+            verts.push(0);		//y1
+            verts.push(p);		//z1
+            verts.push(0);		//c1
 
-        verts.push(half);	//x2
-        verts.push(p);		//y2
-        verts.push(0);		//z2
-        verts.push(1);		//c2
-    }
+            verts.push(half);	//x2
+            verts.push(0);		//y2
+            verts.push(p);		//z2
+            verts.push(0);		//c2
+        }
+
+        if(inclAxis) {
+            // x axis
+            verts.push(-1.1);   //x1
+            verts.push(0);   //y1
+            verts.push(0);   //z1
+            verts.push(1);   //c1
+
+            verts.push(1.1);   //x1
+            verts.push(0);   //y1
+            verts.push(0);   //z1
+            verts.push(1);   //c1
+
+            //y axis
+			verts.push(0);//x1
+			verts.push(-1.1);	//y1
+			verts.push(0);		//z1
+			verts.push(2);		//c2
+
+			verts.push(0);		//x2
+			verts.push(1.1);	//y2
+			verts.push(0);		//z2
+			verts.push(2);		//c2
+
+			//z axis
+			verts.push(0);		//x1
+			verts.push(0);		//y1
+			verts.push(-1.1);	//z1
+			verts.push(3);		//c2
+
+			verts.push(0);		//x2
+			verts.push(0);		//y2
+			verts.push(1.1);	//z2
+			verts.push(3);		//c2
+        }
+
 
         const attrColorLoc = 4; // Same that we set up in shader. Define here so we can use it.
         const mesh = {
