@@ -13,7 +13,6 @@ window.onload = function() {
     // How far to move the object on canvas
     const offset = height * 0.4 
 
-    let baseRadius = 100
     let speed = 0.1
     let angle = 0
 
