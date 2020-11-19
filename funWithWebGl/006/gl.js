@@ -119,7 +119,12 @@ function GLInstance() {
 		//else the resolution webgl renders at will not change
 		this.viewport(0,0,w,h);
 		return this;
-	}
+    }
+    
+    // Fit canvas to percentage of screen
+    gl.fFitScreen = function(wp = 1, hp = 1) {
+        return this.fSetSize(window.innerWidth * wp, window.innerHeight * hp)
+    }
 
     return gl;
 }
