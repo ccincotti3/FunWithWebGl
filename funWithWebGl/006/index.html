@@ -18,17 +18,20 @@
 <script src="Transform.js"></script>
 <script src="Model.js"></script>
 <script src="Primatives.js"></script>
+<script src="Camera.js"></script>
 <script>
     window.onload = () => {
         const gl = GLInstance().fSetSize(500, 500).fClear();
 
+        const gCamera = new Camera(gl)
+        gCamera.transform.position.set(0, 1, 3)
+        gCameraCtrl = new CameraController(gl, gCamera)
+
         const gShader = new TestShader(gl, [0.8,0.8,0.8,   1,0,0,  0,1,0,   0,0,1]); // adding colors
+        gShader.activate().setPerspective(gCamera.projectionMatrix).deactivate(); //push projection to shader
 
         const mesh = Primatives.GridAxis.createMesh(gl);
         const gModel = new Model(mesh)
-                       .setScale(0.4, 0.4, 0.4)
-                       .setRotation(0, 0, 45)
-                       .setPosition(0.8,0.8,0)
 
         const RLoop = new RenderLoop(onRender).start();
 
@@ -38,8 +41,12 @@
         const gAngleStep = (Math.PI / 180.0) * 90; // 90 deg's to radians
 
         function onRender(dt) {
+            gCamera.updateViewMatrix();
             gl.fClear();
-            gShader.activate().renderModel(gModel.preRender())
+
+            gShader.activate()
+            .setCameraMatrix(gCamera.viewMatrix)
+            .renderModel(gModel.preRender())
         }
     }
 
@@ -67,12 +74,14 @@
 
     uniform vec3 uColor[4];
     uniform mat4 uMVMatrix;
+    uniform mat4 uCameraMatrix;
+    uniform mat4 uPMatrix;
 
     out lowp vec4 color;
 
     void main(void){
         color = vec4(uColor[ int(a_color)], 1.0);
-        gl_Position = uMVMatrix * vec4(a_position, 1.0);
+        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position, 1.0); // order counts!
     }
 </script>
 
