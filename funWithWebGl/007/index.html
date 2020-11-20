@@ -1,0 +1,98 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>005 - FunWithWebGL</title>
+    <style>
+        body {
+            background-color: teal;
+            text-align: center;
+        }
+    </style>
+</head>
+<script src="gl.js"></script>
+<script src="Math.js"></script>
+<script src="sh.js"></script>
+<script src="RenderLoop.js"></script>
+<script src="Transform.js"></script>
+<script src="Model.js"></script>
+<script src="Primatives.js"></script>
+<script src="Camera.js"></script>
+<script src="Shader_Extra.js"></script>
+<script>
+    window.onload = () => {
+        const gl = GLInstance().fFitScreen().fClear();
+
+        const gCamera = new Camera(gl)
+        gCamera.transform.position.set(0, 1, 3)
+        gCameraCtrl = new CameraController(gl, gCamera)
+
+        // Setup Grid
+        const gGridShader = new GridAxisShader(gl, gCamera.projectionMatrix)
+        const gGridModel = Primatives.GridAxis.createModel(gl, true);
+
+        const RLoop = new RenderLoop(onRender).start();
+
+        let gPointSize = 0;
+        let angle= 0;
+        const gPointStep = 3;
+        const gAngleStep = (Math.PI / 180.0) * 90; // 90 deg's to radians
+
+        function onRender(dt) {
+            gCamera.updateViewMatrix();
+            gl.fClear();
+
+            gGridShader.activate()
+            .setCameraMatrix(gCamera.viewMatrix)
+            .renderModel(gGridModel.preRender())
+        }
+    }
+
+
+    class TestShader extends Shader {
+        constructor(gl, aryColor) {
+            const vertSrc = ShaderUtil.domShaderSrc("vertex_shader")
+            const fragSrc = ShaderUtil.domShaderSrc("fragment_shader")
+            super(gl, vertSrc, fragSrc)
+
+            const uColor = gl.getUniformLocation(this.program, "uColor") // Not saving this time on the class, just need to set once (hence it's in the constructor)
+            gl.uniform3fv(uColor, aryColor); // this fn() 3 floats vector, just make sure you have 3 float vectors, so 2 colors = 6 floats
+
+            gl.useProgram(null);
+        }
+    }
+</script>
+
+<body>
+    <!-- <canvas id="canvas-gl"></canvas> opt to creating in gl.js for intellisense -->
+</body>
+<script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
+    in vec3 a_position;
+    layout(location=4) in float a_color;
+
+    uniform vec3 uColor[4];
+    uniform mat4 uMVMatrix;
+    uniform mat4 uCameraMatrix;
+    uniform mat4 uPMatrix;
+
+    out lowp vec4 color;
+
+    void main(void){
+        color = vec4(uColor[ int(a_color)], 1.0);
+        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position, 1.0); // order counts!
+    }
+</script>
+
+<script id="fragment_shader" type="x-shader/x-fragment">#version 300 es
+    precision mediump float;
+
+    in vec4 color;
+    out vec4 finalColor;
+    
+    void main(void) {
+        finalColor = color;
+    }
+</script>
+
+</html>
