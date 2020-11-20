@@ -34,15 +34,15 @@ class Shader {
     // Abstract method 
     preRender() {}
 
-    renderModel(model) {
+    renderModel = (model) => {
         this.setModelMatrix(model.transform.getViewMatrix())
         this.gl.bindVertexArray(model.mesh.vao);
 
         if(model.mesh.indexCount) {
             this.gl.drawElements(
                 model.mesh.drawMode,
-                model.mesh.indexLength,
-                gl.UNSIGNED_SHORT,
+                model.mesh.indexCount,
+                this.gl.UNSIGNED_SHORT,
                 0
             )
         } else {

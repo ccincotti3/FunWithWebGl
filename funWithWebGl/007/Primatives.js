@@ -1,5 +1,32 @@
 const Primatives = {}
 
+Primatives.Quad = class {
+    static createModel(gl) { return new Model(Primatives.Quad.createMesh(gl)) }
+    static createMesh(gl) {
+        const aVert = [
+            -0.5, 0.5, 0,
+            -0.5, -0.5, 0,
+            0.5, -0.5, 0,
+            0.5, 0.5, 0
+        ]
+        const aUv = [
+            0,0,
+            0,1,
+            1,1,
+            1,0
+        ]
+        const aIndex = [
+            0,1,2,
+            2,3,0
+        ]
+        const mesh = gl.fCreateMeshVAO("Quad", aIndex, aVert, null, aUv)
+        mesh.noCulling = false
+        mesh.doBlending = false
+
+        return mesh
+    }
+}
+
 Primatives.GridAxis = class {
     static createModel(gl, inclAxis) { return new Model(Primatives.GridAxis.createMesh(gl, inclAxis)) }
     static createMesh(gl, inclAxis) {

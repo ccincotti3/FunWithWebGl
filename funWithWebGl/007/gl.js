@@ -23,7 +23,14 @@ function GLInstance() {
 	gl.mMeshCache = [];	//Cache all the mesh structs, easy to unload buffers if they all exist in one place.
 
     // -----------------------------------------------------------------------
-    // Configuration setup
+    // Setup gl, configuration setup.. a lot of these are gl defaults, but we're being explicit
+    gl.cullFace(gl.BACK); // We're saying do not render the back of a triangle, BACK is default.
+    gl.frontFace(gl.CCW) // render triangles in a counter clockwise fashion. CCW is default
+    gl.enable(gl.DEPTH_TEST) // We're saying to render pixels that are closer to the camera, rather than overwriting ones that are rendered later in loop
+    gl.enable(gl.CULL_FACE) // Cull back face, so only show triangles that are created clockwise 
+    gl.depthFunc(gl.LEQUAL) // for depth test, less than equal to
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA) // to allow us to use alpha channel
+
     gl.clearColor(1.0, 1.0, 1.0, 1.0); //white;
 
     // -----------------------------------------------------------------------
@@ -79,7 +86,7 @@ function GLInstance() {
             this.vertexAttribPointer(ATTR_NORMAL_LOC, 3, this.FLOAT, false, 0, 0);	//Set which buffer the attribute will pull its data from
         }
 
-        if(aryUV !== undefined && aryUV != null){
+        if(aryUV){
             rtn.bufUV = this.createBuffer(); 
 
             this.bindBuffer(this.ARRAY_BUFFER,rtn.bufUV);
@@ -89,18 +96,22 @@ function GLInstance() {
             this.vertexAttribPointer(ATTR_UV_LOC, 2, this.FLOAT, false, 0, 0);	// 2 floats ONLY per component.
         }
 
-        if(aryInd !== undefined && aryInd != null) {
+        if(aryInd) {
             rtn.bufIndex = this.createBuffer(); 
+			rtn.indexCount = aryInd.length;
 
             this.bindBuffer(this.ELEMENT_ARRAY_BUFFER,rtn.bufIndex);
-            this.bufferData(this.ELEMENT_ARRAY_BUFFER, new Uint16Array(rtn.aryInd), this.STATIC_DRAW);
-            this.bindBuffer(this.ELEMENT_ARRAY_BUFFER,null); 
+            this.bufferData(this.ELEMENT_ARRAY_BUFFER, new Uint16Array(aryInd), this.STATIC_DRAW);
+            // this.bindBuffer(this.ELEMENT_ARRAY_BUFFER,null); For some reason this broke everything. Why
         }
         // Clean up
         this.bindVertexArray(null); //Unbind the VAO, very Important. always unbind when your done using one.
         this.bindBuffer(this.ARRAY_BUFFER, null); //Unbind any buffers that might be set
+        if(aryInd)  this.bindBuffer(this.ELEMENT_ARRAY_BUFFER,null);
+
 
         this.mMeshCache[name] = rtn;
+        console.log(rtn)
         return rtn;
     }
 
