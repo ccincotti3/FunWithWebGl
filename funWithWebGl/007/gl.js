@@ -103,6 +103,10 @@ function GLInstance() {
             this.bindBuffer(this.ELEMENT_ARRAY_BUFFER,rtn.bufIndex);
             this.bufferData(this.ELEMENT_ARRAY_BUFFER, new Uint16Array(aryInd), this.STATIC_DRAW);
             // this.bindBuffer(this.ELEMENT_ARRAY_BUFFER,null); For some reason this broke everything. Why
+            /**
+             * Since there always exists just one ELEMENT_ARRAY_BUFFER, the VAO stores the last binding state of this buffer type. Thus the index buffer has to be bound up to the moment where the VAO gets unbound.
+             * https://stackoverflow.com/questions/33651162/vertex-array-objects-binding-order
+             */
         }
         // Clean up
         this.bindVertexArray(null); //Unbind the VAO, very Important. always unbind when your done using one.
