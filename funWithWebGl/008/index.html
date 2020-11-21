@@ -1,0 +1,120 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>005 - FunWithWebGL</title>
+    <style>
+        body {
+            background-color: teal;
+            text-align: center;
+        }
+    </style>
+</head>
+<script src="gl.js"></script>
+<script src="Math.js"></script>
+<script src="sh.js"></script>
+<script src="RenderLoop.js"></script>
+<script src="Transform.js"></script>
+<script src="Model.js"></script>
+<script src="Primatives.js"></script>
+<script src="Camera.js"></script>
+<script src="Shader_Extra.js"></script>
+<script>
+    window.onload = () => {
+        const gl = GLInstance().fFitScreen().fClear();
+
+        const gCamera = new Camera(gl)
+        gCamera.transform.position.set(0, 1, 3)
+        gCameraCtrl = new CameraController(gl, gCamera)
+
+        // Setup Quad
+        const gShader = new TestShader(gl, gCamera.projectionMatrix)
+        const gModel = Primatives.MultiQuad.createModel(gl)
+
+        // const gModel = Primatives.Quad.createModel(gl)
+        // gModel.setPosition(0, 1, 0).setScale(0.2, 0.2, 0.2)
+
+        // const gModel2 = new Model(gl.mMeshCache["Quad"]) // create another, but grab this from the cache
+
+
+        // Setup Grid
+        const gGridShader = new GridAxisShader(gl, gCamera.projectionMatrix)
+        const gGridModel = Primatives.GridAxis.createModel(gl, true);
+
+        const RLoop = new RenderLoop(onRender).start();
+
+        function onRender(dt) {
+            gCamera.updateViewMatrix();
+            gl.fClear();
+
+            // This shader rendering order matters.
+            // If gShader goes before, the grid can't be seen through. 
+            // We learn how to handle this in a future lesson
+            gGridShader.activate()
+            .setCameraMatrix(gCamera.viewMatrix)
+            .renderModel(gGridModel.preRender())
+
+            gShader.activate()
+            .setCameraMatrix(gCamera.viewMatrix)
+            .renderModel(gModel.preRender())
+            // .renderModel(gModel2.preRender())
+        }
+    }
+
+    class TestShader extends Shader {
+        constructor(gl, pMatrix) {
+            const vertSrc = ShaderUtil.domShaderSrc("vertex_shader")
+            const fragSrc = ShaderUtil.domShaderSrc("fragment_shader")
+            super(gl, vertSrc, fragSrc)
+
+            //Standard Uniforms
+            this.setPerspective(pMatrix)
+            gl.useProgram(null);
+        }
+    }
+</script>
+
+<body>
+    <!-- <canvas id="canvas-gl"></canvas> opt to creating in gl.js for intellisense -->
+</body>
+<script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
+    in vec3 a_position;
+    in vec2 a_uv;
+
+    uniform mat4 uMVMatrix;
+    uniform mat4 uCameraMatrix;
+    uniform mat4 uPMatrix;
+
+    out vec2 uv;
+
+    void main(void){
+        uv = a_uv;
+        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position, 1.0); // order counts!
+    }
+</script>
+
+<script id="fragment_shader" type="x-shader/x-fragment">#version 300 es
+    precision mediump float;
+    in vec2 uv;
+    out vec4 finalColor;
+    
+    void main(void) {
+        //Square Border
+        // float c = (uv.x <= 0.1 || uv.x >= 0.9 || uv.y <= 0.1 || uv.y >= 0.9)? 0.0 : 1.0;
+        // finalColor = vec4(c,c,c,1.0 - c);
+
+        // Circle
+        vec2 delta = uv - vec2(0.5, 0.5); // delta position from center;
+        float dist = 0.5 - sqrt(delta.x*delta.x + delta.y*delta.y);
+
+        float border = 0.01;
+        float a = 0.0;
+        if(dist > border) a = 1.0;
+        else if(dist > 0.0) a = dist / border;
+
+        finalColor = vec4(0.0,0.0,0.0,a);
+    }
+</script>
+
+</html>
