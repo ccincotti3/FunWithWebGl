@@ -30,10 +30,13 @@
 
         // Setup Quad
         const gShader = new TestShader(gl, gCamera.projectionMatrix)
-        const gModel = Primatives.Quad.createModel(gl)
-        gModel.setPosition(0, 1, 0).setScale(0.2, 0.2, 0.2)
+        const gModel = Primatives.MultiQuad.createModel(gl)
 
-        const gModel2 = new Model(gl.mMeshCache["Quad"]) // create another, but grab this from the cache
+        // const gModel = Primatives.Quad.createModel(gl)
+        // gModel.setPosition(0, 1, 0).setScale(0.2, 0.2, 0.2)
+
+        // const gModel2 = new Model(gl.mMeshCache["Quad"]) // create another, but grab this from the cache
+
 
         // Setup Grid
         const gGridShader = new GridAxisShader(gl, gCamera.projectionMatrix)
@@ -55,7 +58,7 @@
             gShader.activate()
             .setCameraMatrix(gCamera.viewMatrix)
             .renderModel(gModel.preRender())
-            .renderModel(gModel2.preRender())
+            // .renderModel(gModel2.preRender())
         }
     }
 
