@@ -21,6 +21,7 @@ function GLInstance() {
   //...................................................
   //Setup custom properties
   gl.mMeshCache = [];	//Cache all the mesh structs, easy to unload buffers if they all exist in one place.
+  gl.mTextureCache = [];	//Cache all the mesh structs, easy to unload buffers if they all exist in one place.
 
   // -----------------------------------------------------------------------
   // Setup gl, configuration setup.. a lot of these are gl defaults, but we're being explicit
@@ -117,6 +118,26 @@ function GLInstance() {
     this.mMeshCache[name] = rtn;
     console.log(rtn)
     return rtn;
+  }
+
+  gl.fLoadTexture = function(name, img, doYFlip) {
+    const tex = this.createTexture();
+    
+    if(doYFlip === true) { this.pixelStorei(this.UNPACK_FLIP_Y_WEBGL, true) } // Flip Y coords of UV's upside down. Blender puts UV's upside down. If texture seems mangled, see if this does anything.
+    this.bindTexture(this.TEXTURE_2D, tex) // Set texture buffer
+    this.texImage2D(this.TEXTURE_2D, 0, this.RGBA, this.RGBA, this.UNSIGNED_BYTE, img) // Push img to GPU.
+
+    // setup scaling
+    this.texParameteri(this.TEXTURE_2D, this.TEXTURE_MAG_FILTER, this.LINEAR) // Scale up
+    this.texParameteri(this.TEXTURE_2D, this.TEXTURE_MIN_FILTER, this.LINEAR_MIPMAP_NEAREST) // Scale down
+    this.generateMipmap(this.TEXTURE_2D) //Precalc different sizes of texture for better quality rendering
+
+    this.bindTexture(this.TEXTURE_2D, null)
+    this.mTextureCache[name] = tex
+
+    if(doYFlip === true) { this.pixelStorei(this.UNPACK_FLIP_Y_WEBGL, false) } // Flip Y coords of UV's upside down. Blender puts UV's upside down. If texture seems mangled, see if this does anything.
+
+    return tex
   }
 
   // -----------------------------------------------------------------------
