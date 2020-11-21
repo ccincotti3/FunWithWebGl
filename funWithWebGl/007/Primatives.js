@@ -20,8 +20,8 @@ Primatives.Quad = class {
             2,3,0
         ]
         const mesh = gl.fCreateMeshVAO("Quad", aIndex, aVert, null, aUv)
-        mesh.noCulling = false
-        mesh.doBlending = false
+        mesh.noCulling = true
+        mesh.doBlending = true
 
         return mesh
     }

@@ -45,17 +45,19 @@
             gCamera.updateViewMatrix();
             gl.fClear();
 
+            // This shader rendering order matters.
+            // If gShader goes before, the grid can't be seen through. 
+            // We learn how to handle this in a future lesson
+            gGridShader.activate()
+            .setCameraMatrix(gCamera.viewMatrix)
+            .renderModel(gGridModel.preRender())
+
             gShader.activate()
             .setCameraMatrix(gCamera.viewMatrix)
             .renderModel(gModel.preRender())
             .renderModel(gModel2.preRender())
-
-            gGridShader.activate()
-            .setCameraMatrix(gCamera.viewMatrix)
-            .renderModel(gGridModel.preRender())
         }
     }
-
 
     class TestShader extends Shader {
         constructor(gl, pMatrix) {
@@ -96,8 +98,19 @@
     
     void main(void) {
         //Square Border
-        float c = (uv.x <= 0.1 || uv.x >= 0.9 || uv.y <= 0.1 || uv.y >= 0.9)? 0.0 : 1.0;
-        finalColor = vec4(c,c,c,1.0 - c);
+        // float c = (uv.x <= 0.1 || uv.x >= 0.9 || uv.y <= 0.1 || uv.y >= 0.9)? 0.0 : 1.0;
+        // finalColor = vec4(c,c,c,1.0 - c);
+
+        // Circle
+        vec2 delta = uv - vec2(0.5, 0.5); // delta position from center;
+        float dist = 0.5 - sqrt(delta.x*delta.x + delta.y*delta.y);
+
+        float border = 0.01;
+        float a = 0.0;
+        if(dist > border) a = 1.0;
+        else if(dist > 0.0) a = dist / border;
+
+        finalColor = vec4(0.0,0.0,0.0,a);
     }
 </script>
 
