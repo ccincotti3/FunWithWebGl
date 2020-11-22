@@ -9,37 +9,23 @@ window.onload = function() {
   const centerX = width / 2
   const centerY = height / 2
 
-  // const radius = 200
-  const xRadius = 200
-  const yRadius = 400
-  const speed = .01
+  const radius = 200
+  const totalObjects = 30
+  let angle = 0
 
-  let xAngle = 0,
-    yAngle = 0,
-    xSpeed = 0.1,
-    ySpeed = 0.131,
-    x,
-    y
+  context.clearRect(0,0,width,height)
 
-  render()
-  
-  function render() {
-    context.clearRect(0,0,width,height)
-
-    // Need to bias by our center coord
-
+  for (let i = 0; i < totalObjects; i++) {
     // x = rcos(ø)
-    x = centerX + xRadius * Math.cos(xAngle)
+    x = centerX + radius * Math.cos(angle)
     // y = rsin(ø)
-    y = centerY + yRadius * Math.sin(yAngle)
+    y = centerY + radius * Math.sin(angle)
 
     context.beginPath();
     context.arc(x, y, 10, 0, Math.PI * 2, false)
     context.fill()
 
-    xAngle += xSpeed
-    yAngle += ySpeed
-
-    requestAnimationFrame(render)
+    angle += Math.PI * 2 / totalObjects
   }
+  
 }
