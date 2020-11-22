@@ -14,8 +14,13 @@ window.onload = function() {
   const yRadius = 400
   const speed = .01
 
-  let angle = 0, x, y
-  
+  let xAngle = 0,
+    yAngle = 0,
+    xSpeed = 0.1,
+    ySpeed = 0.131,
+    x,
+    y
+
   render()
   
   function render() {
@@ -24,15 +29,16 @@ window.onload = function() {
     // Need to bias by our center coord
 
     // x = rcos(ø)
-    x = centerX + xRadius * Math.cos(angle)
+    x = centerX + xRadius * Math.cos(xAngle)
     // y = rsin(ø)
-    y = centerY + yRadius * Math.sin(angle)
+    y = centerY + yRadius * Math.sin(yAngle)
 
     context.beginPath();
     context.arc(x, y, 10, 0, Math.PI * 2, false)
     context.fill()
 
-    angle += speed
+    xAngle += xSpeed
+    yAngle += ySpeed
 
     requestAnimationFrame(render)
   }
