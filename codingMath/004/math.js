@@ -12,6 +12,7 @@ window.onload = function() {
   const radius = 200
   const totalObjects = 30
   let angle = 0
+  const slice = Math.PI * 2 / totalObjects
 
   context.clearRect(0,0,width,height)
 
@@ -25,7 +26,7 @@ window.onload = function() {
     context.arc(x, y, 10, 0, Math.PI * 2, false)
     context.fill()
 
-    angle += Math.PI * 2 / totalObjects
+    angle += slice 
   }
   
 }
