@@ -9,7 +9,9 @@ window.onload = function() {
   const centerX = width / 2
   const centerY = height / 2
 
-  const radius = 200
+  // const radius = 200
+  const xRadius = 200
+  const yRadius = 400
   const speed = .01
 
   let angle = 0, x, y
@@ -22,9 +24,9 @@ window.onload = function() {
     // Need to bias by our center coord
 
     // x = rcos(ø)
-    x = centerX + radius * Math.cos(angle)
+    x = centerX + xRadius * Math.cos(angle)
     // y = rsin(ø)
-    y = centerY + radius * Math.sin(angle)
+    y = centerY + yRadius * Math.sin(angle)
 
     context.beginPath();
     context.arc(x, y, 10, 0, Math.PI * 2, false)
