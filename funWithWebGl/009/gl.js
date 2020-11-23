@@ -8,6 +8,29 @@ const ATTR_NORMAL_LOC		= 1;
 const ATTR_UV_NAME			= "a_uv";
 const ATTR_UV_LOC			= 2;
 
+class GlUtil { 
+  //Convert Hex colors to float arrays -> values btwn 0 and 1
+  // Accepts formats with/out # -> #FF0000, 00FF00,
+  static rgbArray(...args) {
+    if (!args.length) { return null; }
+    const rtn = [];
+    for (let i = 0; i < args.length; i++) {
+      const hex = args[i];
+      if(hex.length < 6) {
+        continue
+      }
+      const p = hex[0] === "#" ? 1 : 0 //Determine starting position
+
+      rtn.push(
+        parseInt(hex[p] + hex[p+1],16) / 255.0,
+        parseInt(hex[p+2] + hex[p+3],16) / 255.0,
+        parseInt(hex[p+4] + hex[p+5],16) / 255.0,
+      )
+    }
+    return rtn
+  }
+}
+
 
 function GLInstance() {
   const canvasEl = document.createElement("canvas");
@@ -71,7 +94,7 @@ function GLInstance() {
 
       // Remember, we are now operating on the bound VAO, since we bound it above
       this.enableVertexAttribArray(ATTR_POSITION_LOC);					//Enable the position attribute in the shader
-      this.vertexAttribPointer(ATTR_POSITION_LOC, 3, this.FLOAT, false, 0, 0);	//Set which buffer the attribute will pull its data from
+      this.vertexAttribPointer(ATTR_POSITION_LOC, 4, this.FLOAT, false, 0, 0);	//Set which buffer the attribute will pull its data from
     }
 
     // Now do for others

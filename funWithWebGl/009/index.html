@@ -29,17 +29,18 @@
         gCameraCtrl = new CameraController(gl, gCamera)
     
         //Load resources
-        const texture = document.getElementById("imgTex")
-        gl.fLoadTexture("tex001", texture)
+        // const texture = document.getElementById("imgTex")
+        // gl.fLoadTexture("tex001", texture)
 
         // Setup Grid
         const gGridShader = new GridAxisShader(gl, gCamera.projectionMatrix)
         const gGridModel = Primatives.GridAxis.createModel(gl, true);
 
         // Setup Quad
-        const gShader = new TestShader(gl, gCamera.projectionMatrix).setTexture(gl.mTextureCache["tex001"])
-        const gModel = Primatives.Quad.createModel(gl)
-        gModel.setPosition(0, 0, 0).setScale(0.2, 0.2, 0.2)
+        const gShader = new TestShader(gl, gCamera.projectionMatrix)
+        // .setTexture(gl.mTextureCache["tex001"])
+        const gModel = Primatives.CubeBad.createModel(gl)
+        gModel.setPosition(0, 0.6, 0).setScale(0.2, 0.2, 0.2)
 
         const RLoop = new RenderLoop(onRender).start();
 
@@ -54,7 +55,9 @@
             .setCameraMatrix(gCamera.viewMatrix)
             .renderModel(gGridModel.preRender())
 
-            gShader.activate().preRender()
+            gShader.activate()
+            // .preRender() don't need this right now since it handles textures
+            .setTime(performance.now()) // for animations later
             .setCameraMatrix(gCamera.viewMatrix)
             .renderModel(gModel.preRender())
         }
@@ -66,12 +69,19 @@
             const fragSrc = ShaderUtil.domShaderSrc("fragment_shader")
             super(gl, vertSrc, fragSrc)
 
+            //Custom uniforms
+            this.uniformLoc.time = gl.getUniformLocation(this.program, "uTime")
+
+            const uColor = gl.getUniformLocation(this.program, "uColor")
+            gl.uniform3fv(uColor, new Float32Array( GlUtil.rgbArray("#FF0000","00FF00","0000FF","909090","C0C0C0","404040") ));
+
             //Standard Uniforms
             this.setPerspective(pMatrix)
             this.mainTexture = -1
             gl.useProgram(null);
         }
 
+        setTime(t) { this.gl.uniform1f(this.uniformLoc.time,t); return this;}
         setTexture(texID) { this.mainTexture = texID; return this;}
 
         //Override 
@@ -101,23 +111,30 @@
     open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 -->
 <script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
-    in vec3 a_position;
+    in vec4 a_position; // w component is color index for uColor
     in vec2 a_uv;
 
     uniform mat4 uMVMatrix;
     uniform mat4 uCameraMatrix;
     uniform mat4 uPMatrix;
 
+    uniform vec3 uColor[6];
+    uniform float uTime;
+
     out highp vec2 texCoord; // Interpolate UV values to the fragment shader
+    out lowp vec4 color;
 
     void main(void){
         texCoord = a_uv;
-        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position, 1.0); // order counts!
+        color = vec4(uColor[ int(a_position.w) ], 1.0);
+        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position.xyz, 1.0); // order counts!
     }
 </script>
 
 <script id="fragment_shader" type="x-shader/x-fragment">#version 300 es
     precision mediump float;
+
+    in vec4 color;
 
     in highp vec2 texCoord; // what pixel to pull from the texture
     uniform sampler2D uMainTex; // Holds the texture loaded into the GPU
@@ -125,7 +142,8 @@
     out vec4 finalColor;
     
     void main(void) { // weird that it's s,t but its just x,y
-        finalColor = texture(uMainTex, vec2(texCoord.s, texCoord.t)); // Set color of the pixel at that UV location
+        // finalColor = texture(uMainTex, vec2(texCoord.s, texCoord.t)); // Set color of the pixel at that UV location
+        finalColor = color;
     }
 </script>
 

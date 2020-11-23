@@ -63,6 +63,39 @@ Primatives.MultiQuad = class {
   }
 }
 
+/**
+ * Bad because when rendered, because we only have 8 points,
+ * so we only have 8 attributes of information.
+ * So you can't define individual faces, and thus the color
+ * will interpolate across the whole cube rather than
+ * each face getting it's own color.
+ * 
+ * Each face has to be a quad, and then you tie them all together.
+ * So like you can make a cube this way, but if you add attributes like color, textures etc,
+ * you're relatively limited.
+ */
+Primatives.CubeBad = class {
+  static createModel(gl){ return new Model(Primatives.CubeBad.createMesh(gl)); }
+  static createMesh(gl){
+    var aVert = [
+        -0.5,0.5,0,0, -0.5,-0.5,0,0, 0.5,-0.5,0,0, 0.5,0.5,0,0,			//Front
+        0.5,0.5,-1,1, 0.5,-0.5,-1,1, -0.5,-0.5,-1,1, -0.5,0.5,-1,1		//Back
+      ],
+      aUV = [
+        0,0, 0,1, 1,1, 1,0, 
+        0,0, 0,1, 1,1, 1,0
+      ],
+      aIndex = [
+        0,1,2, 2,3,0, //Front
+			  4,5,6, 6,7,4, //Back
+			  3,2,5, 5,4,3, //Right
+			  7,0,3, 3,4,7, //Top
+			  7,6,1, 1,0,7  //Left
+			 ];
+    return gl.fCreateMeshVAO("Cube",aIndex,aVert,null,aUV,4);
+  }
+}
+
 Primatives.GridAxis = class {
   static createModel(gl, inclAxis) { return new Model(Primatives.GridAxis.createMesh(gl, inclAxis)) }
   static createMesh(gl, inclAxis) {
