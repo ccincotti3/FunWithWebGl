@@ -112,6 +112,7 @@
 -->
 <script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
     in vec4 a_position; // w component is color index for uColor
+    in vec3 a_norm;
     in vec2 a_uv;
 
     uniform mat4 uMVMatrix;
@@ -124,10 +125,14 @@
     out highp vec2 texCoord; // Interpolate UV values to the fragment shader
     out lowp vec4 color;
 
+    vec3 warp(vec3 p){
+        return p + 0.2 * abs(cos(uTime*0.002)) * a_norm;
+    }
+
     void main(void){
         texCoord = a_uv;
         color = vec4(uColor[ int(a_position.w) ], 1.0);
-        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position.xyz, 1.0); // order counts!
+        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(warp(a_position.xyz), 1.0); // order counts!
     }
 </script>
 
@@ -146,9 +151,9 @@
         //finalColor = color;
         //finalColor = texture(uMainTex,texCoord);	//Just The Texture
         //finalColor = color * texture(uMainTex,texCoord); //Mixing Texture and Color together
-        //finalColor = color * texture(uMainTex,texCoord) * 1.5f; //Making the colors brighter
+        finalColor = color * texture(uMainTex,texCoord) * 1.5f; //Making the colors brighter
         //finalColor = color + texture(uMainTex,texCoord); //Mixing the color and textures with addition,Dif effect
-        finalColor = mix(color,texture(uMainTex,texCoord),0.8f); //Using mix func to fade between two pixel colors.
+        //finalColor = mix(color,texture(uMainTex,texCoord),0.8f); //Using mix func to fade between two pixel colors.
     }
 </script>
 
