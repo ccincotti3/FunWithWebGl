@@ -142,7 +142,13 @@
     out vec4 finalColor;
     
     void main(void) { // weird that it's s,t but its just x,y
-        finalColor = texture(uMainTex, vec2(texCoord.s, texCoord.t)); // Set color of the pixel at that UV location
+        //finalColor = texture(uMainTex, vec2(texCoord.s, texCoord.t)); // Set color of the pixel at that UV location
+        //finalColor = color;
+        //finalColor = texture(uMainTex,texCoord);	//Just The Texture
+        //finalColor = color * texture(uMainTex,texCoord); //Mixing Texture and Color together
+        //finalColor = color * texture(uMainTex,texCoord) * 1.5f; //Making the colors brighter
+        //finalColor = color + texture(uMainTex,texCoord); //Mixing the color and textures with addition,Dif effect
+        finalColor = mix(color,texture(uMainTex,texCoord),0.8f); //Using mix func to fade between two pixel colors.
     }
 </script>
 
