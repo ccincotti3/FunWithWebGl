@@ -126,7 +126,8 @@
     out lowp vec4 color;
 
     vec3 warp(vec3 p){
-        return p + 0.2 * abs(cos(uTime*0.002)) * a_norm;
+        // return p + 0.2 * abs(cos(uTime*0.002)) * a_norm;
+        return p + 0.5 * abs(cos(uTime*0.003 + p.y)) * a_norm;
     }
 
     void main(void){
