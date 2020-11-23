@@ -39,7 +39,7 @@
         // Setup Quad
         const gShader = new TestShader(gl, gCamera.projectionMatrix)
         // .setTexture(gl.mTextureCache["tex001"])
-        const gModel = Primatives.CubeBad.createModel(gl)
+        const gModel = Primatives.Cube.createModel(gl)
         gModel.setPosition(0, 0.6, 0).setScale(0.2, 0.2, 0.2)
 
         const RLoop = new RenderLoop(onRender).start();
