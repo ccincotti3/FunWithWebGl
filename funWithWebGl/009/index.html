@@ -29,16 +29,16 @@
         gCameraCtrl = new CameraController(gl, gCamera)
     
         //Load resources
-        // const texture = document.getElementById("imgTex")
-        // gl.fLoadTexture("tex001", texture)
+        const texture = document.getElementById("imgTex")
+        gl.fLoadTexture("tex001", texture)
 
         // Setup Grid
         const gGridShader = new GridAxisShader(gl, gCamera.projectionMatrix)
         const gGridModel = Primatives.GridAxis.createModel(gl, true);
 
-        // Setup Quad
         const gShader = new TestShader(gl, gCamera.projectionMatrix)
-        // .setTexture(gl.mTextureCache["tex001"])
+        .setTexture(gl.mTextureCache["tex001"])
+
         const gModel = Primatives.Cube.createModel(gl)
         gModel.setPosition(0, 0.6, 0).setScale(0.2, 0.2, 0.2)
 
@@ -56,7 +56,7 @@
             .renderModel(gGridModel.preRender())
 
             gShader.activate()
-            // .preRender() don't need this right now since it handles textures
+            .preRender()
             .setTime(performance.now()) // for animations later
             .setCameraMatrix(gCamera.viewMatrix)
             .renderModel(gModel.preRender())
@@ -142,8 +142,7 @@
     out vec4 finalColor;
     
     void main(void) { // weird that it's s,t but its just x,y
-        // finalColor = texture(uMainTex, vec2(texCoord.s, texCoord.t)); // Set color of the pixel at that UV location
-        finalColor = color;
+        finalColor = texture(uMainTex, vec2(texCoord.s, texCoord.t)); // Set color of the pixel at that UV location
     }
 </script>
 

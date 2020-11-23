@@ -96,6 +96,9 @@ Primatives.CubeBad = class {
   }
 }
 
+/**
+ * Each face is a quad, and tied together.
+ */
 Primatives.Cube = class {
   static createModel(gl){ return new Model(Primatives.Cube.createMesh(gl,1,1,1,0,0,0)); }
   static createMesh(gl,width,height,depth,x,y,z){
