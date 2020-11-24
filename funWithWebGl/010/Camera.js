@@ -68,6 +68,14 @@ class Camera {
 
     return this.viewMatrix
   }
+
+  // It's just the view matrix of the camera without the translation bit set up
+  // Remember that cameras move the world around it, but we don't want the skymap to move!
+  getTranslatelessMatrix() {
+    const mat = new Float32Array(this.viewMatrix)
+    mat[12] = mat[13] = mat[14] = 0 //Reset Translation position in the matrix to zero
+    return mat
+  }
 }
 
 Camera.MODE_FREE = 0;	//Allows free movement of position and rotation, basicly first person type of camera

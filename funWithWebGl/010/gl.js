@@ -143,6 +143,38 @@ function GLInstance() {
     return rtn;
   }
 
+  	//imgAry must be 6 elements long and images placed in the right order
+  //RIGHT,LEFT,TOP,BOTTOM,BACK,FRONT
+  gl.fLoadCubeMap = function(name,imgAry){
+    if(imgAry.length != 6) return null;
+
+    //Cube Constants values increment, so easy to start with right and just add 1 in a loop
+    //To make the code easier costs by making the imgAry coming into the function to have
+    //the images sorted in the same way the constants are set.
+    //	TEXTURE_CUBE_MAP_POSITIVE_X - Right	:: TEXTURE_CUBE_MAP_NEGATIVE_X - Left
+    //	TEXTURE_CUBE_MAP_POSITIVE_Y - Top 	:: TEXTURE_CUBE_MAP_NEGATIVE_Y - Bottom
+    //	TEXTURE_CUBE_MAP_POSITIVE_Z - Back	:: TEXTURE_CUBE_MAP_NEGATIVE_Z - Front
+
+    var tex = this.createTexture();
+    this.bindTexture(this.TEXTURE_CUBE_MAP,tex);
+
+    //push image to specific spot in the cube map.
+    for(var i=0; i < 6; i++){
+      this.texImage2D(this.TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, this.RGBA, this.RGBA, this.UNSIGNED_BYTE, imgAry[i]);
+    }
+
+    this.texParameteri(this.TEXTURE_CUBE_MAP, this.TEXTURE_MAG_FILTER, this.LINEAR);	//Setup up scaling
+    this.texParameteri(this.TEXTURE_CUBE_MAP, this.TEXTURE_MIN_FILTER, this.LINEAR);	//Setup down scaling
+    this.texParameteri(this.TEXTURE_CUBE_MAP, this.TEXTURE_WRAP_S, this.CLAMP_TO_EDGE);	//Stretch image to X position
+    this.texParameteri(this.TEXTURE_CUBE_MAP, this.TEXTURE_WRAP_T, this.CLAMP_TO_EDGE);	//Stretch image to Y position
+    this.texParameteri(this.TEXTURE_CUBE_MAP, this.TEXTURE_WRAP_R, this.CLAMP_TO_EDGE);	//Stretch image to Z position
+    //this.generateMipmap(this.TEXTURE_CUBE_MAP);
+
+    this.bindTexture(this.TEXTURE_CUBE_MAP,null);
+    this.mTextureCache[name] = tex;
+    return tex;
+  };
+
   gl.fLoadTexture = function(name, img, doYFlip) {
     const tex = this.createTexture();
     

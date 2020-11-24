@@ -27,20 +27,39 @@
         const gCamera = new Camera(gl)
         gCamera.transform.position.set(0, 1, 3)
         gCameraCtrl = new CameraController(gl, gCamera)
-    
+
         //Load resources
         const texture = document.getElementById("imgTex")
         gl.fLoadTexture("tex001", texture)
+
+        gl.fLoadCubeMap("skybox01", [
+            document.getElementById("cube01_right"), document.getElementById("cube01_left"),
+            document.getElementById("cube01_top"), document.getElementById("cube01_bottom"),
+            document.getElementById("cube01_back"), document.getElementById("cube01_front"),
+        ])
+
+        gl.fLoadCubeMap("skybox02", [
+            document.getElementById("cube02_right"), document.getElementById("cube02_left"),
+            document.getElementById("cube02_top"), document.getElementById("cube02_bottom"),
+            document.getElementById("cube02_back"), document.getElementById("cube02_front"),
+        ])
 
         // Setup Grid
         const gGridShader = new GridAxisShader(gl, gCamera.projectionMatrix)
         const gGridModel = Primatives.GridAxis.createModel(gl, true);
 
         const gShader = new TestShader(gl, gCamera.projectionMatrix)
-        .setTexture(gl.mTextureCache["tex001"])
+            .setTexture(gl.mTextureCache["tex001"])
 
         const gModel = Primatives.Cube.createModel(gl)
         gModel.setPosition(0, 0.6, 0).setScale(0.2, 0.2, 0.2)
+
+        const gSkyMap = Primatives.Cube.createModel(gl, "Skymap", 10,10,10,0,0,0)
+        const gSkyMapShader = new SkymapShader(
+            gl, gCamera.projectionMatrix,
+            gl.mTextureCache["skybox01"],
+            gl.mTextureCache["skybox02"],
+        )
 
         const RLoop = new RenderLoop(onRender).start();
 
@@ -48,18 +67,57 @@
             gCamera.updateViewMatrix();
             gl.fClear();
 
+            gSkyMapShader.activate().preRender()
+                .setCameraMatrix(gCamera.getTranslatelessMatrix())
+                .setTime(performance.now())
+                .renderModel(gSkyMap)
+
             // This shader rendering order matters.
             // If gShader goes before, the grid can't be seen through. 
             // We learn how to handle this in a future lesson
             gGridShader.activate()
-            .setCameraMatrix(gCamera.viewMatrix)
-            .renderModel(gGridModel.preRender())
+                .setCameraMatrix(gCamera.viewMatrix)
+                .renderModel(gGridModel.preRender())
 
             gShader.activate()
-            .preRender()
-            .setTime(performance.now()) // for animations later
-            .setCameraMatrix(gCamera.viewMatrix)
-            .renderModel(gModel.preRender())
+                .preRender()
+                .setTime(performance.now()) // for animations later
+                .setCameraMatrix(gCamera.viewMatrix)
+                .renderModel(gModel.preRender())
+        }
+    }
+
+    class SkymapShader extends Shader {
+        constructor(gl, pMatrix, dayTex, nightTex) {
+            const vertSrc = ShaderUtil.domShaderSrc("sky_vshader")
+            const fragSrc = ShaderUtil.domShaderSrc("sky_fshader")
+
+            super(gl, vertSrc, fragSrc)
+
+            //Custom Uniforms
+            this.uniformLoc.time = gl.getUniformLocation(this.program, "uTime")
+            this.uniformLoc.dayTex = gl.getUniformLocation(this.program, "uDayTex")
+            this.uniformLoc.nightTex = gl.getUniformLocation(this.program, "uNightTex")
+
+            // Standard Uniforms
+            this.setPerspective(pMatrix)
+            this.texDay = dayTex
+            this.texNight = nightTex
+            gl.useProgram(null);
+        }
+
+        setTime(t) { this.gl.uniform1f(this.uniformLoc.time, t); return this; }
+
+        preRender() {
+            this.gl.activeTexture(this.gl.TEXTURE0)
+            this.gl.bindTexture(this.gl.TEXTURE_CUBE_MAP, this.texDay)
+            this.gl.uniform1i(this.uniformLoc.dayTex, 0)
+
+            this.gl.activeTexture(this.gl.TEXTURE1)
+            this.gl.bindTexture(this.gl.TEXTURE_CUBE_MAP, this.texNight)
+            this.gl.uniform1i(this.uniformLoc.nightTex, 1)
+
+            return this
         }
     }
 
@@ -73,7 +131,7 @@
             this.uniformLoc.time = gl.getUniformLocation(this.program, "uTime")
 
             const uColor = gl.getUniformLocation(this.program, "uColor")
-            gl.uniform3fv(uColor, new Float32Array( GlUtil.rgbArray("#FF0000","00FF00","0000FF","909090","C0C0C0","404040") ));
+            gl.uniform3fv(uColor, new Float32Array(GlUtil.rgbArray("#FF0000", "00FF00", "0000FF", "909090", "C0C0C0", "404040")));
 
             //Standard Uniforms
             this.setPerspective(pMatrix)
@@ -81,8 +139,8 @@
             gl.useProgram(null);
         }
 
-        setTime(t) { this.gl.uniform1f(this.uniformLoc.time,t); return this;}
-        setTexture(texID) { this.mainTexture = texID; return this;}
+        setTime(t) { this.gl.uniform1f(this.uniformLoc.time, t); return this; }
+        setTexture(texID) { this.mainTexture = texID; return this; }
 
         //Override 
         preRender() {
@@ -94,7 +152,7 @@
             /**
              * WebGL has something called "texture units". You can think of it as an array of references to textures. You tell the shader which texture unit to use for each sampler.
              */
-             
+
             this.gl.uniform1i(this.uniformLoc.mainTexture, 0) // texture unit 0 - https://webglfundamentals.org/webgl/lessons/webgl-2-textures.html
             return this
         }
@@ -105,6 +163,19 @@
     <!-- <canvas id="canvas-gl"></canvas> opt to creating in gl.js for intellisense -->
 </body>
 <img src="../assets/test_tex.jpg" id="imgTex" style="display: none;" />
+<img src="../assets/miramar_back.png" id="cube01_back" style="display:none;">
+<img src="../assets/miramar_front.png" id="cube01_front" style="display:none;">
+<img src="../assets/miramar_bottom.png" id="cube01_bottom" style="display:none;">
+<img src="../assets/miramar_left.png" id="cube01_left" style="display:none;">
+<img src="../assets/miramar_right.png" id="cube01_right" style="display:none;">
+<img src="../assets/miramar_top.png" id="cube01_top" style="display:none;">
+
+<img src="../assets/grimmnight_back.png" id="cube02_back" style="display:none;">
+<img src="../assets/grimmnight_front.png" id="cube02_front" style="display:none;">
+<img src="../assets/grimmnight_bottom.png" id="cube02_bottom" style="display:none;">
+<img src="../assets/grimmnight_left.png" id="cube02_left" style="display:none;">
+<img src="../assets/grimmnight_right.png" id="cube02_right" style="display:none;">
+<img src="../assets/grimmnight_top.png" id="cube02_top" style="display:none;">
 <!-- 
     Turn off Chrome web security to allows cors error.
     This is a secuirty feature essentially preventing access to the user filesystem to load into GPU
@@ -156,6 +227,34 @@
         finalColor = color * texture(uMainTex,texCoord) * 1.5f; //Making the colors brighter
         //finalColor = color + texture(uMainTex,texCoord); //Mixing the color and textures with addition,Dif effect
         //finalColor = mix(color,texture(uMainTex,texCoord),0.8f); //Using mix func to fade between two pixel colors.
+    }
+</script>
+
+<script id="sky_vshader" type="x-shader/x-vertex">#version 300 es
+    in vec4 a_position; // skymaps are typically vec3 but our base cube has a 4th color attrib
+
+    uniform mat4 uPMatrix;
+    uniform mat4 uCameraMatrix;
+
+    out highp vec3 texCoord; // Interpolate UV values to fragment shader, cube maps are based on position not on UV
+
+    void main(void) {
+        texCoord = a_position.xyz;
+        gl_Position = uPMatrix * uCameraMatrix * vec4(a_position.xyz, 1.0);
+    }
+</script>
+
+<script id="sky_fshader" type="x-shader/x-fragment">#version 300 es
+    precision mediump float;
+
+    in highp vec3 texCoord;
+    uniform samplerCube uDayTex;
+    uniform samplerCube uNightTex;
+    uniform float uTime;
+
+    out vec4 finalColor;
+    void main(void) {
+        finalColor = mix( texture(uDayTex, texCoord), texture(uNightTex, texCoord), abs(sin(uTime * 0.0005)) );
     }
 </script>
 

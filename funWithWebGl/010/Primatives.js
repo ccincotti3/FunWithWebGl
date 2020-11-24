@@ -100,8 +100,8 @@ Primatives.CubeBad = class {
  * Each face is a quad, and tied together.
  */
 Primatives.Cube = class {
-  static createModel(gl){ return new Model(Primatives.Cube.createMesh(gl,1,1,1,0,0,0)); }
-  static createMesh(gl,width,height,depth,x,y,z){
+  static createModel(gl, name = "Cube", w=1,h=1,d=1,x=0,y=0,z=0){ return new Model(Primatives.Cube.createMesh(gl,name,w,h,d,x,y,z)); }
+  static createMesh(gl,name="Cube",width,height,depth,x,y,z){
     const w = width*0.5, h = height*0.5, d = depth*0.5;
     const x0 = x-w, x1 = x+w, y0 = y-h, y1 = y+h, z0 = z-d, z1 = z+d;
 
@@ -158,7 +158,7 @@ Primatives.Cube = class {
 			 0, 1, 0,	 0, 1, 0,	 0, 1, 0,	 0, 1, 0		//Top
     ]
 
-    const mesh = gl.fCreateMeshVAO("Cube",aIndex,aVert,aNorm,aUV,4);
+    const mesh = gl.fCreateMeshVAO(name,aIndex,aVert,aNorm,aUV,4);
     mesh.noCulling = true;	//TODO Only setting this true to view animations better.
     return mesh;
   }
