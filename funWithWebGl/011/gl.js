@@ -75,7 +75,7 @@ function GLInstance() {
   }
 
   // Turns arrays into GL buffers, then setup a VAO that will predefine the buffers to standard shader attributes.
-  gl.fCreateMeshVAO = function(name, aryInd, aryVert, aryNorm, aryUV) {
+  gl.fCreateMeshVAO = function(name, aryInd, aryVert, aryNorm, aryUV, vertLen) {
     const rtn = { drawMode: this.TRIANGLES }
 
     rtn.vao = this.createVertexArray();
@@ -85,7 +85,7 @@ function GLInstance() {
     //Set up vertices
     if(aryVert !== undefined && aryVert != null){
       rtn.bufVertices = this.createBuffer(); // create buffer
-      rtn.vertexComponentLen = 3; // How many floats make up a vertext
+      rtn.vertexComponentLen = vertLen || 3; // How many floats make up a vertext
       rtn.vertexCount = aryVert.length / rtn.vertexComponentLen; //How man vertices in the array
 
       // BAU, but now we are operating on the VAO.
@@ -94,7 +94,7 @@ function GLInstance() {
 
       // Remember, we are now operating on the bound VAO, since we bound it above
       this.enableVertexAttribArray(ATTR_POSITION_LOC);					//Enable the position attribute in the shader
-      this.vertexAttribPointer(ATTR_POSITION_LOC, 4, this.FLOAT, false, 0, 0);	//Set which buffer the attribute will pull its data from
+      this.vertexAttribPointer(ATTR_POSITION_LOC, rtn.vertexComponentLen, this.FLOAT, false, 0, 0);	//Set which buffer the attribute will pull its data from
     }
 
     // Now do for others
@@ -139,11 +139,10 @@ function GLInstance() {
 
 
     this.mMeshCache[name] = rtn;
-    console.log(rtn)
     return rtn;
   }
 
-  	//imgAry must be 6 elements long and images placed in the right order
+  //imgAry must be 6 elements long and images placed in the right order
   //RIGHT,LEFT,TOP,BOTTOM,BACK,FRONT
   gl.fLoadCubeMap = function(name,imgAry){
     if(imgAry.length != 6) return null;

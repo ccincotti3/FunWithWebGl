@@ -20,6 +20,7 @@
 <script src="Primatives.js"></script>
 <script src="Camera.js"></script>
 <script src="Shader_Extra.js"></script>
+<script src="ObjLoader.js"></script>
 <script>
     window.onload = () => {
         const gl = GLInstance().fFitScreen().fClear();
@@ -32,18 +33,6 @@
         const texture = document.getElementById("imgTex")
         gl.fLoadTexture("tex001", texture)
 
-        gl.fLoadCubeMap("skybox01", [
-            document.getElementById("cube01_right"), document.getElementById("cube01_left"),
-            document.getElementById("cube01_top"), document.getElementById("cube01_bottom"),
-            document.getElementById("cube01_back"), document.getElementById("cube01_front"),
-        ])
-
-        gl.fLoadCubeMap("skybox02", [
-            document.getElementById("cube02_right"), document.getElementById("cube02_left"),
-            document.getElementById("cube02_top"), document.getElementById("cube02_bottom"),
-            document.getElementById("cube02_back"), document.getElementById("cube02_front"),
-        ])
-
         // Setup Grid
         const gGridShader = new GridAxisShader(gl, gCamera.projectionMatrix)
         const gGridModel = Primatives.GridAxis.createModel(gl, true);
@@ -51,26 +40,17 @@
         const gShader = new TestShader(gl, gCamera.projectionMatrix)
             .setTexture(gl.mTextureCache["tex001"])
 
-        const gModel = Primatives.Cube.createModel(gl)
-        gModel.setPosition(0, 0.6, 0).setScale(0.2, 0.2, 0.2)
+        // const gModel = Primatives.Cube.createModel(gl)
+        // gModel.setPosition(0, 0.6, 0).setScale(0.2, 0.2, 0.2)
 
-        const gSkyMap = Primatives.Cube.createModel(gl, "Skymap", 10,10,10,0,0,0)
-        const gSkyMapShader = new SkymapShader(
-            gl, gCamera.projectionMatrix,
-            gl.mTextureCache["skybox01"],
-            gl.mTextureCache["skybox02"],
-        )
+        const gModel = new Model(ObjLoader.domToMesh(gl, "objCube", "obj_file", true))
+        gModel.setPosition(0,0.6,0).setScale(0.5,0.5,0.5)
 
         const RLoop = new RenderLoop(onRender).start();
 
         function onRender(dt) {
             gCamera.updateViewMatrix();
             gl.fClear();
-
-            gSkyMapShader.activate().preRender()
-                .setCameraMatrix(gCamera.getTranslatelessMatrix())
-                .setTime(performance.now())
-                .renderModel(gSkyMap)
 
             // This shader rendering order matters.
             // If gShader goes before, the grid can't be seen through. 
@@ -79,9 +59,7 @@
                 .setCameraMatrix(gCamera.viewMatrix)
                 .renderModel(gGridModel.preRender())
 
-            gShader.activate()
-                .preRender()
-                .setTime(performance.now()) // for animations later
+            gShader.activate().preRender()
                 .setCameraMatrix(gCamera.viewMatrix)
                 .renderModel(gModel.preRender())
         }
@@ -190,22 +168,11 @@
     uniform mat4 uCameraMatrix;
     uniform mat4 uPMatrix;
 
-    uniform vec3 uColor[6];
-    uniform float uTime;
-
     out highp vec2 texCoord; // Interpolate UV values to the fragment shader
-    out lowp vec4 color;
-
-    vec3 warp(vec3 p){
-        // return p + 0.2 * abs(cos(uTime*0.002)) * a_norm;
-        // return p + 0.5 * abs(cos(uTime*0.003 + p.y)) * a_norm;
-       return p + 0.5 * abs(cos(uTime*0.003 + p.y + p.x + p.z * 2.0)) * a_norm;
-    }
 
     void main(void){
         texCoord = a_uv;
-        color = vec4(uColor[ int(a_position.w) ], 1.0);
-        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(warp(a_position.xyz), 1.0); // order counts!
+        gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position.xyz, 1.0); // order counts!
     }
 </script>
 
@@ -213,20 +180,13 @@
     precision mediump float;
 
     in vec4 color;
-
     in highp vec2 texCoord; // what pixel to pull from the texture
     uniform sampler2D uMainTex; // Holds the texture loaded into the GPU
 
     out vec4 finalColor;
-    
+
     void main(void) { // weird that it's s,t but its just x,y
-        //finalColor = texture(uMainTex, vec2(texCoord.s, texCoord.t)); // Set color of the pixel at that UV location
-        //finalColor = color;
-        //finalColor = texture(uMainTex,texCoord);	//Just The Texture
-        //finalColor = color * texture(uMainTex,texCoord); //Mixing Texture and Color together
-        finalColor = color * texture(uMainTex,texCoord) * 1.5f; //Making the colors brighter
-        //finalColor = color + texture(uMainTex,texCoord); //Mixing the color and textures with addition,Dif effect
-        //finalColor = mix(color,texture(uMainTex,texCoord),0.8f); //Using mix func to fade between two pixel colors.
+        finalColor = texture(uMainTex, texCoord);
     }
 </script>
 
@@ -256,6 +216,54 @@
     void main(void) {
         finalColor = mix( texture(uDayTex, texCoord), texture(uNightTex, texCoord), abs(sin(uTime * 0.0005)) );
     }
+</script>
+<script id="obj_file" type="text/plain">
+    # Blender v2.83.4 OBJ File: ''
+    # www.blender.org
+    mtllib cube.mtl
+    o Cube
+    v 1.000000 1.000000 -1.000000
+    v 1.000000 -1.000000 -1.000000
+    v 1.000000 1.000000 1.000000
+    v 1.000000 -1.000000 1.000000
+    v -1.000000 1.000000 -1.000000
+    v -1.000000 -1.000000 -1.000000
+    v -1.000000 1.000000 1.000000
+    v -1.000000 -1.000000 1.000000
+    vt 0.333333 1.000000
+    vt 0.000000 1.000000
+    vt 0.000000 0.666667
+    vt 0.333333 0.666667
+    vt 0.000000 0.333333
+    vt 0.000000 0.000000
+    vt 0.333333 0.000000
+    vt 0.333333 0.333333
+    vt 0.333333 0.666667
+    vt 0.000000 0.333333
+    vt 0.333333 0.333333
+    vt 0.666667 0.333333
+    vt 0.666667 0.000000
+    vt 1.000000 0.000000
+    vt 1.000000 0.333333
+    vt 0.666667 0.333333
+    vt 0.666667 0.666667
+    vt 0.333333 0.333333
+    vt 0.333333 0.000000
+    vt 0.666667 0.000000
+    vn 0.0000 1.0000 0.0000
+    vn 0.0000 0.0000 1.0000
+    vn -1.0000 0.0000 0.0000
+    vn 0.0000 -1.0000 0.0000
+    vn 1.0000 0.0000 0.0000
+    vn 0.0000 0.0000 -1.0000
+    usemtl Material
+    s off
+    f 1/1/1 5/2/1 7/3/1 3/4/1
+    f 4/5/2 3/6/2 7/7/2 8/8/2
+    f 8/9/3 7/3/3 5/10/3 6/11/3
+    f 6/12/4 2/13/4 4/14/4 8/15/4
+    f 2/16/5 1/17/5 3/4/5 4/18/5
+    f 6/11/6 5/19/6 1/20/6 2/16/6
 </script>
 
 </html>
