@@ -143,7 +143,7 @@ function GLInstance() {
     return rtn;
   }
 
-  	//imgAry must be 6 elements long and images placed in the right order
+  //imgAry must be 6 elements long and images placed in the right order
   //RIGHT,LEFT,TOP,BOTTOM,BACK,FRONT
   gl.fLoadCubeMap = function(name,imgAry){
     if(imgAry.length != 6) return null;
