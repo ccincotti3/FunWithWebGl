@@ -36,8 +36,8 @@ class Transform {
     // Determine Direction after all the transformations.
     // Operate directly on our direction vec (first arg).
     Matrix4.transformVec4(this.forward, [0,0,1,0], this.matView.raw) //Z
-    Matrix4.transformVec4(this.up, [0,0,1,0], this.matView.raw) //Y
-    Matrix4.transformVec4(this.right, [0,0,1,0], this.matView.raw) //X
+    Matrix4.transformVec4(this.up, [0,1,0,0], this.matView.raw) //Y
+    Matrix4.transformVec4(this.right, [1,0,0,0], this.matView.raw) //X
 
     return this.matView.raw
   }
@@ -45,8 +45,8 @@ class Transform {
   // A copy of some logic from above, we would use for something like cameras without the matrix math.
   updateDirection(){
     Matrix4.transformVec4(this.forward, [0,0,1,0], this.matView.raw) //Z
-    Matrix4.transformVec4(this.up, [0,0,1,0], this.matView.raw) //Y
-    Matrix4.transformVec4(this.right, [0,0,1,0], this.matView.raw) //X
+    Matrix4.transformVec4(this.up, [0,1,0,0], this.matView.raw) //Y
+    Matrix4.transformVec4(this.right, [1,0,0,0], this.matView.raw) //X
 
     return this
   }
