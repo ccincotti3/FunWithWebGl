@@ -24,7 +24,7 @@ class ObjLoader {
       //   ary, // Itm split into an array, used for faced decoding
       //   ind, // used to calculated index of the cache arrays
       isQuad = false, // Determine if face is a quad or not
-      aCache = [], // Cache Dictionary key = itm array element, val = final index of the vertice
+      aCache = {}, // Cache Dictionary key = itm array element, val = final index of the vertice
       cVert = [], // Cache Vertice array read from obj
       cNorm = [], // Cache Normal array
       cUV = [], // Cache UV array
@@ -109,6 +109,7 @@ class ObjLoader {
       posA = posB+1;
       posB = txt.indexOf("\n", posA)
     }
+    console.log({fIndex, fVert, fNorm, fUV, cVert})
     return [fIndex, fVert, fNorm, fUV]
   }
 }
