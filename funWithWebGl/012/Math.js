@@ -1,3 +1,8 @@
+class MathUtil {
+  static Map(x, xMin, xMax, zMin, zMax) {
+    return (x - xMin) / (xMax - xMin) * (zMax-zMin) + zMin; 
+  }
+}
 // From https://raw.githubusercontent.com/sketchpunk/FunWithWebGL2/master/lesson_005/Math.js
 // Basically a stripped down version of http://glmatrix.net/
 //###########################################################################################

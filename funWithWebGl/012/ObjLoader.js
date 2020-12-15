@@ -1,7 +1,13 @@
 class ObjLoader {
-  static domToMesh(gl, meshName,elmID,flipYUV) {
+  static domToMesh(gl, meshName,elmID,flipYUV, keepRawData) {
     const d = ObjLoader.parseFromDom(elmID, flipYUV);
-    return gl.fCreateMeshVAO(meshName, ...d, 3)
+    const mesh = gl.fCreateMeshVAO(meshName, ...d, 3)
+    if(keepRawData) {
+      mesh.aIndex = d[0];
+      mesh.aVert = d[1];
+      mesh.aNorm = d[2];
+    }
+    return mesh
   }
 
   // flipYUV is to flip uv since blender works opposite than what we would expect.
