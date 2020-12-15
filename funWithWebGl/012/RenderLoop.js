@@ -27,7 +27,7 @@ class RenderLoop{
 				
         if(msDelta >= oThis.msFpsLimit){ //Now execute frame since the time has elapsed.
           oThis.fps			= Math.floor(1/deltaTime);
-          oThis.msLastFrame	= msCurrent - (msDelta % this.msFpsLimit);
+          oThis.msLastFrame	= msCurrent - (msDelta % oThis.msFpsLimit);
           oThis.callBack(deltaTime);
         }
 

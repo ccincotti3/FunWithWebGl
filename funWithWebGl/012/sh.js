@@ -34,32 +34,32 @@ class Shader {
   // Abstract method 
   preRender() {}
 
-    renderModel = (model) => {
-      this.setModelMatrix(model.transform.getViewMatrix())
-      this.gl.bindVertexArray(model.mesh.vao);
+  renderModel(model){
+    this.setModelMatrix(model.transform.getViewMatrix())
+    this.gl.bindVertexArray(model.mesh.vao);
 
-      if(model.mesh.noCulling) { this.gl.disable(this.gl.CULL_FACE) }
-      if(model.mesh.doBlending) { this.gl.enable(this.gl.BLEND) }
+    if(model.mesh.noCulling) { this.gl.disable(this.gl.CULL_FACE) }
+    if(model.mesh.doBlending) { this.gl.enable(this.gl.BLEND) }
 
-      if(model.mesh.indexCount) {
-        this.gl.drawElements(
-          model.mesh.drawMode,
-          model.mesh.indexCount,
-          this.gl.UNSIGNED_SHORT,
-          0
-        )
-      } else {
-        this.gl.drawArrays(
-          model.mesh.drawMode, 0, model.mesh.vertexCount
-        )
-      }
-
-      this.gl.bindVertexArray(null)
-      if(model.mesh.noCulling) { this.gl.enable(this.gl.CULL_FACE) }
-      if(model.mesh.doBlending) { this.gl.disable(this.gl.BLEND) }
-        
-      return this;
+    if(model.mesh.indexCount) {
+      this.gl.drawElements(
+        model.mesh.drawMode,
+        model.mesh.indexCount,
+        this.gl.UNSIGNED_SHORT,
+        0
+      )
+    } else {
+      this.gl.drawArrays(
+        model.mesh.drawMode, 0, model.mesh.vertexCount
+      )
     }
+
+    this.gl.bindVertexArray(null)
+    if(model.mesh.noCulling) { this.gl.enable(this.gl.CULL_FACE) }
+    if(model.mesh.doBlending) { this.gl.disable(this.gl.BLEND) }
+      
+    return this;
+  }
 
 }
 

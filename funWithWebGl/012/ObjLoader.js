@@ -1,5 +1,5 @@
 class ObjLoader {
-  static domToMesh(gl, meshName,elmID,flipYUV, keepRawData) {
+  static domToMesh(gl, meshName,elmID,flipYUV, keepRawData = true) {
     const d = ObjLoader.parseFromDom(elmID, flipYUV);
     const mesh = gl.fCreateMeshVAO(meshName, ...d, 3)
     if(keepRawData) {

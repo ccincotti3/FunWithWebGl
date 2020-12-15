@@ -101,7 +101,7 @@ Primatives.CubeBad = class {
  */
 Primatives.Cube = class {
   static createModel(gl, name = "Cube", w=1,h=1,d=1,x=0,y=0,z=0){ return new Model(Primatives.Cube.createMesh(gl,name,w,h,d,x,y,z)); }
-  static createMesh(gl,name="Cube",width,height,depth,x,y,z){
+  static createMesh(gl,name="Cube",width,height,depth,x,y,z, keepRawData=true){
     const w = width*0.5, h = height*0.5, d = depth*0.5;
     const x0 = x-w, x1 = x+w, y0 = y-h, y1 = y+h, z0 = z-d, z1 = z+d;
 
@@ -160,6 +160,11 @@ Primatives.Cube = class {
 
     const mesh = gl.fCreateMeshVAO(name,aIndex,aVert,aNorm,aUV,4);
     mesh.noCulling = true;	//TODO Only setting this true to view animations better.
+    if(keepRawData){ //Have the option to save the data to use for normal debugging or modifying.
+			mesh.aIndex	= aIndex;
+			mesh.aVert	= aVert;
+			mesh.aNorm	= aNorm;
+		}
     return mesh;
   }
 }
