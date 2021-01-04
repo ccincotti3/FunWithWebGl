@@ -38,7 +38,10 @@
 
 				//....................................
 				//Load up resources
-				Resources.setup(gl,onReady).loadTexture("tex001","../assets/test_tex.jpg").start();
+				Resources.setup(gl,onReady).loadTexture(
+					"mask_a", "mask_square.png",
+					"mask_b", "mask_cornercircles.png"
+				).start();
 			});
 
 			//==================================================
@@ -48,9 +51,14 @@
 				gShader = new ShaderBuilder(gl,"vertex_shader","fragment_shader")
 					.prepareUniforms("uPMatrix","mat4"
 									,"uMVMatrix","mat4"
-									,"uCameraMatrix","mat4")
-					.prepareTextures("uTexture","tex001")
-					.setUniforms("uPMatrix",gCamera.projectionMatrix);
+									,"uCameraMatrix","mat4"
+									,"uColors","3fv"
+									)
+					.prepareTextures("uMask_A", "mask_a", "uMask_B", "mask_b")
+					.setUniforms(
+						"uPMatrix",gCamera.projectionMatrix,
+						"uColors", GlUtil.rgbArray("880000", "ff9999")
+						);
 
 				gModel = Primatives.Cube.createModal(gl,"Cube",true)
 						.setPosition(0,0.6,0);//.setScale(0.7,0.7,0.7);
@@ -97,12 +105,17 @@
 	</script>
 	<script id="fragment_shader" type="x-shader/x-fragment">#version 300 es
 		precision mediump float;
-		uniform sampler2D uTexture;
+		uniform sampler2D uMask_A;
+		uniform sampler2D uMask_B;
+		uniform vec3[2] uColors;
 		in highp vec2 vUV;
 		out vec4 outColor;
 
 		void main(void){
-			outColor = texture(uTexture,vUV*1.5);
+			vec4 mask_a = texture(uMask_A, vUV*4.0)*0.15;
+			vec4 mask_b = texture(uMask_B, vUV*2.0);
+			float c = min(mask_a.r + mask_b.r,1.0);
+			outColor = vec4( mix(uColors[0],uColors[1],c), 1.0);
 		}
 	</script>
 </body>
