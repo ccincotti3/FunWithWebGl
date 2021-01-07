@@ -12,7 +12,9 @@ class Terrain {
       rInc = h / (rLen-1),	//Increment value for rows when calcuating Z position
       cRow = 0,				//Current Row
       cCol = 0,				//Current Column
-      aVert = []				//Vertice Array
+      aVert = [],				//Vertice Array
+      aIndex = []			//Index Array
+
 
     //..................................
     //Generate the vertices and the index array.
@@ -21,10 +23,19 @@ class Terrain {
       cCol = i % cLen;				//Current Column
       //Create Vertices,x,y,z
       aVert.push(cStart+cCol*cInc, 0.2, rStart+cRow*rInc);
+
+      //Create the index, We stop creating the index before the loop ends creating the vertices.
+      if(i < iLen){
+        //Column index of row R and R+1
+        aIndex.push(cRow * cLen + cCol, (cRow+1) * cLen + cCol);
+
+        //Create Degenerate Triangle, Last AND first index of the R+1 (next row that becomes the top row )
+        if(cCol == cLen-1 && i < iLen-1) aIndex.push( (cRow+1) * cLen + cCol, (cRow+1) * cLen);
+      }
     }
 
-    var mesh = gl.fCreateMeshVAO("Terrain",null,aVert,null,null,3);
-    mesh.drawMode = gl.POINTS
+    var mesh = gl.fCreateMeshVAO("Terrain",aIndex,aVert,null,null,3);
+    mesh.drawMode = gl.LINE_STRIP;
         
     return mesh;
   }
