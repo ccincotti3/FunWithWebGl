@@ -14,9 +14,9 @@ class Resources{
 
 	//===================================================
 	// Loading
-	static loadTexture(name,src){
-		for(var i=0; i < arguments.length; i+=2){
-			Resources.Queue.push({type:"img",name:arguments[i],src:arguments[i+1]});
+	static loadTexture(name,src, type="img"){
+		for(var i=0; i < arguments.length; i+=3){
+			Resources.Queue.push({type,name:arguments[i],src:arguments[i+1]});
 		}
 		return this;
 	}
@@ -31,6 +31,8 @@ class Resources{
 			return;
 		}
 
+		console.log(Resources.Queue.length)
+
 		//.......................................
 		var itm = Resources.Queue.pop();
 		switch(itm.type){
@@ -41,6 +43,24 @@ class Resources{
 				img.onabort = img.onerror = Resources.onDownloadError;
 				img.src = itm.src;
 				break;
+			case "vid":
+				var vid = document.createElement("video");
+				vid.style.display = "none";
+				document.body.appendChild(vid)
+				vid.queueData = itm;
+				vid.addEventListener("loadeddata", Resources.onDownloadSuccess, false)
+				vid.onabort = vid.onerror = Resources.onDownloadError;
+				vid.muted = true
+				vid.autoplay = true;
+				vid.loop = true;
+				vid.src = itm.src;
+				vid.load();
+				vid.play();
+
+				console.log(vid)
+
+				Resources.Videos[itm.name] = vid
+				break;
 		}
 	}
 
@@ -48,7 +68,7 @@ class Resources{
 	// Event Handlers
 	static onDownloadSuccess(){
 		//Its an image, lets load it up as a texture in gl.
-		if( this instanceof Image ){
+		if( this instanceof Image || this.tagName === "VIDEO"){
 			var dat = this.queueData;
 			Resources.gl.fLoadTexture(dat.name,this);
 		}
@@ -62,5 +82,6 @@ class Resources{
 }
 
 Resources.Queue = [];
+Resources.Videos = [];
 Resources.onComplete = null;
 Resources.gl = null;
