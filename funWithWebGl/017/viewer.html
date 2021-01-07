@@ -39,6 +39,7 @@
 	<script src="Debug.js"></script>
 	<script src="GridFloor.js"></script>
 	<script src="Resources.js"></script>
+	<script src="Terrain.js"></script>
 
 	<script>
 		var gl, gRLoop, gShader, gModel, gCamera, gCameraCtrl;
@@ -58,10 +59,11 @@
 
 			//....................................
 			//Load up resources
-			console.log("hi")
-			Resources.setup(gl, onReady).loadTexture(
-				"vid", "shark_3d_360.mp4", "vid"
-			).start();
+			// Resources.setup(gl, onReady).loadTexture(
+			// 	"vid", "shark_3d_360.mp4", "vid"
+			// ).start();
+
+			onReady();
 		});
 
 		//==================================================
@@ -72,16 +74,12 @@
 				.prepareUniforms("uPMatrix", "mat4"
 					, "uMVMatrix", "mat4"
 					, "uCameraMatrix", "mat4"
-					, "uFaces", "2fv"
 				)
-				.prepareTextures("uTex", "vid")
 				.setUniforms(
 					"uPMatrix", gCamera.projectionMatrix,
 				);
 
-			gModel = Primatives.Cube.createModal(gl,"Cube",true)
-					.setPosition(0,0.6,0);//.setScale(0.7,0.7,0.7);
-
+			gModel = Terrain.createModel(gl, false)
 			//....................................
 			gRLoop.start();
 			//onRender(0);
@@ -97,12 +95,10 @@
 			gCamera.updateViewMatrix();
 			gGridFloor.render(gCamera);
 
-			gl.fUpdateTexture("vid", Resources.Videos["vid"],false,true)
-
 			//................................
 			//Draw Out models
 			gShader.preRender("uCameraMatrix", gCamera.viewMatrix)
-			.renderModel(gModel.preRender(),false);
+				.renderModel(gModel.preRender(), false);
 
 		}
 	</script>
@@ -122,18 +118,18 @@
 		out highp vec2 vUV;
 
 		void main(void){
-			vUV = vec2(a_uv.x, a_uv.y * 0.5);
+			gl_PointSize = 8.0;
+			vUV = a_uv;
 			gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position.xyz, 1.0); 
 		}
 	</script>
 	<script id="fragment_shader" type="x-shader/x-fragment">#version 300 es
 		precision mediump float;
-		uniform sampler2D uTex;
 		in highp vec2 vUV;
 		out vec4 outColor;
 
 		void main(void){
-			outColor = texture(uTex, vUV);
+			outColor = vec4(0.0,0.0,0.0,1.0);
 		}
 	</script>
 </body>
