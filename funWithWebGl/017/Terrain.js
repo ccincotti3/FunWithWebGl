@@ -106,9 +106,16 @@ class Terrain {
       aNorm.push(nX/nL,nY/nL,nZ/nL);			//Normalize the final normal vector data before saving to array.
     }
 
-    var mesh = gl.fCreateMeshVAO("Terrain",aIndex,aVert,null, aUV,3);
-    mesh.drawMode = gl.LINE_STRIP;
-        
+    //..................................
+    var mesh = gl.fCreateMeshVAO("Terrain",aIndex,aVert,aNorm,aUV,3);
+    mesh.drawMode = gl.TRIANGLE_STRIP;
+
+    if(keepRawData){ //Have the option to save the data to use for normal debugging or modifying.
+      mesh.aVert = aVert;
+      mesh.aNorm = aNorm;
+      mesh.aIndex = aIndex;
+    }
+
     return mesh;
   }
 }

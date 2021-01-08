@@ -97,7 +97,7 @@ class CameraController{
     this.onMoveHandler = function(e){ oThis.onMouseMove(e); }
 
     this.canvas.addEventListener("mousedown",function(e){ oThis.onMouseDown(e); });		//Initializes the up and move events
-    this.canvas.addEventListener("mousewheel", function(e){ oThis.onMouseWheel(e); });	//Handles zoom/forward movement
+    this.canvas.addEventListener("wheel", function(e){ oThis.onMouseWheel(e); }, { passive: false });	//Handles zoom/forward movement
   }
 
   //Transform mouse x,y cords to something useable by the canvas.
