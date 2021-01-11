@@ -25,7 +25,7 @@ Primatives.CubeBad = class {
 
 
 Primatives.Cube = class {
-  static createModal(gl,name,keepRawData){ return new Modal(Primatives.Cube.createMesh(gl,name||"Cube",1,1,1,0,0,0,keepRawData)); }
+  static createModel(gl,name,keepRawData){ return new Modal(Primatives.Cube.createMesh(gl,name||"Cube",1,1,1,0,0,0,keepRawData)); }
   static createMesh(gl,name,width,height,depth,x,y,z,keepRawData){
     var w = width*0.5, h = height*0.5, d = depth*0.5;
     var x0 = x-w, x1 = x+w, y0 = y-h, y1 = y+h, z0 = z-d, z1 = z+d;

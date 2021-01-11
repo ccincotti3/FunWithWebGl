@@ -64,6 +64,35 @@
 			// 	"vid", "shark_3d_360.mp4", "vid"
 			// ).start();
 
+			UBO.create(gl, "MatTransform", 0, [
+				/**/
+				{ name: "matProjection", type: "mat4" },
+				{ name: "matCameraView", type: "mat4" }
+
+
+				// Testing with debugger
+				// {name:"float01",type:"f"},
+				// {name:"float02",type:"f"},
+				// {name:"float03",type:"f"},
+				// {name:"matProj",type:"mat3"},
+				// {name:"float04",type:"f"},
+				// {name:"float05",type:"f"},
+				// {name:"vec3",type:"vec3"},
+				// {name:"float06",type:"f"},
+
+				/*
+				{name:"float",type:"f",arylen:0},
+				{name:"vector",type:"vec3",arylen:0},
+				{name:"matrix",type:"mat4",arylen:0},
+				{name:"ary",type:"f",arylen:3},
+				{name:"boolean",type:"b",arylen:0},
+				{name:"integer",type:"i",arylen:0},
+				*/
+			]);
+
+			// Need to update here to set first values, otherwise when we update in render, it's 0.
+			UBO.Cache["MatTransform"].update("matProjection",gCamera.projectionMatrix);
+
 			onReady();
 		});
 
@@ -72,21 +101,14 @@
 		function onReady() {
 			//Setup Test Shader, Modal, Meshes
 			gShader = new ShaderBuilder(gl, "vertex_shader", "fragment_shader")
-				.prepareUniforms("uPMatrix", "mat4"
-					, "uMVMatrix", "mat4"
-					, "uCameraMatrix", "mat4"
-				)
-				.setUniforms(
-					"uPMatrix", gCamera.projectionMatrix,
-				);
+				.prepareUniforms("uMVMatrix", "mat4")
 
-			gModel = Terrain.createModel(gl, true)
-
+			gModel = Primatives.Cube.createModel(gl, true)
 
 			mDebugLine = new LineDebugger(gl)
-					.addColor("#00FF00")
-					.addMeshNormal(0,0.3,gModel.mesh)
-					.finalize();
+				.addColor("#00FF00")
+				.addMeshNormal(0, 0.3, gModel.mesh)
+				.finalize();
 
 			//....................................
 			gRLoop.start();
@@ -101,62 +123,57 @@
 			gl.fClear();
 
 			gCamera.updateViewMatrix();
-			gGridFloor.render(gCamera);
+			UBO.Cache["MatTransform"].update("matCameraView", gCamera.viewMatrix);
 
 			//................................
 			//Draw Out models
-			gShader.preRender("uCameraMatrix", gCamera.viewMatrix)
+			gShader.preRender()
 				.renderModel(gModel.preRender(), false);
+			gGridFloor.render(gCamera);
 
-			mDebugLine.render(gCamera);
+			// mDebugLine.render(gCamera);
 		}
 	</script>
 </head>
 
 <body>
 	<div><canvas id="glcanvas"></canvas></div>
-
 	<script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
 		in vec4 a_position;
 		in vec3 a_norm;
 		in vec2 a_uv;
+
+		//layout(std140, column_major) uniform;
+
+		uniform MatTransform{
+			mat4 matProjection;
+			mat4 matCameraView;
+		};
 
 		uniform mat4 uPMatrix;
 		uniform mat4 uMVMatrix;
 		uniform mat4 uCameraMatrix;
 
 		out highp vec2 vUV;
-		out highp vec3 posWorld;
-		//out float diffuseAngle;
-
-		//const vec3 posLight = vec3(4.0,3.0,2.0);
+		out lowp vec3 color;
 
 		void main(void){
-			//diffuseAngle = max(dot(a_norm, normalize(posLight-a_position.xyz)), 0.0);
-			posWorld = (uMVMatrix *  vec4(a_position.xyz, 1.0)).xyz;
-			
+			if(a_position.w == 0.0) color = vec3(1.0,0.0,0.0);
+			else if(a_position.w == 1.0) color = vec3(0.0,1.0,0.0);
+			else color = vec3(0.6,0.6,0.6);
+
 			vUV = a_uv;
-			gl_Position = uPMatrix * uCameraMatrix * uMVMatrix * vec4(a_position.xyz, 1.0);
+			gl_Position = matProjection * matCameraView * uMVMatrix * vec4(a_position.xyz, 1.0);
 		}
 	</script>
 	<script id="fragment_shader" type="x-shader/x-fragment">#version 300 es
 		precision mediump float;
 		in highp vec2 vUV;
-		in highp vec3 posWorld;
-		//in float diffuseAngle;
+		in lowp vec3 color;
 		out vec4 outColor;
 
-		const vec3 posLight = vec3(4.0,3.0,2.0);
-		const vec3 lightColor = vec3(0.0,1.0,0.0);
-		const vec3 baseColor = vec3(1.0,0.0,0.0);
-
 		void main(void){
-			vec3 genNorm = normalize(cross(dFdx(posWorld), dFdy(posWorld)));  //Calc new Normals based on World Pos
-			float diffAngle = max(dot(genNorm, normalize(posLight-posWorld)), 0.0);	//Calc angle of line
-			outColor = vec4(baseColor + lightColor * diffAngle,1.0); 
-
-			//vec3 finalColor = lightColor * diffuseAngle + baseColor;
-			//outColor = vec4(finalColor,1.0); //vec4(0.0,0.0,0.0,1.0);
+			outColor = vec4(color,1.0);
 		}
 	</script>
 </body>
