@@ -188,24 +188,31 @@ var Fungi = (function(){
 
     //----------------------------------------------
     //region Setters/Getters
-    /*
 
-			//R  T  F  T    
-			//00 04 08 12
-			//01 05 09 13
-			//02 06 10 14
-			//03 07 11 15
-			right(d){	return this._getDirection(0,1,2,d);	}
-			top(d){		return this._getDirection(4,5,6,d);	}
-			forward(d){	return this._getDirection(8,9,10,d);}
-			_getDirection(xi,yi,zi,d){
-				this.updateMatrix();
-				d = d || 1; //Distance
-				var x = this.localMatrix[xi], y = this.localMatrix[yi], z = this.localMatrix[zi],
-					m =  Math.sqrt( x*x + y*y + z*z );
-				return [ x/m*d, y/m*d, z/m*d ];
-			}
-			*/
+    //R  T  F  T    
+    //00 04 08 12
+    //01 05 09 13
+    //02 06 10 14
+    //03 07 11 15
+    left(v,d){		return this._getDirection(0,1,2,d,v);	}
+    up(v,d){		return this._getDirection(4,5,6,d,v);	}
+    forward(v,d){	return this._getDirection(8,9,10,d,v);	}
+    _getDirection(xi,yi,zi,d,v){
+      this.updateMatrix();
+      if(d == undefined) d = 1; //Distance
+      //d = d || 1; //Distance
+      v = v || new Vec3();
+
+      var x = this.localMatrix[xi], y = this.localMatrix[yi], z = this.localMatrix[zi],
+        m =  Math.sqrt( x*x + y*y + z*z );
+
+      v[0] = x/m*d;
+      v[1] = y/m*d;
+      v[2] = z/m*d;
+      return v;
+    }
+    /*
+    Quaternion doesnt work.
     forward(v){
       v = v || new Vec3(); v.set(0,0,1);
       Quaternion.multiVec3(v,this.rotation,v);
@@ -223,6 +230,7 @@ var Fungi = (function(){
       Quaternion.multiVec3(v,this.rotation,v);
       return v;
     }
+			*/
 
     get parent(){ this._parent; }
     set parent(p){
