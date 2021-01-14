@@ -283,6 +283,11 @@ var Fungi = (function(){
       this.visible = true;
       this.material = Fungi.Res.Materials[matName];
     }
+
+    draw(){
+      if(this.vao.isIndexed)	gl.drawElements(this.material.drawMode, this.vao.count, gl.UNSIGNED_SHORT, 0); 
+      else					gl.drawArrays(this.material.drawMode, 0, this.vao.count);
+    }
   }
 
   class CameraOrbit extends Transform{
@@ -1277,15 +1282,15 @@ var Fungi = (function(){
     prepareUniformBlocks(ubo,blockIndex){
       var ind = 0;
       for(var i=0; i < arguments.length; i+=2){
-        //ind = this.gl.getUniformBlockIndex(this.program,arguments[i].blockName); //TODO This function does not return block index, need to pass that value in param
+        //ind = gl.getUniformBlockIndex(this.program,arguments[i].blockName); //TODO This function does not return block index, need to pass that value in param
         console.log("Uniform Block Index",ind,ubo.blockName,ubo.blockPoint);
 
         gl.uniformBlockBinding(this.program, arguments[i+1], arguments[i].blockPoint);
 				
-        //console.log(this.gl.getActiveUniformBlockParameter(this.program, 0, this.gl.UNIFORM_BLOCK_DATA_SIZE)); //Get Size of Uniform Block
-        //console.log(this.gl.getActiveUniformBlockParameter(this.program, 0, this.gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES));
-        //console.log(this.gl.getActiveUniformBlockParameter(this.program, 0, this.gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS));
-        //console.log(this.gl.getActiveUniformBlockParameter(this.program, 0, this.gl.UNIFORM_BLOCK_BINDING));
+        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_DATA_SIZE)); //Get Size of Uniform Block
+        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES));
+        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS));
+        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_BINDING));
       }
       return this;
     }
@@ -1337,12 +1342,12 @@ var Fungi = (function(){
     //function helps clean up resources when shader is no longer needed.
     dispose(){
       //unbind the program if its currently active
-      if(this.gl.getParameter(this.gl.CURRENT_PROGRAM) === this.program) this.gl.useProgram(null);
-      this.gl.deleteProgram(this.program);
+      if(gl.getParameter(gl.CURRENT_PROGRAM) === this.program) gl.useProgram(null);
+      gl.deleteProgram(this.program);
     }
 
     preRender(){
-      this.gl.useProgram(this.program); //Save a function call and just activate this shader program on preRender
+      gl.useProgram(this.program); //Save a function call and just activate this shader program on preRender
 
       //If passing in arguments, then lets push that to setUniforms for handling. Make less line needed in the main program by having preRender handle Uniforms
       if(arguments.length > 0) this.setUniforms.apply(this,arguments);
@@ -1353,10 +1358,10 @@ var Fungi = (function(){
       if(this._TextureList.length > 0){
         var texSlot;
         for(var i=0; i < this.mTextureList.length; i++){
-          texSlot = this.gl["TEXTURE" + i];
-          this.gl.activeTexture(texSlot);
-          this.gl.bindTexture(this.gl.TEXTURE_2D,this._TextureList[i].tex);
-          this.gl.uniform1i(this._TextureList[i].loc,i);
+          texSlot = gl["TEXTURE" + i];
+          gl.activeTexture(texSlot);
+          gl.bindTexture(gl.TEXTURE_2D,this._TextureList[i].tex);
+          gl.uniform1i(this._TextureList[i].loc,i);
         }
       }
 
@@ -1663,6 +1668,93 @@ var Fungi = (function(){
     }
   }
 
+  class FBO{
+    static create(out){
+      out.id = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, out.id); // set to null to go back to canvas diaply buffer.
+      return this;
+    }
+    
+    // We need atleast one color buffer for a FBO to work, can add mutiple (theres a limit though)
+    // Here we create a color buffer from a texture.
+    static texColorBuffer(out,cAttachNum){
+      out.texColor = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, out.texColor);
+      gl.texImage2D(gl.TEXTURE_2D,0, gl.RGBA, gl.fWidth, gl.fHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, null); // we need our custom frame buffer to be just as big as our default canvas buffer. (we are drawing both twice).. hence the width and height of canvas.
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);	//Stretch image to X position
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);	//Stretch image to Y position
+
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, cAttachNum, gl.TEXTURE_2D, out.texColor, 0);
+      return this;
+    }
+
+    // create depth buffer for depth testing. Can add just one to FBO.
+    static depthBuffer(out){
+      out.depth = gl.createRenderbuffer();
+      gl.bindRenderbuffer(gl.RENDERBUFFER, out.depth);
+      gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, gl.fWidth, gl.fHeight); // each pixel is going to be 16 bytes (so 4 floats - so position x,y,z,w bc depth buffer does not store color.)
+      gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, out.depth); // only one depth buffer allowed, hence the static DEPTH_ATTACHMENT (see color buffer)
+      return this;
+    }
+    
+    // build our standard custom buffer.
+    static colorDepthFBO(name){
+      var rtn = {};
+      return FBO.create(rtn)
+        .texColorBuffer(rtn,gl.COLOR_ATTACHMENT0) // attach color buffer to color attachment 0 of fbo.
+        .depthBuffer(rtn)
+        .finalize(rtn,name);
+    }
+    
+    static finalize(out,name){
+      switch(gl.checkFramebufferStatus(gl.FRAMEBUFFER)){
+        case gl.FRAMEBUFFER_COMPLETE: break;
+        case gl.FRAMEBUFFER_INCOMPLETE_ATTACHMENT: console.log("FRAMEBUFFER_INCOMPLETE_ATTACHMENT"); break;
+        case gl.FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT: console.log("FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT"); break;
+        case gl.FRAMEBUFFER_INCOMPLETE_DIMENSIONS: console.log("FRAMEBUFFER_INCOMPLETE_DIMENSIONS"); break;
+        case gl.FRAMEBUFFER_UNSUPPORTED: console.log("FRAMEBUFFER_UNSUPPORTED"); break;
+        case gl.FRAMEBUFFER_INCOMPLETE_MULTISAMPLE: console.log("FRAMEBUFFER_INCOMPLETE_MULTISAMPLE"); break;
+        case gl.RENDERBUFFER_SAMPLES: console.log("RENDERBUFFER_SAMPLES"); break;
+      }
+			
+      gl.bindTexture(gl.TEXTURE_2D, null);
+      gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      Fungi.Res.Fbo[name] = out;
+
+      return out;
+    }
+
+    // important for picking. Allows to read pixel from color buffer in custom fbo.
+    static readPixel(fbo,x,y){
+      var p = new Uint8Array(4); //[r,g,b,a]
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo.id);
+      gl.readPixels(x, y, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, p);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      return p; // will return color array
+    }
+    
+    static activate(fbo){ gl.bindFramebuffer(gl.FRAMEBUFFER,fbo.id); return this; }
+    static deactivate(){ gl.bindFramebuffer(gl.FRAMEBUFFER,null); return this; }
+
+    // need to clear custom buffer, resets it back.
+    static clear(fbo){
+      gl.bindFramebuffer(gl.FRAMEBUFFER,fbo.id);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
+      gl.bindFramebuffer(gl.FRAMEBUFFER,null);
+    }
+
+    // not really using right now.
+    static delete(fbo){
+      //TODO, Delete using the Cache name, then remove it from cache.
+      gl.deleteRenderbuffer(fbo.depth);
+      gl.deleteTexture(fbo.texColor);
+      gl.deleteFramebuffer(fbo.id);
+    }
+  }
+
 
   /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -1733,7 +1825,7 @@ var Fungi = (function(){
   var Renderer = (function(){
     var material = shader = null;
 
-    return function(ary){
+    var f = function(ary){
       for(var i=0; i < ary.length; i++){
         if(ary[i].visible == false) continue;
 
@@ -1760,12 +1852,18 @@ var Fungi = (function(){
         //Render !!!
         if(ary[i].vao.isIndexed)	gl.drawElements(material.drawMode, ary[i].vao.count, gl.UNSIGNED_SHORT, 0); 
         else						gl.drawArrays(material.drawMode, 0, ary[i].vao.count);
+
+        // if there is a render callback, call ir after render
+        if(f.onItemRendered) { f.onItemRendered(ary[i]) }
       }
 
       //...................................
       //Cleanup
       gl.bindVertexArray(null); //After all done rendering, unbind VAO
+
     }
+    f.onItemRendered = null;
+    return f;
   })();
 
   /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1775,13 +1873,13 @@ var Fungi = (function(){
     Init:Init, gl:null, Util:Util,
 		
     //RESOURCE CACHE
-    Res:{ Textures:[], Videos:[], Images:[], Shaders:[], Ubo:[], Vao:[], Materials:[] },
+    Res:{ Textures:[], Videos:[], Images:[], Shaders:[], Ubo:[], Vao:[], Fbo:[], Materials:[] },
 
     //MATH OBJECTS
     Maths:{ Vec3:Vec3, Quaternion:Quaternion, Matrix4:Matrix4 },
 
     //SHADERS
-    Shaders:{Material:Material, New:NewShader, Builder:ShaderBuilder, Util:ShaderUtil, VAO:VAO, UBO:UBO },
+    Shaders:{Material:Material, New:NewShader, Builder:ShaderBuilder, Util:ShaderUtil, VAO:VAO, UBO:UBO, FBO:FBO },
 		
     //TRANSFORM AND ITS EXTENSIONS
     Transform:Transform, Renderable:Renderable, CameraOrbit:CameraOrbit,

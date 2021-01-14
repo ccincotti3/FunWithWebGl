@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<!--[if (gt IE 9)|!(IE)]> <!--><html lang="en" class="no-js page-interactive section-arts page-theme-standard template-minimal tone-no_tone_set page-interactive-default limit-small layout-xlarge app-interactive" itemid="https://www.nytimes.com/interactive/2019/05/30/arts/dance/speaking-in-dance-rockettes.html" itemtype="http://schema.org/NewsArticle" itemscope xmlns:og="http://opengraphprotocol.org/schema/"><!--<![endif]-->
+<!--[if IE 9]> <html lang="en" class="no-js ie9 lt-ie10 page-interactive section-arts page-theme-standard template-minimal tone-no_tone_set page-interactive-default limit-small layout-xlarge app-interactive" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if IE 8]> <html lang="en" class="no-js ie8 lt-ie10 lt-ie9 page-interactive section-arts page-theme-standard template-minimal tone-no_tone_set page-interactive-default limit-small layout-xlarge app-interactive" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<!--[if (lt IE 8)]> <html lang="en" class="no-js lt-ie10 lt-ie9 lt-ie8 page-interactive section-arts page-theme-standard template-minimal tone-no_tone_set page-interactive-default limit-small layout-xlarge app-interactive" xmlns:og="http://opengraphprotocol.org/schema/"> <![endif]-->
+<head>
+<script>
+if (document.location.search.indexOf('nytapp=true') > -1) document.documentElement.classList.add('nyt-hide-shell');
+var userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
+var inAndroid = userAgent.indexOf('nyt_android') !== -1;
+var iniOS = userAgent.indexOf('nytios') !== -1;
+if (inAndroid || iniOS) document.documentElement.classList.add('nyt-hide-shell');
+</script>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="shortcut icon" href="https://static01.nyt.com/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" sizes="144×144" href="https://static01.nyt.com/images/icons/ios-ipad-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114×114" href="https://static01.nyt.com/images/icons/ios-iphone-114x144.png" />
+<link rel="apple-touch-icon-precomposed" href="https://static01.nyt.com/images/icons/ios-default-homescreen-57x57.png" />
+<meta property="fb:app_id" content="9869919170" />
+<meta name="twitter:site" value="@nytimes" />
+<meta name="sourceApp" content="nyt-v5" />
+<meta name="applicationName" content="tap-stories" id="applicationName" />
+<meta name="foundation-build-id" content="nyt-v5" id="foundation-build-id" />
+<link rel="canonical" href="https://www.nytimes.com/interactive/2019/05/30/arts/dance/speaking-in-dance-rockettes.html" />
+<meta name="PT" content="Multimedia" />
+<meta name="PST" content="Interactive" />
+<meta name="tom" content="interactive_feature" />
+<meta name="hdl" content="How the Rockettes Fall Like Dominoes" />
+<meta name="slug" content="speaking-in-dance-rockettes" />
+<meta name="lp" content="Dancers fall. Sometimes, it’s intentional." />
+<meta name="col" content="#SpeakingInDance" id="column-name" />
+<meta name="dfp-ad-unit-path" content="arts/dance" />
+
+<meta name="keywords" content="Dancing,Rockettes,Radio City Christmas Spectacular (Play)" />
+<meta name="nyt-collection:display-name" content="#SpeakingInDance" />
+<meta name="nyt-collection:identifier" content="speakingindance" />
+<meta name="nyt-collection:url" content="https://www.nytimes.com/column/speakingindance" />
+<meta name="nyt-collection:uri" content="/column/speakingindance" />
+<meta name="nyt-collection:tone" content="no_tone_set" />
+<meta name="nyt-collection:tagline" content="Recent posts from our visual exploration of dance on Instagram." />
+<meta name="nyt-collection:type" content="" />
+<meta property="article:collection" content="https://static01.nyt.com/services/json/sectionfronts/arts/dance/index.jsonp" />
+<meta name="DISPLAYDATE" content="May 30, 2019" />
+<meta name="dat" content="May 30, 2019" />
+<meta name="author" content="Gia Kourlas" />
+<title data-rh="true">How the Rockettes Fall Like Dominoes - The New York Times</title><meta data-rh="true" property="article:published_time" content="2019-05-30T18:40:02.000Z"/><meta data-rh="true" property="article:modified_time" content="2019-06-20T23:07:01.309Z"/><meta data-rh="true" http-equiv="Content-Language" content="en"/><meta data-rh="true" name="robots" content="noarchive"/><meta data-rh="true" name="articleid" content="100000006531154"/><meta data-rh="true" name="nyt_uri" content="nyt://interactive/aabbbf0a-0520-5b7a-802c-0ec2877ecefe"/><meta data-rh="true" name="pubp_event_id" content="pubp://event/66cca11a58ad40e5a29ff8ba78830942"/><meta data-rh="true" name="description" content="Dancers fall. Sometimes, it’s intentional."/><meta data-rh="true" name="image" content="https://static01.nyt.com/images/2016/12/25/nyregion/25PANO-SUB/25PANO-SUB-facebookJumbo.jpg?year=2019&amp;h=550&amp;w=1050&amp;sig=0x1eb1b8a9c61117008f17fa0446b3b21d"/><meta data-rh="true" name="byl" content="By Gia Kourlas"/><meta data-rh="true" name="thumbnail" content="https://static01.nyt.com/images/2016/12/25/nyregion/25PANO-SUB/25PANO-SUB-thumbStandard.jpg"/><meta data-rh="true" name="news_keywords" content="Dance,Rockettes,Radio City Christmas Spectacular"/><meta data-rh="true" name="pdate" content="20190530"/><meta data-rh="true" property="og:url" content="https://www.nytimes.com/interactive/2019/05/30/arts/dance/speaking-in-dance-rockettes.html"/><meta data-rh="true" property="og:type" content="article"/><meta data-rh="true" property="og:title" content="How the Rockettes Fall Like Dominoes (Published 2019)"/><meta data-rh="true" property="og:image" content="https://static01.nyt.com/images/2016/12/25/nyregion/25PANO-SUB/25PANO-SUB-facebookJumbo.jpg?year=2019&amp;h=550&amp;w=1050&amp;sig=0x1eb1b8a9c61117008f17fa0446b3b21d"/><meta data-rh="true" property="og:image:alt" content=""/><meta data-rh="true" property="og:description" content="Dancers fall. Sometimes, it’s intentional."/><meta data-rh="true" property="twitter:url" content="https://www.nytimes.com/interactive/2019/05/30/arts/dance/speaking-in-dance-rockettes.html"/><meta data-rh="true" property="twitter:title" content="How the Rockettes Fall Like Dominoes (Published 2019)"/><meta data-rh="true" property="twitter:description" content="Dancers fall. Sometimes, it’s intentional."/><meta data-rh="true" property="twitter:image" content="https://static01.nyt.com/images/2016/12/25/nyregion/25PANO-SUB/25PANO-SUB-videoSixteenByNineJumbo1600.jpg?year=2019&amp;h=900&amp;w=1600&amp;sig=0x9f110fd4fa2d2307faabf173d2e6649e&amp;tw=1"/><meta data-rh="true" property="twitter:image:alt" content=""/><meta data-rh="true" property="twitter:card" content="summary_large_image"/><meta data-rh="true" property="article:section" content="Arts"/><meta data-rh="true" property="article:tag" content="Dancing"/><meta data-rh="true" property="article:tag" content="Rockettes"/><meta data-rh="true" property="article:tag" content="Radio City Christmas Spectacular (Play)"/><meta data-rh="true" property="article:opinion" content="false"/><meta data-rh="true" property="article:content_tier" content="metered"/><meta data-rh="true" name="CG" content="arts"/><meta data-rh="true" name="SCG" content="dance"/><meta data-rh="true" name="CN" content="speakingindance"/><meta data-rh="true" name="CT" content=""/><meta data-rh="true" name="hostApp" content="vi"/><meta data-rh="true" name="adtargeting" content="{}"/><link data-rh="true" rel="shortcut icon" href="/vi-assets/static-assets/favicon-d2483f10ef688e6f89e23806b9700298.ico"/><link data-rh="true" rel="apple-touch-icon" href="/vi-assets/static-assets/apple-touch-icon-28865b72953380a40aa43318108876cb.png"/><link data-rh="true" rel="apple-touch-icon-precomposed" sizes="144×144" href="/vi-assets/static-assets/ios-ipad-144x144-28865b72953380a40aa43318108876cb.png"/><link data-rh="true" rel="apple-touch-icon-precomposed" sizes="114×114" href="/vi-assets/static-assets/ios-iphone-114x144-080e7ec6514fdc62bcbb7966d9b257d2.png"/><link data-rh="true" rel="apple-touch-icon-precomposed" href="/vi-assets/static-assets/ios-default-homescreen-57x57-43808a4cd5333b648057a01624d84960.png"/><link data-rh="true" rel="alternate" hrefLang="en-US" href="https://www.nytimes.com/interactive/2019/05/30/arts/dance/speaking-in-dance-rockettes.html"/><link data-rh="true" rel="canonical" href="https://www.nytimes.com/interactive/2019/05/30/arts/dance/speaking-in-dance-rockettes.html"/>
+<link id="legacy-zam5nzz" rel="stylesheet" type="text/css" href="https://typeface.nyt.com/css/zam5nzz.css" media="all" />
+<link rel="stylesheet" type="text/css" media="screen" href="/vi-assets/static-assets/nyt5/20190823-143533-mbipe/css/styles.css" />
+
+<style>.interactive-graphic > iframe { margin-left: auto !important; margin-right: auto !important; }</style>
+
+      <script>
+      !function(r){var n,t;r=r||self,n=r.Abra,(t=r.Abra=function(){"use strict";var r=Array.isArray,n=function(r,n,t){var e=r(t,n),u=e[0],o=e[1];if(null==u||""===u)return n;for(var i=String(u).split("."),a=0;a<i.length&&(n=n[i[a]]);a++);return null==n&&(n=o),null!=n?n:null},t=function(r,n,t){return r(t,n).reduce((function(r,n){return parseFloat(r)+parseFloat(n)}),0)},e=function(r,n,t){var e=r(t,n);return e[0]/e[1]},u=function(r,n,t){var e=r(t,n);return e[0]%e[1]},o=function(r,n,t){return r(t,n).reduce((function(r,n){return parseFloat(r)*parseFloat(n)}),1)},i=function(r,n,t){var e=r(t,n),u=e[0],o=e[1];return void 0===o?-u:u-o};function a(n){return!(r(n)&&0===n.length||!n)}var f=function(r,n,t){for(var e,u=0;u<t.length;u++)if(!a(e=r(t[u],n)))return e;return e},c=function(r,n,t){var e;for(e=0;e<t.length-1;e+=2)if(a(r(t[e],n)))return r(t[e+1],n);return t.length===e+1?r(t[e],n):null},l=function(r,n,t){return!a(r(t,n)[0])},v=function(r,n,t){for(var e,u=0;u<t.length;u++)if(a(e=r(t[u],n)))return e;return e},d=function(r,n,t){var e=r(t,n);return e[0]===e[1]},s=function(r,n,t){var e=r(t,n);return e[0]!==e[1]},h=function(r,n,t){var e=r(t,n),u=e[0],o=e[1];return!(!o||void 0===o.indexOf)&&-1!==o.indexOf(u)},g=function(r,n,t){var e=r(t,n);return e[0]>e[1]},p=function(r,n,t){var e=r(t,n);return e[0]>=e[1]},b=function(r,n,t){var e=r(t,n),u=e[0],o=e[1],i=e[2];return void 0===i?u<o:u<o&&o<i},w=function(r,n,t){var e=r(t,n),u=e[0],o=e[1],i=e[2];return void 0===i?u<=o:u<=o&&o<=i},y=function(r,n,t){var e=t[0],u=t[1],o=t.slice(2),i=r(e,n);if(!i)return null;if(0===o.length)return null;if(1===o.length)return r(o[0],n);if(4294967295===o[0])return r(o[1],n);for(var a=function(r){var n,t,e,u,o,i=[],a=[t=1732584193,e=4023233417,~t,~e,3285377520],f=[],c=unescape(encodeURI(r))+"\x80",l=c.length;for(f[r=--l/4+2|15]=8*l;~l;)f[l>>2]|=c.charCodeAt(l)<<8*~l--;for(n=l=0;n<r;n+=16){for(t=a;l<80;t=[t[4]+(i[l]=l<16?~~f[n+l]:2*c|c<0)+1518500249+[e&u|~e&o,c=341275144+(e^u^o),882459459+(e&u|e&o|u&o),c+1535694389][l++/5>>2]+((c=t[0])<<5|c>>>27),c,e<<30|e>>>2,u,o])c=i[l-3]^i[l-8]^i[l-14]^i[l-16],e=t[1],u=t[2],o=t[3];for(l=5;l;)a[--l]+=t[l]}return a[0]>>>0}(i+" "+r(u,n));o.length>1;){var f=o.splice(0,2),c=f[0],l=f[1];if(a<=r(c,n))return r(l,n)}return 0===o.length?null:r(o[0],n)},k=function(r,n,t){var e=t[0],u=t[1],o=r(e,n);return null==o?null:new RegExp(u).test(o)};return function(a,m,O,A){void 0===a&&(a={}),void 0===m&&(m={}),void 0===O&&(O={}),void 0===A&&(A=!1);var j=function(){var r={},n=function(n){if(n)for(var t,e=decodeURIComponent(n[1]),u=/(?:^|,)([^,=]+)=([^,]*)/g;t=u.exec(e);){var o=t,i=o[1],a=o[2];r[i]=a||null}};n(document.cookie.match(/(?:^|;) *abra-overrides=([^;]+)/)),n(window.location.search.match(/(?:\?|&)abra-overrides=([^&]+)/));var t=/(?:^|;) *abra-nuke=true(?:;|$)/.test(document.cookie)||/(?:\?|&)abra-nuke=true(?:&|$)/.test(window.location.search);return[r,t]}(),x=j[0],E=j[1];Object.keys(O).forEach((function(r){x[r]=O[r]}));var F,C=A||E,R=(F={var:n,if:c,"===":d,"!==":s,and:f,or:v,"!":l,">":g,">=":p,"<":b,"<=":w,"+":t,"-":i,"*":o,"/":e,"%":u,in:h,abtest_partition:y,regex_match:k,ref:function(r,n,t){var e=r(t,n)[0];return U(e)}},function n(t,e){if(e||(e={}),r(t))return t.map((function(r){return n(r,e)}));if(!function(n){return"object"==typeof n&&null!==n&&!r(n)&&1===Object.keys(n).length}(t))return t;var u=function(r){return Object.keys(r)[0]}(t),o=t[u];r(o)||(o=[o]);var i=F[u];if(!i)throw new Error("Unrecognized operation "+u);return i(n,e,o)}),U=function(r){if(!r)return null;var n=x[r];if(void 0===n){if(!C){if(Object.prototype.hasOwnProperty.call(x,r))throw new Error("circular logic");x[r]=void 0,n=R(a[r],m)}void 0===n&&(n=null),x[r]=n}return n};return U}}()).noConflict=function(){return r.Abra=n,t}}(this);
+
+      (function () { var NYTD="undefined"!=typeof window&&window.NYTD?window.NYTD:{};var _f=function(a){window.Abra&&"function"==typeof window.Abra&&(NYTD.Abra=function(t){var r=(t.document.cookie.match(/(?:^|;) *nyt-a=([^;]*)/)||[])[1],e=[];function n(a){return n.getAbraSync(a).variant}return t.dataLayer=t.dataLayer||[],n.config=a.abraConfig||{},n.reportedAllocations={},n.reportedExposures={},n.getAbraSync=function(a){var e=null,o=!1;try{e=t.Abra(n.config,{agent_id:r})(a),o=!0}catch(a){}return{variant:e,allocated:o}},n.reportExposure=function(a){var r=n.getAbraSync(a).variant;void 0!==n.reportedExposures[a]&&r===n.reportedExposures[a]||(n.reportedExposures[a]=r,t.dataLayer.push({event:"ab-expose",abtest:{test:a,variant:r||"0"}}))},Object.keys(n.config).forEach(function(a){var t=n.getAbraSync(a);t.allocated&&(n.reportedAllocations[a]=t.variant,e.push({test:a,variant:t.variant}))}),t.dataLayer.push({event:"ab-alloc",abtest:{batch:e}}),n}(this))};;_f.apply(null, [{"abraConfig":{".ver":4721,"styln-isaias-storm":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-isaias-storm",214748364,"0_Control",4294967295,"1_Show"]}]},"MC_DFP_topbar_bar_anon_1019":{"abtest_partition":[{"var":"agent_id"},"MC_DFP_topbar_bar_anon_1019",4294967295,"0_control"]},"STYLN_live_transition_alerts":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_transition_alerts",4294967295,"1_show"]},"STYLN_live_newupdates":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_newupdates",214748364,"control",4294967295,"variant"]},"MKT_timeout_pw_intl_0620":{"abtest_partition":[{"var":"agent_id"},"MKT_timeout_pw_intl_0620",4294967295,"1_noreauth"]},"MAPS_algorithmicOnboardingInterestCollection_0820":{"if":[{"and":[{"===":[{"var":"user_type"},"regi"]}]},{"abtest_partition":[{"var":"agent_id"},"MAPS_algorithmicOnboardingInterestCollection_0820",1717986917,null,2576980377,"0_control",3435973836,"1_algo_before_newsletters",4294967295,"2_algo_after_newsletters"]}]},"dfp_messaging_flexframe_ctr":{"abtest_partition":[{"var":"agent_id"},"dfp_messaging_flexframe_ctr",322122546,"2_noheadnosummary",644245093,"1_msgInv_noCTA",4294967295,"0_control"]},"HOME_timesExclusive":{"abtest_partition":[{"var":"agent_id"},"HOME_timesExclusive",2147483647,"0_control",4294967295,"1_variant"]},"STYLN_fr_recirc_quantity_desktop":{"abtest_partition":[{"var":"agent_id"},"STYLN_fr_recirc_quantity_desktop",1073741823,"0_control_fr_recirc_quantity_desktop",2147483647,"1_fr_recirc_quantity_desktop",3221225471,"2_fr_recirc_quantity_desktop",4294967295,"3_fr_recirc_quantity_desktop"]},"STYLN_pharmacy_components":{"abtest_partition":[{"var":"agent_id"},"STYLN_pharmacy_components",4080218930,"show",4123168603,"hide",4294967295,"show"]},"STYLN_elections_notifications":{"abtest_partition":[{"var":"agent_id"},"STYLN_elections_notifications",42949672,"0_control",4294967295,"1_elections_notifications"]},"dfp_adslot4v2":{"abtest_partition":[{"var":"agent_id"},"dfp_adslot4v2",4294967295,"1_external"]},"DFP_als":{"abtest_partition":[{"var":"agent_id"},"DFP_als",4294967295,"1_als"]},"SEARCH_FACET_DROPDOWN":{"abtest_partition":[{"var":"agent_id"},"SEARCH_FACET_DROPDOWN",2147483647,"0_FACET_MULTI_SELECT",4294967295,"1_DYNAMIC_FACET_SELECT"]},"MKT_welcome_ad_stp_1120":{"abtest_partition":[{"var":"agent_id"},"MKT_welcome_ad_stp_1120",2147483647,"0_control",4294967295,"1_welcome_stp"]},"STYLN_liveblog_email":{"abtest_partition":[{"var":"agent_id"},"STYLN_liveblog_email",2147483647,"0_control",4294967295,"1_signup"]},"STYLN_live_covid_markets_push":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_covid_markets_push",214748364,"0_hide",1288490188,"1_show",4294967295,"1_show"]},"SA_sub_onboarding_MVP_0820":{"abtest_partition":[{"var":"agent_id"},"SA_sub_onboarding_MVP_0820",2147483647,"0_control",4294967295,"1_sub_flow"]},"STYLN_embedded_hub":{"abtest_partition":[{"var":"agent_id"},"STYLN_embedded_hub",3865470565,"0_control",4080218930,"1_modal",4294967295,"2_footer"]},"vi-ads-et":{"abtest_partition":[{"var":"agent_id"},"vi-ads-et",257698037,"2_remainder"]},"STYLN_coronavirus_briefing_alerts":{"abtest_partition":[{"var":"agent_id"},"STYLN_coronavirus_briefing_alerts",1073741823,"control",3221225471,"variant",3578996247,"control",4294967295,"variant"]},"STYLN_lb_newposts":{"abtest_partition":[{"var":"agent_id"},"STYLN_lb_newposts",4080218930,"0_control",4294967295,"1_lb_newposts"]},"STYLN_live_conventions_push":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_conventions_push",429496729,"0_hide",1503238553,"1_show",1687492650,"0_hide",2147483647,"1_show",2761234474,"0_hide",4294967295,"1_show"]},"STYLN_feedback_form":{"abtest_partition":[{"var":"agent_id"},"STYLN_feedback_form",3006477106,"0_control_feedback_form",4294967295,"1_feedback_form"]},"STYLN_daily_question_block":{"abtest_partition":[{"var":"agent_id"},"STYLN_daily_question_block",644245093,"0_control",1288490188,"1_variant"]},"DFP_amzn":{"abtest_partition":[{"var":"agent_id"},"DFP_amzn",42949672,"0_control",429496729,"0_control",472446402,"1_amzn_fast_fetch",515396075,"2_adslot_priority",901943131,"2_adslot_priority",944892804,"3_no_mnet"]},"STORY_topical_recirc":{"abtest_partition":[{"var":"agent_id"},"STORY_topical_recirc",2147483647,"0_control",4294967295,"1_variant"]},"SA_Referral_iframe_0520":{"abtest_partition":[{"var":"agent_id"},"SA_Referral_iframe_0520",4294967295,"1_useiframe"]},"STORY_intentional_links_v1":{"abtest_partition":[{"var":"agent_id"},"STORY_intentional_links_v1",4294967295,"0_control"]},"MC_DFP_topbar_bar_regi_1019":{"abtest_partition":[{"var":"agent_id"},"MC_DFP_topbar_bar_regi_1019",4294967295,"0_control"]},"STYLN_election_2020_alerts":{"abtest_partition":[{"var":"agent_id"},"STYLN_election_2020_alerts",214748364,"0_hide",4294967295,"1_show"]},"MKT_timeout_pw_0520":{"abtest_partition":[{"var":"agent_id"},"MKT_timeout_pw_0520",4294967295,"1_noreauth"]},"MKT_dfp_hd_paywall_zip":{"abtest_partition":[{"var":"agent_id"},"MKT_dfp_hd_paywall_zip",2147483647,"0_control",4294967295,"1_zip"]},"STYLN_homepage_service_module":{"abtest_partition":[{"var":"agent_id"},"STYLN_homepage_service_module",85899345,"show",171798691,"hide"]},"DFP_als_home":{"abtest_partition":[{"var":"agent_id"},"DFP_als_home",4294967295,"1_als"]},"INBOX_individualpage_redesign":{"abtest_partition":[{"var":"agent_id"},"INBOX_individualpage_redesign",4294967295,"0_control"]},"DFP_mt":{"abtest_partition":[{"var":"agent_id"},"DFP_mt",1932735282,"0_control",3865470565,"1_mt",4294967295,"2_hdt"]},"STYLN_live_updates":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_updates",214748364,"0_control",429496729,"2_live_updates",4294967295,"1_live_updates"]},"STYLN_remove_relatedlinks":{"abtest_partition":[{"var":"agent_id"},"STYLN_remove_relatedlinks",4252017622,"0_control_STYLN_remove_relatedlinks",4294967295,"1_remove_relatedlinks"]},"STYLN_live_polling_push":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_polling_push",214748364,"0_hide",4294967295,"1_show"]},"MKT_first_party_data_survey_regi_inline":{"abtest_partition":[{"var":"agent_id"},"MKT_first_party_data_survey_regi_inline",4080218930,"0_control",4294967295,"1_survey"]},"styln-california-wildfires":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-california-wildfires",214748364,"0_Control",4294967295,"1_Show"]}]},"MAPS_newsletterbuffet_elections":{"if":[{"and":[{"in":[{"var":"user_type"},["anon","regi"]]}]},{"abtest_partition":[{"var":"agent_id"},"MAPS_newsletterbuffet_elections",214748364,"0_Control",1181116005,"1_bottomofstory_algofirst",2147483647,"2_bottomofstory_algolast",4294967295,null]}]},"styln-thanksgiving":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-thanksgiving",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-trump-coronavirus":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-trump-coronavirus",85899345,"0_Control",4294967295,"1_Show"]}]},"MKT_dfp_intl_pricing_low_conv":{"abtest_partition":[{"var":"agent_id"},"MKT_dfp_intl_pricing_low_conv",1431655764,"0_control",2863311530,"1_25cents",4294967295,"2_50cents"]},"styln-climate":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-climate",214748364,"0_Control",4294967295,"1_Show"]}]},"MKT_first_party_data_survey_subs_inline":{"abtest_partition":[{"var":"agent_id"},"MKT_first_party_data_survey_subs_inline",4080218930,"0_control",4294967295,"1_survey"]},"styln-transition":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-transition",214748364,"0_Control",4294967295,"1_Show"]}]},"InvolChurn_CopyUpdate":{"abtest_partition":[{"var":"agent_id"},"InvolChurn_CopyUpdate",2147483647,"0_control",4294967295,"1_concisemessage"]},"styln-holidays-2020":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-holidays-2020",214748364,"0_Control",4294967295,"1_Show"]}]},"dfp_1p2":{"abtest_partition":[{"var":"agent_id"},"dfp_1p2",1431512599,"0_control",2863025199,"1_bk",4294537798,"2_fp"]},"MKT_first_party_data_survey_subs_dock":{"abtest_partition":[{"var":"agent_id"},"MKT_first_party_data_survey_subs_dock",3435973836,"0_control",3478923509,"1_survey",4294967295,"0_control"]},"styln-apple-5g-event":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-apple-5g-event",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-mars":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-mars",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-coronavirus-vaccines":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-coronavirus-vaccines",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-covid-treatments":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-covid-treatments",214748364,"0_Control",4294967295,"1_Show"]}]},"styln_climate_keepup":{"if":[{"and":[{"===":[{"ref":"styln-climate"},"1_Show"]},{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln_climate_keepup",1073741823,"0_control",4294967295,"1_variant"]}]},"styln-kobe":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-kobe",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-beirut":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-beirut",214748364,"0_Control",4294967295,"1_Show"]}]},"dfp_1p_ver":{"abtest_partition":[{"var":"agent_id"},"dfp_1p_ver",1431512599,"0_control",2863025199,"1_bk",4294537798,"2_fp"]},"ON_app_dl_mweb_hp_regi_final":{"if":[{"and":[{"!":{"in":[{"var":"user_type"},["sub"]]}}]},{"abtest_partition":[{"var":"regi_id"},"ON_app_dl_mweb_hp_regi_final",214748364,"0_control",4294967295,"0_control"]}]},"STYLN_coronavirus_economy_menu":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"STYLN_coronavirus_economy_menu",3221225471,"0_control_normal_menu",4294967295,"1_economy_menu"]}]},"styln-elections-2020":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-elections-2020",214748364,"0_Control",4294967295,"1_Show"]}]},"STYLN_more_in_storylines_recirc":{"abtest_partition":[{"var":"agent_id"},"STYLN_more_in_storylines_recirc",42949672,"0_control",85899345,"1_variant"]},"dfp_MWTest":{"abtest_partition":[{"var":"agent_id"},"dfp_MWTest",4294967295,"2_vendorB"]},"MKT_DFP_ods":{"abtest_partition":[{"var":"agent_id"},"MKT_DFP_ods",214748364,"0_control",2147483647,"1_test",4294967295,"2_test"]},"styln-elections-es":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-elections-es",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-best-2020":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-best-2020",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-supreme-court-nomination":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-supreme-court-nomination",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-elections-2020-voting":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]},{"===":[{"ref":"styln-elections-2020"},"1_Show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-elections-2020-voting",429496729,"0_Control",4294967295,"1_Show"]}]},"styln-sports-reopening":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-sports-reopening",214748364,"0_Control",4294967295,"1_Show"]}]},"MKT_first_party_data_survey":{"abtest_partition":[{"var":"agent_id"},"MKT_first_party_data_survey",3865470565,"0_control",4294967295,"1_survey"]},"styln-holidays-122020":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-holidays-122020",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-coronavirus-es":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-coronavirus-es",214748364,"0_Control",4294967295,"1_Show"]}]},"STYLN_elevate_series_collections":{"abtest_partition":[{"var":"agent_id"},"STYLN_elevate_series_collections",2147483647,"0_Control",4294967295,"1_elevate_series_collections"]},"MKT_intl_price_exp":{"abtest_partition":[{"var":"agent_id"},"MKT_intl_price_exp",2147483647,"0_control",4294967295,"1_monthly_exp"]},"styln-hurricanes":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-hurricanes",214748364,"0_Control",4294967295,"1_Show"]}]},"SA_Referral_DFP_April2020_Test":{"abtest_partition":[{"var":"agent_id"},"SA_Referral_DFP_April2020_Test",2147483647,"1_yellow_evergreen",4294967295,"2_yellow_moment"]},"styln-coronavirus-schools-reopening":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]},{"===":[{"ref":"styln-coronavirus"},"1_Show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-coronavirus-schools-reopening",214748364,"0_Control",4294967295,"1_Show"]}]},"STYLN_live_noreaster_alerts":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_noreaster_alerts",214748364,"0_hide",4294967295,"1_show"]},"styln-suffrage-at-100":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-suffrage-at-100",214748364,"0_Control",4294967295,"1_Show"]}]},"FREEX_Regi_Bundle_Sale":{"abtest_partition":[{"var":"agent_id"},"FREEX_Regi_Bundle_Sale",4294967295,"0_Sale"]},"styln-george-floyd":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-george-floyd",214748364,"0_Control",4294967295,"1_Show"]}]},"MAPS_story_inlinesignup":{"abtest_partition":[{"var":"agent_id"},"MAPS_story_inlinesignup",128849018,"0_Control",4294967295,"1_signup_logic"]},"styln-ada-at-30":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-ada-at-30",214748364,"0_Control",4294967295,"1_Show"]}]},"ON_app_dl_mweb_hp_dummy":{"if":[{"and":[{"!":{"in":[{"var":"user_type"},["sub"]]}}]},{"abtest_partition":[{"var":"regi_id"},"ON_app_dl_mweb_hp_dummy",1073741823,"0_control",2147483647,"1_dock_std",3221225471,"2_dock_exp",4294967295,"3_custom_dock"]}]},"DFP_blockDetect_1220":{"abtest_partition":[{"var":"agent_id"},"DFP_blockDetect_1220",4252017622,"0_Control",4294967295,"1_detection"]},"styln-nobel-2020":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-nobel-2020",214748364,"0_Control",4294967295,"1_Show"]}]},"STYLN_live_barrett_hearings_alerts":{"abtest_partition":[{"var":"agent_id"},"STYLN_live_barrett_hearings_alerts",214748364,"0_hide",2147483647,"1_show",2362232012,"0_hide",4294967295,"1_show"]},"styln-best-2020-inlines":{"if":[{"and":[{"===":[{"ref":"styln-best-2020"},"1_Show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-best-2020-inlines",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-2021-new-year":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-2021-new-year",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-coronavirus":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-coronavirus",214748364,"0_Control",4294967295,"1_Show"]}]},"ON_testIgnoreMe_0902":{"if":[{"and":[{"!":{"in":[{"var":"user_type"},["sub"]]}}]},{"abtest_partition":[{"var":"regi_id"},"ON_testIgnoreMe_0902",2147483647,"0_Control",4294967295,"1_variant"]}]},"MKT_bar_1_price_1120":{"if":[{"and":[{"===":[{"var":"geo_country"},"US"]}]},{"abtest_partition":[{"var":"agent_id"},"MKT_bar_1_price_1120",613321329,"0_control",1226642659,"1_caps_price",1839963989,"2_normal_case",2453285318,"3_no_price",3066606648,"4_sub_no_week",3679927978,"5_sub_no_week",4293249308,"6_con_no_login"]}]},"styln-jobs-crisis":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-jobs-crisis",128849018,"0_Control",4294967295,"1_Show"]}]},"FREEX_Time_Bound_Pricing":{"abtest_partition":[{"var":"agent_id"},"FREEX_Time_Bound_Pricing",4294967295,"4_sale_today"]},"styln-google-antitrust":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-google-antitrust",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-hong-kong":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-hong-kong",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-juneteenth":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-juneteenth",214748364,"0_Control",4294967295,"1_Show"]}]},"styln_coronavirus_reopening_keepup":{"abtest_partition":[{"var":"agent_id"},"styln_coronavirus_reopening_keepup",2147483647,"0_control_hide_reopening_keepup",4294967295,"1_reopening_keepup"]},"MKT_first_party_data_survey_regi_dock":{"abtest_partition":[{"var":"agent_id"},"MKT_first_party_data_survey_regi_dock",4209067949,"0_control",4252017622,"1_survey",4294967295,"0_control"]},"MAPS_newsletterbuffet_non_elections":{"if":[{"and":[{"in":[{"var":"user_type"},["anon","regi"]]}]},{"abtest_partition":[{"var":"agent_id"},"MAPS_newsletterbuffet_non_elections",429496729,"0_Control",2362232012,"1_bottomofstory_algofirst",4294967295,"2_bottomofstory_algolast"]}]},"styln-watch":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-watch",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-vaccine-glossary":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]},{"===":[{"ref":"styln-coronavirus-vaccines"},"1_Show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-vaccine-glossary",2147483647,"0_Control",4294967295,"1_Show"]}]},"styln-capitol-mob-inline":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-capitol-mob-inline",1073741823,"0_Control",4294967295,"1_Show"]}]},"DFP_delayedAd_0820":{"abtest_partition":[{"var":"agent_id"},"DFP_delayedAd_0820"]},"MKT_not_ready_to_sub_survey":{"abtest_partition":[{"var":"agent_id"},"MKT_not_ready_to_sub_survey",4209067949,"0_control",4294967295,"1_survey"]},"styln-rbg":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-rbg",85899345,"0_Control",4294967295,"1_Show"]}]},"styln-nagorno-karabakh":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-nagorno-karabakh",214748364,"0_Control",4294967295,"1_Show"]}]},"styln-trumps-taxes":{"if":[{"and":[{"===":[{"ref":"STYLN_pharmacy_components"},"show"]}]},{"abtest_partition":[{"var":"agent_id"},"styln-trumps-taxes",42949672,"0_Control",4294967295,"1_Show"]}]},"MKT_dfp_intl_pricing_med_conv":{"abtest_partition":[{"var":"agent_id"},"MKT_dfp_intl_pricing_med_conv",1431655764,"0_control",2863311530,"1_50cents",4294967295,"2_75cents"]}}}]); })();
+      (function () { var _f=function(e){var r=function(){var r=e.url;try{r+=window.location.search.slice(1).split("&").reduce(function(e,r){return"ip-override"===r.split("=")[0]?"?"+r:e},"")}catch(e){console.warn(e)}var n=new XMLHttpRequest;for(var t in n.withCredentials=!0,n.open("POST",r,!0),n.setRequestHeader("Content-Type","application/json"),e.headers)n.setRequestHeader(t,e.headers[t]);return n.send(e.body),n};window.userXhrObject=r(),window.userXhrRefresh=function(){return window.userXhrObject=r(),window.userXhrObject}};;_f.apply(null, [{"url":"https://samizdat-graphql.nytimes.com/graphql/v2","body":"{\"operationName\":\"UserQuery\",\"variables\":{},\"query\":\"   query UserQuery {     user {       __typename       profile {         displayName         email       }       userInfo {         regiId         entitlements         demographics {           emailSubscriptions           wat           bundleSubscriptions {             bundle             inGrace             promotion             source           }         }       }       subscriptionDetails {         graceStartDate         graceEndDate         isFreeTrial         hasQueuedSub         startDate         endDate         status         entitlements       }     }   } \"}","headers":{"nyt-app-type":"project-vi","nyt-app-version":"0.0.5","nyt-token":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs+/oUCTBmD/cLdmcecrnBMHiU/pxQCn2DDyaPKUOXxi4p0uUSZQzsuq1pJ1m5z1i0YGPd1U1OeGHAChWtqoxC7bFMCXcwnE1oyui9G1uobgpm1GdhtwkR7ta7akVTcsF8zxiXx7DNXIPd2nIJFH83rmkZueKrC4JVaNzjvD+Z03piLn5bHWU6+w+rA+kyJtGgZNTXKyPh6EC6o5N+rknNMG5+CdTq35p8f99WjFawSvYgP9V64kgckbTbtdJ6YhVP58TnuYgr12urtwnIqWP9KSJ1e5vmgf3tunMqWNm6+AnsqNj8mCLdCuc5cEB74CwUeQcP2HQQmbCddBy2y0mEwIDAQAB","Accept":"application/json","Content-Type":"application/json"}}]); })();
+      </script>
+<script id="page-config-data" type="text/json">{"pageconfig":{"collections":{"COLUMN":["speakingindance"],"SECTION":["arts","dance"]}}}</script>
+<script id="display_overrides">["HIDE_RIBBON","HIDE_NAVIGATION-EDGE","HIDE_KICKER","HIDE_TOP_AD","HIDE_TOP_NAV_AD"]</script>
+
+<script>
+(function() {
+    var s = document.getElementsByTagName('script')[0];
+    var mediaDotNet = 'https://contextual.media.net/bidexchange.js?cid=8CU2553YN&amp;https=1';
+    var gptScript = '//www.googletagservices.com/tag/js/gpt.js';
+    var timeout = 300;
+    var abra = window.NYTD && typeof window.NYTD.Abra === 'function' && window.NYTD.Abra || function () { return null; };
+
+    function loadScript(tagSrc) {
+        if (tagSrc.substr(0, 4) !== 'http') {
+            var isSSL = 'https:' == document.location.protocol;
+            tagSrc = (isSSL ? 'https:' : '') + tagSrc;
+        }
+        var scriptTag = document.createElement('script');
+        scriptTag.type = 'text/javascript';
+        scriptTag.async = true;
+        scriptTag.src = tagSrc;
+        s.parentNode.insertBefore(scriptTag, s);
+    }
+
+    function loadGPT() {
+        if (!window.advBidxc.isAdServerLoaded && !window.parent.advBidxc.isAdServerLoaded && !window.parent.googletag) {
+            loadScript(gptScript);
+            window.advBidxc.isAdServerLoaded = true;
+        }
+    }
+
+    function testCookie(name) {
+      var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+      return match ? match[1] : '';
+    }
+
+    function isSocratesCheck() {
+      var socratesCookie = 'nyt-purr';
+      var socratesCookieValue = testCookie(socratesCookie).substring(1, 2);
+      return socratesCookieValue === 's';
+    }
+
+    if (isSocratesCheck()) {
+      return;
+    }
+
+    if (testCookie('nyt-gdpr') === '1') {
+        if (testCookie('NYT-T') !== 'out') {
+            loadScript(gptScript);
+        } else {
+            document.documentElement.className += ' no-ads';
+        }
+        return;
+    }
+
+    window.advBidxc = window.advBidxc || {};
+    window.advBidxc.renderAd = function () {};
+    window.advBidxc.startTime = new Date().getTime();
+    window.advBidxc.customerId = '8CU2553YN'; //Media.net Customer ID
+    window.advBidxc.timeout = timeout;
+    window.advBidxc.loadGPT = setTimeout(loadGPT, window.advBidxc.timeout);
+
+    if (window.parent) {
+      if (!window.parent.advBidxc.isLoaded && abra('medianet_toggle') !== '1_block') {
+        // append media.net
+        var b = document.createElement('script');
+        b.type = 'text/javascript';
+        b.async = true;
+        b.src = mediaDotNet;
+        s.parentNode.insertBefore(b, s);
+      }
+
+      if (!window.parent.apstag && abra('amazon_toggle') !== '1_block') {
+        // Load the ApsTag JavaScript Library
+        !function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q('i',arguments)},fetchBids:function(){q('f',arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}('apstag',window,document,'script','//c.amazon-adsystem.com/aax2/apstag.js');
+
+        window.apstag.init({
+            pubID: '3030',
+            adServer: 'googletag'
+        });
+      }
+    }
+})();
+</script>
+<script>
+var require = {
+  baseUrl: '/vi-assets/static-assets/nyt5/20190823-143533-mbipe/js/',
+  waitSeconds: 20,
+  paths: {
+    'videoFactory': 'https://static01.nyt.com/js2/build/video/2.0/videofactoryrequire',
+    'videoPlaylist': 'https://static01.nyt.com/js2/build/video/players/extended/2.0/appRequire',
+    'auth/mtr': 'https://static01.nyt.com/js/mtr',
+    'auth/growl': 'https://static01.nyt.com/js/auth/growl/default',
+    'vhs': 'https://static01.nyt.com/video/vhs/build/vhs-2.x.min',
+    'vhs3': 'https://static01.nyt.com/video-static/vhs3/vhs.min'
+  }
+};
+
+window.NYT_PLATFORM = 'nyt5';
+window.NYT_CONTEXT = 'inline';
+window.NYT_ENVIRONMENT = 'prd';
+
+</script>
+
+<!--[if (gte IE 9)|!(IE)]> <!-->
+<script data-main="foundation/main" src="/vi-assets/static-assets/nyt5/20190823-143533-mbipe/js/framework.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script>require.map = { '*': { 'foundation/main': 'foundation/legacy_main' } };</script>
+<script data-main="foundation/legacy_main" src="/vi-assets/static-assets/nyt5/20190823-143533-mbipe/js/framework.js"></script>
+<![endif]-->
+<script>
+require(['foundation/main'], function () {
+  require(['auth/mtr']);
+});
+</script>
+<style>
+.nyt-hide-shell #masthead, .nyt-hide-shell #ribbon, .nyt-hide-shell #TopAd, .nyt-hide-shell #page-footer, .nyt-hide-shell .growl-wrapper, .nyt-hide-shell #Growl_optly { display: none !important;  }
+.nyt-hide-shell #shell {padding: 0;}
+.mobile #TopAd {display: none;}
+</style>
+<script>var AdSlot4=function(){"use strict";function k(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:0,n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:0,o=3<arguments.length&&void 0!==arguments[3]?arguments[3]:0,i=4<arguments.length&&void 0!==arguments[4]?arguments[4]:0,a=!(5<arguments.length&&void 0!==arguments[5])||arguments[5];if(!e||1!==e.nodeType)return!1;var d=e.getBoundingClientRect(),r=d.top-t,s=d.left,l=d.bottom,c=d.right,u=0,p=0,g=window.innerHeight,f=window.innerWidth;return a?u+o*i<=l&&p+n*i<=c&&r<=g-o*i&&s<=f-n*i:u<=r&&l<=g}var L=function(){return!("undefined"==typeof window||!window.document||!window.document.createElement)&&window.self!==window.top};function I(e){var t=window.location.href,n=e.replace(/[[]]/g,"\$&"),o=new RegExp("[?&]".concat(n,"(=([^&#]*)|&|#|$)")).exec(t);return o&&o[2]?decodeURIComponent(o[2].replace(/\+/g,"")):""}function C(e,t,n){var o="".concat(e,"-").concat(t);try{performance.mark(o),performance.measure(e,n,o);var i=performance.getEntriesByName(e).pop();return i?Math.round(i.duration):0}catch(e){return 0}}function j(){var e=document.referrer||"",t=/([a-zA-Z0-9_\-.]+)(@|%40)([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})/;return t.test(e)||t.test(window.location.href)}function D(e){var t=document.cookie.match(new RegExp("".concat(e,"=([^;]+)")));return t?t[1]:""}var x={adConfigPosition:5,full:"f",restrictedDataProcessing:"r",nonPersonalized:"n",collapsed:"c",adLuce:"a",socrates:"s"};function V(){return D("nyt-purr")[x.adConfigPosition]||""}function q(){return V()===x.socrates}function M(){return V()===x.adLuce}return function(){var s,l,y=window.AdSlot4||{},t=window.performance&&window.performance.timing&&performance.timing.responseStart,v={},m=[],w=[],i=!1,a=!1,h=!0,b=!1,A=!1,E=V()===x.collapsed;if(y.init)return y;function o(e){e&&t&&e.setTargeting("request_time",(Date.now()-t).toString())}function S(e,t){window.googletag.cmd.push(function(){o(t),window.googletag.display(e)})}function P(e){if(j()||e)y.events.publish({name:"AdEmpty",value:{type:"AdsDisabled"}});else{var t,n,o,i,a,d=function(){var e=window.googletag;e?e.cmd.push(function(){e._loadStarted_?window.advBidxc&&!window.advBidxc.isAdServerLoaded&&(window.advBidxc.isAdServerLoaded=!0):y.events.publish({name:"AdEmpty",value:{type:"AdBlockOn"}})}):y.events.publish({name:"AdEmpty",value:{type:"GptError"}})};window.googletag&&window.googletag.apiReady?d():(t="https://securepubads.g.doubleclick.net/tag/js/gpt.js",n=d,o=function(){y.events.publish({name:"AdEmpty",value:{type:"GptError"}})},i=document.getElementsByTagName("head")[0],a=document.createElement("script"),n&&(a.onload=n),o&&(a.onerror=o),a.src=t,a.async=!0,i.appendChild(a))}}function z(e,t,n){return window.googletag.defineSlot(e,t,n)}function d(e,t){var n=window.googletag;n.cmd.push(function(){e&&e.forEach(function(e){o(e)}),e&&t?n.pubads().refresh(e,t):e?n.pubads().refresh(e):t?n.pubads().refresh(null,t):n.pubads().refresh()})}function r(e){var t=e.displayed,n=e.id,o=e.slot;(y.events.publish({name:"AdCalled",value:{id:n,timeCalled:C(n,"timeCalled","responseStart")},scope:n}),i&&t)?(d([o],a?null:{changeCorrelator:!1}),a=!1):(S(n,o),v[n].displayed=!0)}function e(){w=w.filter(function(e){var t=e.AdSlotElement,n=k(t,h?y.props.offset:0,0,0,0,h);return n&&r(e),!n})}function R(n){var o=n.AdSlotElement,e={root:null,rootMargin:"".concat(y.props.offset,"px"),threshold:0},t=new IntersectionObserver(function(e,t){e[0].isIntersecting&&(r(n),t.unobserve(o))},e);return t.observe(o),t}function O(){window.IntersectionObserver?(b=!0,window.IntersectionObserver.prototype.POLL_INTERVAL=1e3):document.addEventListener("scroll",function(o){var i=this,a=1<arguments.length&&void 0!==arguments[1]?arguments[1]:1e3,d=null;return function(){for(var e=arguments.length,t=new Array(e),n=0;n<e;n++)t[n]=arguments[n];null===d&&(d=setTimeout(function(){o.apply(i,t),d=null},a))}}(e,1e3))}function T(e){if(e.data.exclusive&&e.data.div){var t,n=e.data.div;switch(e.data.type){case"only-child":o={empty:(a=n,d=[],Object.keys(v).forEach(function(e){a!==e&&d.push(v[e])}),d)},(i=o&&o.empty||w).length&&i.forEach(function(e){e.observer&&e.observer.unobserve(e.AdSlotElement),y.events.publish({name:"AdEmpty",value:{type:e.id},scope:e.id})}),w=[],E=!0;break;case"family-plan":void 0!==(t=v[n]&&v[n].slot&&(v[n].slot.getResponseInformation()||{}).lineItemId)&&y.updateAdReq({adv:t,excl:"family"});break;case"blank":y.events.publish({name:"AdEmpty",value:{type:n},scope:e.data.div})}}var o,i,a,d}if(y.events=(s={},l={},{publish:function e(t){var n=t.name,o=void 0===n?"":n,i=t.value,a=void 0===i?{}:i,d=t.scope,r=void 0===d?"page":d;"all"!==r&&e({name:o,value:a,scope:"all"}),s[o]||(s[o]={}),s[o][r]||(s[o][r]=[]),s[o][r].push(a),l[o]&&l[o][r]&&l[o][r].forEach(function(e){e(a)})},subscribe:function(e){var t=e.name,n=void 0===t?"":t,o=e.callback,i=void 0===o?function(){}:o,a=e.scope,d=void 0===a?"page":a;l[n]||(l[n]={}),l[n][d]||(l[n][d]=[]);var r=l[n][d].push(i)-1;return s[n]&&s[n][d]&&s[n][d].length&&s[n][d].forEach(function(e){i(e)}),{remove:function(){return l[n][d].splice(r,1)}}},unsubscribeToAll:function(t){Object.keys(l).forEach(function(e){l[e]&&l[e][t]&&delete l[e][t]}),Object.keys(s).forEach(function(e){s[e]&&s[e][t]&&delete s[e][t]})}}),y.initializeAd=function(r,e){if(y.props){var t=y.props,s=t.adUnitPath,n=t.sizeMapping,o=t.hideTopAd,l=e.id,c=e.position,i=e.sizeKey,u=e.lazyLoad,p=e.truePosition,a=i||c,g=a in n?n[a]:n.default;if(("top"!==c||!o)&&!m.includes(l)&&l&&s&&g&&r&&r.classList&&!r.classList.contains("placed-ad")&&(!r.parentNode||!r.parentNode.classList.contains("placed-ad"))){var d=s.match(/tragedy/i);if(d&&d.length)y.events.publish({name:"AdEmpty",value:{type:"AdsDisabled"},scope:"page"});else if(M()||j()||q())y.events.publish({name:"AdEmpty",value:{type:"AdsDisabled"}});else if(E)y.events.publish({name:"AdEmpty",value:{type:l},scope:l});else{var f=window.googletag;f.cmd.push(function(){var e;if(L()){var i=window.outerWidth,t=g.reduce(function(e,t){var n=Number.isInteger(t[0])?t[0]:null,o=e.prevVp;return n<i&&o<n&&(e.prevVp=n,e.sizes=t[1]),e},{prevVp:-1,sizes:[]});e=z(s,t.sizes,l)}else{e=z(s,[],l);var n=f.sizeMapping();g.forEach(function(e){n.addSize([e[0],0],e[1])}),e.defineSizeMapping(n.build())}var o=p||c;e.setTargeting("div",l),e.setTargeting("pos",o),e.setCollapseEmptyDiv(!0),e.addService(f.pubads());var a,d={id:l,slot:e,AdSlotElement:r,sizes:g};y.events.publish({name:"AdDefined",value:{id:l,sizes:g,truePosition:p,timeDefined:C(l,"timeDefined","responseStart"),slot:e},scope:l}),u&&!k(r,0,0,0,0,h)||(y.events.publish({name:"AdCalled",value:{id:l,timeCalled:C(l,"timeCalled","responseStart")},scope:l}),S(l,e),d.displayed=!0),(a=d).displayed||(b&&(a.observer=R(a)),w.push(a)),v[a.id]=a})}}}else y.events.subscribe({name:"AdSlotReady",callback:function(){return y.initializeAd(r,e)}})},y.fillPlacements=function(e){var t=document.querySelectorAll(".place-ad:not(.placed-ad)");if(t&&0!==t.length)for(var n=0;n<t.length;n++){var o=t[n],i=o.id,a=o.dataset,d=a.position,r=a.sizeKey,s=a.lazyLoad,l=a.slotId,c="false"!==s,u=o,p=d,g=l&&l!==i;if((i||l)&&d&&(g&&!e||!g)){if(g){p=l;var f=document.createElement("div");f.id=l,f.setAttribute("style","display: block; text-align: center; height: 100%"),u=f,o.appendChild(f)}y.initializeAd(u,{id:u.id,position:p,sizeKey:r,lazyLoad:c}),o.classList.add("placed-ad")}}},y.updateAdReq=function(n,o){window.googletag.cmd.push(function(){var t=y.props&&y.props.adTargeting||{};o||Object.keys(n).forEach(function(e){t[e]=n[e],window.googletag.pubads().setTargeting(e,"".concat(n[e]))}),v[o]&&Object.keys(n).forEach(function(e){v[o].slot.setTargeting(e,"".concat(n[e]))})})},y.getAdReq=function(){return y.props&&y.props.adTargeting||{}},y.refreshAds=function(){h=!(a=i=!0),w=[],m=[],b?Object.keys(v).forEach(function(e){var t=v[e],n=t.observer,o=t.displayed,i=t.AdSlotElement;w.push(t),o&&(n&&n.unobserve(i),t.observer=R(t))}):(Object.keys(v).forEach(function(e){w.push(v[e])}),e()),setTimeout(function(){h=!0},2e3)},y.removeAdPlacement=function(n){window.googletag.cmd.push(function(){var e,t=window.googletag.pubads().getSlots().filter(function(e){return e.getSlotElementId()===n});window.googletag.destroySlots(t),(e=n)&&m.push(e)})},y.getSlot=function(t){var n=null;return window.googletag.cmd.push(function(){var e=window.googletag.pubads().getSlots().filter(function(e){return e.getSlotElementId()===t});n=e[0]||null}),n},y.init=function(e){var t=e||{},n=t.adTargeting,i=void 0===n?{}:n,o=t.adUnitPath,a=void 0===o?"":o,d=t.offset,r=void 0===d?400:d,s=t.haltDFP,l=void 0!==s&&s,c=t.lockdownAds,u=void 0!==c&&c,p=t.hideTopAd,g=void 0!==p&&p,f=t.sizeMapping,v=void 0===f?{}:f,m=l||q()||M();if(!A){var w;i.vp=window.matchMedia("(min-width: 970px)").matches?"large":window.matchMedia("(min-width: 728px)").matches?"medium":"small",i.uap=(w=window.navigator.userAgent).match(/nyt[-_]?ios/i)?"ios":w.match(/nyt[-_]?android/i)?"android":"browser",i.aid=D("nyt-a")||null,V()===x.full&&(i.purr="full");var h=I("ad-keywords");h&&(i.adv=h);var b=I("debugads");b&&(i.debugAdsQP=b),y.props={adTargeting:i,adUnitPath:a,offset:r,sizeMapping:v,hideTopAd:g},window.googletag=window.googletag||{},window.googletag.cmd=window.googletag.cmd||[],window.googletag.cmd.push(function(){i.gdprUser&&(window.googletag.pubads().setRequestNonPersonalizedAds(1),i.purr="npa"),V()===x.nonPersonalized&&(window.googletag.pubads().setRequestNonPersonalizedAds(1),i.purr="npa"),V()===x.restrictedDataProcessing&&(window.googletag.pubads().setPrivacySettings({restrictDataProcessing:!0}),i.purr="rdp");var n,t,o=(n=i,t=window.googletag.pubads().getTargetingKeys(),Object.keys(n).filter(function(e){return t.indexOf(e)<0}).reduce(function(e,t){return e[t]=n[t],e},{}));Object.keys(o).forEach(function(e){window.googletag.pubads().setTargeting(e,o[e])}),window.googletag.enableServices(),O(),y.fillPlacements(!0),window.googletag.pubads().addEventListener("slotResponseReceived",function(e){var t=e.slot.getSlotElementId();e.timeReceived=C(t,"timeReceived","".concat(t,"-timeReceived")),y.events.publish({name:"AdResponse",value:e,scope:t})}),window.googletag.pubads().addEventListener("slotRenderEnded",function(e){var t=e.slot.getSlotElementId();e.timeRendered=C(t,"timeRendered","".concat(t,"-timeCalled")),e.isEmpty?y.events.publish({name:"AdEmpty",value:{type:t},scope:t}):y.events.publish({name:"AdRendered",value:e,scope:t})}),window.googletag.pubads().addEventListener("slotOnload",function(e){var t=e.slot.getSlotElementId();e.timeLoaded=C(t,"timeLoaded","".concat(t,"-timeCalled")),y.events.publish({name:"AdLoaded",value:e,scope:t})}),window.googletag.pubads().addEventListener("impressionViewable",function(e){var t=e.slot.getSlotElementId();e.timeViewed=C(t,"timeViewed","".concat(t,"-timeCalled")),y.events.publish({name:"AdViewable",value:e,scope:t})})}),u?window.googletag.cmd.push(function(){window.googletag.pubads().setForceSafeFrame(!0)}):window.addEventListener("message",function(e){(e.origin.match(/(safeframe|tpc).googlesyndication.com$/)||e.origin===window.location.origin)&&T(e)},!1),P(m),y.events.publish({name:"AdSlotReady"}),A=!0}},y.cmd)for(;y.cmd.length;)y.cmd.shift()();return y.cmd={length:0,push:function(e){e()}},window.AdSlot4=function(i){for(var e=1;e<arguments.length;e++){var a=null!=arguments[e]?arguments[e]:{},t=Object.keys(a);"function"==typeof Object.getOwnPropertySymbols&&(t=t.concat(Object.getOwnPropertySymbols(a).filter(function(e){return Object.getOwnPropertyDescriptor(a,e).enumerable}))),t.forEach(function(e){var t,n,o;t=i,o=a[n=e],n in t?Object.defineProperty(t,n,{value:o,enumerable:!0,configurable:!0,writable:!0}):t[n]=o})}return i}({},y,{refreshAdsInView:d}),window.AdSlot={placeDynamicAds:y.fillPlacements,getSlot:y.getSlot,setTargeting:function(e,t){var n={};n[e]=t,y.updateAdReq(n)},setSlotTargeting:function(e,t,n){var o={};o[t]=n,y.updateAdReq(o,e.getSlotElementId())},displayAd:S,removeAdPlacement:y.removeAdPlacement,dispatch:function(){},destroyAdSlots:function(){window.googletag.cmd.push(function(){window.googletag.destroySlots()})},checkAdsInViewport:e,refresh:y.refreshAds,AdSlotReady:!0,adTargeting:y.props&&y.props.adTargeting||{}},y}()}();</script>
+</head>
+<body>
+<style>
+.lt-ie10 .messenger.suggestions {
+  display: block !important;
+  height: 50px;
+}
+
+.lt-ie10 .messenger.suggestions .message-bed {
+  background-color: #f8e9d2;
+  border-bottom: 1px solid #ccc;
+}
+
+.lt-ie10 .messenger.suggestions .message-container {
+  padding: 11px 18px 11px 30px;
+}
+
+.lt-ie10 .messenger.suggestions .action-link {
+  font-family: "nyt-franklin", arial, helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  color: #a81817;
+  text-transform: uppercase;
+}
+
+.lt-ie10 .messenger.suggestions .alert-icon {
+  background: url('https://static01.nyt.com/images/icons/icon-alert-12x12-a81817.png') no-repeat;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-top: -2px;
+  float: none;
+}
+
+.lt-ie10 .masthead,
+.lt-ie10 .navigation,
+.lt-ie10 .comments-panel {
+  margin-top: 50px !important;
+}
+
+.lt-ie10 .ribbon {
+  margin-top: 97px !important;
+}
+</style>
+<div id="suggestions" class="suggestions messenger nocontent robots-nocontent" style="display:none;">
+  <div class="message-bed">
+    <div class="message-container last-message-container">
+      <div class="message">
+        <span class="message-content">
+          <i class="icon alert-icon"></i><span class="message-title">NYTimes.com no longer supports Internet Explorer 9 or earlier. Please upgrade your browser.</span>
+          <a href="http://www.nytimes.com/content/help/site/ie9-support.html" class="action-link">LEARN MORE »</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="shell" class="shell">
+  <header id="masthead" class="masthead masthead-theme-standard" role="banner">
+  <div class="container">
+    <div class="quick-navigation button-group">
+      <button class="button sections-button"><i class="icon sprite-icon"></i><span class="button-text">Sections</span></button>
+      <button class="button home-button" data-href="http://www.nytimes.com/" title="Go to the home page to see the latest top stories."><i class="icon sprite-icon"></i><span class="button-text">Home</span></button>
+      <button class="button search-button"><i class="icon sprite-icon"></i><span class="button-text">Search</span></button>
+    </div>
+    <div class="branding">
+      <h2 class="branding-heading">
+        <a id="branding-heading-link" href="http://www.nytimes.com/">
+          <span class="visually-hidden">The New York Times</span>
+        </a>
+      </h2>
+      <script>
+        window.magnum.writeLogo('small', '/vi-assets/static-assets/nyt5/20190823-143533-mbipe/images/foundation/logos/', 'arts', 'masthead-theme-standard', 'standard', 'branding-heading-link', 'interactive');
+      </script>
+      
+    </div>
+    <div class="story-meta">
+      <h6 class="kicker">
+        <span class="kicker-label">
+          <a href="https://www.nytimes.com/section/arts/dance">Dance</a>
+        </span>
+        <span class="pipe">|</span>How the Rockettes Fall Like Dominoes
+      </h6>
+    </div>
+    <div class="user-tools">
+  <div id="sharetools-masthead"
+    aria-label="tools" role="group"
+    class="sharetools theme-classic  sharetools-masthead  "
+    data-shares="facebook,twitter,email,show-all,save"
+    data-url="https://www.nytimes.com/interactive/2019/05/30/arts/dance/speaking-in-dance-rockettes.html"
+    data-title="How the Rockettes Fall Like Dominoes"
+    data-author="By Gia Kourlas"
+    data-media="https://static01.nyt.com/images/icons/t_logo_291_black.png"
+    data-description="Dancers fall. Sometimes, it’s intentional."
+    data-publish-date="May 30, 2019">
+    <div class="ad sharetools-inline-article-ad hidden nocontent robots-nocontent"></div>
+  </div>
+  <div class="user-tools-button-group button-group">
+    
+    
+    
+  </div>
+</div>
+  </div>
+  <div class="search-flyout-panel flyout-panel">
+  <button class="button close-button" type="button"><i class="icon"></i><span class="visually-hidden">Close search</span></button>
+  <nav class="search-form-control form-control layout-horizontal">
+    <h2 class="visually-hidden">Site Search Navigation</h2>
+    <form class="search-form" role="search">
+      <div class="control">
+        <div class="label-container visually-hidden">
+          <label for="search-input">Search NYTimes.com</label>
+        </div>
+        <div class="field-container">
+          <input id="search-input" name="search-input" type="text" class="search-input text" autocomplete="off" placeholder="Search NYTimes.com" />
+          <button type="button" class="button clear-button" tabindex="-1" aria-describedby="clear-search-input"><i class="icon"></i><span id="clear-search-input" class="visually-hidden">Clear this text input</span></button>
+          <div class="auto-suggest" style="display: none;">
+            <ol></ol>
+          </div>
+          <button class="button submit-button" type="submit">Go</button>
+        </div>
+      </div>
+    </form>
+  </nav>
+</div>
+  <div id="notification-modals" class="notification-modals"></div>
+  <span class="story-short-url"><a href="https://nyti.ms/2Wx5HuG">https://nyti.ms/2Wx5HuG</a></span>
+</header>
+
+<nav class="navigation" id="navigation">
+  <h2 class="visually-hidden">Site Navigation</h2>
+</nav>
+<nav class="mobile-navigation hidden" id="mobile-navigation">
+  <h2 class="visually-hidden">Site Mobile Navigation</h2>
+</nav>
+
+  <div id="page" class="page">
+    
+    <main id="main" class="main" role="main">
+      <article id="story" class="story theme-interactive theme-minimal">
+        
+        <header class="story-header interactive-header">
+          <div class="story-meta">
+            <button class="button comments-button theme-kicker"></button>
+            
+            <h1 class="story-heading interactive-headline" itemprop="headline">How the Rockettes Fall Like Dominoes</h1>
+            <div class="story-meta-footer interactive-meta-footer">
+              <div class="interactive-byline">
+    <p class="byline-dateline">
+      <span class="byline last-byline" itemprop="author creator" itemscope itemtype="http://schema.org/Person">
+      By <span class="byline-author" data-byline-name="GIA KOURLAS" itemprop="name">GIA KOURLAS</span>
+    </span>
+      <time class="dateline" datetime="2019-05-30" itemprop="dateModified" content="2019-05-30">MAY 30, 2019</time>
+    </p>
+  </div>
+              <p class="interactive-leadin summary">
+                <span class="summary-text">Dancers fall. Sometimes, it’s intentional.</span>
+                
+                
+              </p>
+            </div>
+          </div>
+        </header>
+        <div id="speaking-in-dance-rockettes" class="interactive-graphic"><div id="tap-story-top-wrapper" data-project-bg="black" data-dt-style="stamp">
+  <link rel="stylesheet" media="screen" href="https://int.nyt.com/apps/tap-stories/assets/tap-story-7cc96a42cd8545dfe3e9.css" />
+
+  <style type="text/css">
+  .cover-slide .swiper-text h1:before {
+  content: '#speakingindance';
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: nyt-franklin,arial,helvetica,sans-serif;
+  letter-spacing: .02em;
+  font-size: 14px;
+}
+  </style>
+
+  <div class="swiper-back"></div>
+  <div class="swiper-next" style="display: none;"></div>
+
+  <a class="swiper-logo" href="https://www.nytimes.com/"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27 32"><defs><clipPath id="b785deb9-88e0-4dc3-b4f4-c91ba5aa6023" transform="translate(5 5)"><path d="M17,13.58H16.91a7,7,0,0,1-4,4.11V13.58l2.24-2-2.24-2V6.78a3.59,3.59,0,0,0,3.6-3.52c0-2.41-2.3-3.26-3.6-3.26a3.9,3.9,0,0,0-1,.11V0.23l0.51,0A1.35,1.35,0,0,1,14,1.45a1.31,1.31,0,0,1-1.42,1.25c-2.24,0-4.88-1.82-7.75-1.82A4.11,4.11,0,0,0,.51,4.71,2.86,2.86,0,0,0,2.78,7.65l0-.11a1.36,1.36,0,0,1-.62-1.25A1.69,1.69,0,0,1,4,4.73c2.41,0,6.3,2,8.71,2h0.09V9.61l-2.24,2,2.24,2v4.17a8.58,8.58,0,0,1-2.78.43,6.19,6.19,0,0,1-4.23-1.39L9.85,15V6.83L4.17,9.33A6,6,0,0,1,7.46,5.75l0-.09C3.32,6.58,0,9.55,0,13.64,0,18.4,3.69,22,9,22c5.51,0,8-4,8-8.08V13.58ZM5.62,16.67a6.3,6.3,0,0,1-1.84-4.73,7.52,7.52,0,0,1,.34-2.38L6,8.7v7.77Z" style="fill:none;clip-rule:evenodd"/></clipPath></defs><g style="clip-path:url(#b785deb9-88e0-4dc3-b4f4-c91ba5aa6023)"><rect width="27" height="32"/></g></svg></a>
+
+  <div class="swiper-container  tap-story-loading">
+
+    <div class="swiper-pagination"></div>
+    
+    <div class="swiper-tip">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61 61"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#000;}</style></defs><title>Asset 9</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M30.5,0A30.5,30.5,0,1,0,61,30.5,30.5,30.5,0,0,0,30.5,0ZM44.27,32.27l-8,8a2.5,2.5,0,0,1-3.54-3.54L36.46,33H18a2.5,2.5,0,0,1,0-5H36.46l-3.73-3.73a2.5,2.5,0,0,1,3.54-3.54l8,8A2.5,2.5,0,0,1,44.27,32.27Z"/><path class="cls-2" d="M44.27,28.73l-8-8a2.5,2.5,0,0,0-3.54,3.54L36.46,28H18a2.5,2.5,0,0,0,0,5H36.46l-3.73,3.73a2.5,2.5,0,1,0,3.54,3.54l8-8A2.5,2.5,0,0,0,44.27,28.73Z"/></g></g></svg><br>
+    </div>
+    <div class="swiper-wrapper" id="main-swiper-wrapper">
+        <div data-slide-number="0" class="swiper-slide swiper-slide-0 swiper-color-white swiper-position-bottom swiper-dt-position-middle-center cover-slide swiper-image-desktop  has-text mask-off">
+  <div class="swiper-text">
+  <div class="swiper-meta-wrapper">
+    <h1>Watch: How the Rockettes Fall Like Dominoes</h1>
+    <h5>
+      <span class="swiper-byline">By Gia Kourlas</span>
+      <span class="swiper-byline swiper-byline2">Video by Adam Golfer</span>
+      <span class="swiper-dateline">May 30, 2019</span>
+    </h5>
+  </div>
+</div>
+<div class="swiper-image swiper-lazy anchor-center-center" data-mobile="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/573e4011710a4f0b9e09e7031410c53a-CROPPED-eyJ4MSI6IjY0NCIsInkxIjoiMCIsIngyIjoiMTYwNSIsInkyIjoiMTQ0MSJ9.jpg" data-desktop="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/573e4011710a4f0b9e09e7031410c53a-CROPPED-eyJ4MSI6IjAiLCJ5MSI6IjEwIiwieDIiOiIyMTQ1IiwieTIiOiIxNDQxIn0=.jpg"></div>
+
+</div>
+        <div data-slide-number="1" class="swiper-slide swiper-slide-1 swiper-color-white swiper-position-bottom swiper-dt-position-middle-center video-slide   has-text audio-enabled mask-off">
+  <div class="swiper-text">
+  <p>Dancers fall. Sometimes, it’s intentional. </p>
+
+</div>
+<div class="swiper-video swiper-lazy">
+  <video class="swiper-video-player anchor-center-center" id="swiper-video-5c97c053cf152c00011068c9" data-audio="true" preload="none" playsinline muted loop data-mobile="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/7fea4bdbea6549cab2a70b27bc165908-video.mp4" data-desktop="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/7fea4bdbea6549cab2a70b27bc165908-video.mp4">
+  </video>
+</div>
+  <span class="audio-control"></span>
+
+</div>
+        <div data-slide-number="2" class="swiper-slide swiper-slide-2 swiper-color-white swiper-position-middle swiper-dt-position-middle-center text-slide   has-text mask-off">
+  <div class="swiper-text" itemprop="articleBody">
+	<p>One of the most breathtaking dance falls dates to 1933 and involves 36 women who, in a nail-biting descent, collapse onto the floor like dominoes. 
+This precision choreography, “The Parade of the Wooden Soldiers” by Russell Markert, is part of the “Christmas Spectacular Starring the Radio City Rockettes.”</p>
+
+</div>
+
+</div>
+        <div data-slide-number="3" class="swiper-slide swiper-slide-3 swiper-color-white swiper-position-top swiper-dt-position-middle-center video-slide   has-text audio-enabled mask-off">
+  <div class="swiper-text">
+  <p>“We’re thinking of staying completely flat all the way down,” Rockette Alina Duncan said. “If you’re even just a centimeter off, then the fall can go wonky.”</p>
+
+</div>
+<div class="swiper-video swiper-lazy">
+  <video class="swiper-video-player anchor-center-center" id="swiper-video-5c97cdf00202b80001998805" data-audio="true" preload="none" playsinline muted loop data-mobile="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/43ac0404c73f4269b5a0ce742371064d-video.mp4" data-desktop="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/43ac0404c73f4269b5a0ce742371064d-video.mp4">
+  </video>
+</div>
+  <span class="audio-control"></span>
+
+</div>
+        <div data-slide-number="4" class="swiper-slide swiper-slide-4 swiper-color-white swiper-position-middle swiper-dt-position-middle-center text-slide   has-text mask-off">
+  <div class="swiper-text" itemprop="articleBody">
+	<p>The fall is the grand finale, a physical act that demands abs of steel, steadfast teamwork and infinite patience.</p>
+
+</div>
+
+</div>
+        <div data-slide-number="5" class="swiper-slide swiper-slide-5 swiper-color-white swiper-position-bottom swiper-dt-position-middle-center video-slide   has-text audio-enabled mask-off">
+  <div class="swiper-text">
+  <p>From her center-of-the-line position, Tiffany Griffith must slow the fall down even though, as she put it, “there are seven or eight women whose weight is on top of me.” </p>
+
+</div>
+<div class="swiper-video swiper-lazy">
+  <video class="swiper-video-player anchor-center-center" id="swiper-video-5c97d3d10202b8000199880d" data-audio="true" preload="none" playsinline muted loop data-mobile="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/26fa5a94a6f748149b246160f18b71bd-video.mp4" data-desktop="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/26fa5a94a6f748149b246160f18b71bd-video.mp4">
+  </video>
+</div>
+  <span class="audio-control"></span>
+
+</div>
+        <div data-slide-number="6" class="swiper-slide swiper-slide-6 swiper-color-white swiper-position-middle swiper-dt-position-middle-center text-slide   has-text mask-off">
+  <div class="swiper-text" itemprop="articleBody">
+	<p>Ms. Duncan, in the front, must maintain a completely straight plank position. “When it’s one of those four-show days,” she said, “you’re like, ‘Are we going to fall now?’”</p>
+
+</div>
+
+</div>
+        <div data-slide-number="7" class="swiper-slide swiper-slide-7 swiper-color-white swiper-position-top swiper-dt-position-middle-center video-slide   no-text audio-enabled mask-off">
+  <div class="swiper-video swiper-lazy">
+  <video class="swiper-video-player anchor-center-center" id="swiper-video-5c97d528cf152c00011068d1" data-audio="true" preload="none" playsinline muted loop data-mobile="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/4d8ce858c3b340e6aae1e8313a705081-video.mp4" data-desktop="https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/4d8ce858c3b340e6aae1e8313a705081-video.mp4">
+  </video>
+</div>
+  <span class="audio-control"></span>
+
+</div>
+        <div data-slide-number="8" class="swiper-slide swiper-slide-8 swiper-color-white swiper-position-bottom swiper-dt-position-middle-center coda-slide swiper-image-desktop  no-text mask-off">
+  <div class="coda-container">
+	<div class="swiper-text">
+	  <div class="coda-photo swiper-bio-photo" style="background-image: url(https://int.nyt.com/data/tap-stories/assets/5c97c053cf152c00011068c7/09bb1e061c3a4bce92675c5fe6f73d68-CROPPED-eyJ4MSI6IjU3NSIsInkxIjoiMCIsIngyIjoiMTY1NSIsInkyIjoiMTYyMCJ9.jpg);">
+	  </div>
+	  <div id="bio" class="coda-byline"><p>#SpeakingInDance is our weekly series exploring the world of dance.</p>
+</div>
+	  <div id="producers" class="coda-producers"><p>Produced by Alana Celii</p>
+</div>
+		<div class="swiper-desktop-related">
+		</div>
+	</div>
+</div>
+
+<div class="swiper-related swiper-container-horizontal">
+  <div class="swiper-related-text">More Stories Like This</div>
+  <div class="swiper-related-wrapper" style="transition-duration: 0ms; width: 1006.67px; transform: translate3d(-251.667px, 0px, 0px);"  data-related-collection="section/arts/dance"></div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <script src="https://int.nyt.com/apps/tap-stories/assets/tap-story-b345f24d2e791ece5461.js"></script>
+</div></div>
+        
+        <section id="related-coverage" class="related-coverage nocontent robots-nocontent">
+  <div class="nocontent robots-nocontent">
+    <header>
+      <h2 class="section-heading">More on NYTimes.com</h2>
+    </header>
+    <ul class="menu layout-horizontal theme-story">
+      
+    </ul>
+  </div>
+</section>
+        <div id="BottomAd" class="ad bottom-ad nocontent robots-nocontent">
+  <div class="accessibility-ad-header">
+    <p>Advertisement</p>
+  </div>
+</div>
+      </article>
+    </main>
+    <footer id="page-footer" class="page-footer" role="contentinfo">
+  <nav>
+    <h2 class="visually-hidden">Site Information Navigation</h2>
+    <ul>
+      <li>
+        <a href="https://help.nytimes.com/hc/en-us/articles/115014792127-Copyright-notice" itemprop="copyrightNotice">
+            &copy; <span itemprop="copyrightYear">2021</span><span itemprop="copyrightHolder provider sourceOrganization" itemscope itemtype="http://schema.org/Organization" itemid="http://www.nytimes.com"><span itemprop="name"> The New York Times Company</span><meta itemprop="tickerSymbol" content="NYSE NYT"/></span>
+        </a>
+      </li>
+      <li class="visually-hidden">
+        <a href="https://www.nytimes.com">Home</a>
+      </li>
+      <li class="visually-hidden">
+        <a href="https://www.nytimes.com/search/">Search</a>
+      </li>
+      <li class="visually-hidden">Accessibility concerns? Email us at <a href="mailto:accessibility@nytimes.com">accessibility@nytimes.com</a>. We would love to hear from you.</li>
+      <li class="wide-viewport-item">
+        <a href="https://help.nytimes.com/hc/en-us/articles/115015385887-Contact-Us">Contact Us</a>
+      </li>
+      <li class="wide-viewport-item">
+        <a href="https://www.nytco.com/careers/">Work with us</a>
+      </li>
+      <li class="wide-viewport-item">
+        <a href="https://nytmediakit.com/">Advertise</a>
+      </li>
+      <li class="wide-viewport-item">
+        <a href="https://help.nytimes.com/hc/en-us/articles/115014892108-Privacy-policy#pp">Your Ad Choices</a>
+      </li>
+      <li>
+        <a href="https://help.nytimes.com/hc/en-us/articles/115014892108-Privacy-policy">Privacy</a>
+      </li>
+      <li>
+        <a href="https://help.nytimes.com/hc/en-us/articles/115014893428-Terms-of-service" itemprop="usageTerms">Terms of Service</a>
+      </li>
+      <li class="wide-viewport-item last-item">
+        <a href="https://help.nytimes.com/hc/en-us/articles/115014893968-Terms-of-sale">Terms of Sale</a>
+      </li>
+    </ul>
+  </nav>
+  <nav class="last-nav">
+    <h2 class="visually-hidden">Site Information Navigation</h2>
+    <ul>
+      <li>
+        <a href="https://spiderbites.nytimes.com">Site Map</a>
+      </li>
+      <li>
+        <a href="https://help.nytimes.com/hc/en-us">Help</a>
+      </li>
+      <li>
+        <a href="https://help.nytimes.com/hc/en-us/articles/115015385887-Contact-Us?redir=myacc">Site Feedback</a>
+      </li>
+      <li class="wide-viewport-item last-item">
+        <a href="https://www.nytimes.com/subscription?campaignId=37WXW">Subscriptions</a>
+      </li>
+    </ul>
+  </nav>
+</footer>
+  </div>
+</div>
+<script>
+require(['foundation/main'], function () {
+  require(['interactive/main']);
+  require(['jquery/nyt', 'foundation/views/page-manager'], function ($, pageManager) {
+    if (window.location.search.indexOf('disable_tagx') > 0) {
+        return;
+    }
+    $(document).ready(function () {
+        require(['https://a1.nyt.com/analytics/json-kidd.min.js'], function () {
+            pageManager.trackingFireEventQueue();
+        });
+    });
+  });
+});
+</script>
+<script>
+(function (w, d){
+    try {
+      if (w && w.parent && w.parent.location.search.match(/disableIframeResize/)) {
+        return;
+      }
+    } catch (error) {
+      // window.parent is not available
+    }
+
+    // scoped state
+    var MutationObserver = w.MutationObserver || w.WebKitMutationObserver || w.MozMutationObserver;
+    var hasResized = false;
+    var resizeFallbackDelay = 1500;
+    var resizeInterval = 3000;
+    var interactive = {
+        id: '100000006531154',
+        slug: 'speaking-in-dance-rockettes',
+    };
+    var resizeIntervalId;
+    // vanilla JS $(document).ready()
+    function ready(fn) {
+        if (d.readyState != 'loading'){
+            fn();
+        } else {
+            d.addEventListener('DOMContentLoaded', fn);
+        }
+    }
+    // send resize message to parent
+    function sendResizeMessage(opts){
+        if (!(w.parent && w.parent.postMessage)) { return; }
+        var rect, width, height, message;
+        rect = d.documentElement.getBoundingClientRect();
+        width = Math.ceil(rect.width);
+        height = Math.ceil(rect.height);
+        message = {
+            type: 'resize',
+            id: interactive.id,
+            width: width,
+            height: height
+        };
+        w.parent.postMessage(message, '*');
+        // don't update hasResized if this message was forced
+        if (opts && opts.forced) { return; }
+        hasResized = true;
+    }
+    // send message to parent to indicate that this interactive is listening for messages
+    function sendListeningMessage(){
+        if (!(w.parent && w.parent.postMessage)) { return; }
+        var message = {
+            type: 'listening',
+            id: interactive.id,
+        };
+        w.parent.postMessage(message, '*');
+    }
+    // observe mutations to the interactive graphics node and send resize message
+    function initializeMutationObservers(){
+        if (!MutationObserver) { return; }
+
+        // select the target node
+        var target = d.getElementById(interactive.slug);
+        if (!target) { return; }
+        // create an observer instance
+        var observer = new MutationObserver(sendResizeMessage.bind(null, null));
+        // configuration of the observer
+        var config = {
+            attributes: true,
+            childList: true,
+            characterData: true,
+            subtree: true,
+        };
+        // pass in the target node, as well as the observer options
+        observer.observe(target, config);
+    }
+    // update theme in response to message from parent
+    function updateTheme(previous, current){
+        var root = d.documentElement;
+        if (!(previous && current && root)) { return; }
+        root.classList.remove(previous);
+        root.classList.add(current);
+    }
+    // handle messages from parent
+    function onMessage(event) {
+        var data = event.data;
+        var type = data.type;
+        if (type === 'themechange') {
+            if (data.previous && data.current) {
+                updateTheme(data.previous, data.current);
+            }
+        }
+    }
+    // hook into the resizedcontent event that some embedded interactives dispatch
+    function attachEventListeners(){
+        d.documentElement.addEventListener('resizedcontent', sendResizeMessage.bind(null, null));
+    }
+    // always resize at least once
+    // @see https://a1.nyt.com/assets/interactive/20170123-034410/js/shared/interactive/views/app-communicator.js
+    function initializeResizeFallback(){
+        if (!hasResized) {
+            setTimeout(sendResizeMessage.bind(null, null), resizeFallbackDelay);
+        }
+    }
+    // try to resize every resizeInterval ms
+    function initializeResizeInterval() {
+      return setInterval(sendResizeMessage.bind(null, { forced: true }), resizeInterval);
+    }
+    // initialize the interactive if it has been embedded
+    function init() {
+        if (w.parent) {
+            sendResizeMessage({ forced: true });
+            attachEventListeners();
+            initializeMutationObservers();
+            initializeResizeFallback();
+            resizeIntervalId = initializeResizeInterval();
+        }
+    }
+    // initialization that should occur before DOMContentLoaded
+    function preReady() {
+        if (w.parent) {
+            w.addEventListener('load', sendResizeMessage.bind(null, { forced: true }));
+            w.addEventListener('message', onMessage, false);
+            sendListeningMessage();
+            w.addEventListener('unload', function (){ if (resizeIntervalId) { clearInterval(resizeIntervalId); } });
+        }
+    }
+    preReady();
+    ready(init);
+})(window, document);
+</script>
+<script>
+(function () {
+  var isBadSafari = (function () {
+    var ua = navigator.userAgent;
+    if (!/.*(iphone|ipad|ipod|silk).*$/i.test(ua)) {
+      var match = /Mac\ OS\ X\ (\d+)[_\.](\d+)([_\.](\d+))?/.exec(ua);
+      if (match && match.length >= 5) {
+        var maj = parseInt(match[1], 10);
+        return (maj < 10 || (maj === 10 && parseInt(match[2], 10) <= 9)) ? 1 : 0;
+      }
+    }
+    return 0;
+  })();
+  if (!isBadSafari) {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = 'https://tags.bluekai.com/site/50550?ret=js&limit=1';
+    if (!/NYT-T=out/.test(document.cookie)) {
+      document.getElementsByTagName('script')[0].appendChild(s);
+    }
+  }
+})();
+</script>
+<script src="https://cdn.optimizely.com/public/3013110282/s/article_prod.js" type="text/javascript" async></script>
+<div id="Inv1" class="ad inv1-ad hidden"></div>
+<div id="Inv2" class="ad inv2-ad hidden"></div>
+<div id="Inv3" class="ad inv3-ad hidden"></div>
+<div id="ab1" class="ad ab1-ad hidden"></div>
+<div id="ab2" class="ad ab2-ad hidden"></div>
+<div id="ab3" class="ad ab3-ad hidden"></div>
+<div id="prop1" class="ad prop1-ad hidden"></div>
+<div id="prop2" class="ad prop2-ad hidden"></div>
+<div id="Anchor" class="ad anchor-ad hidden"></div>
+<div id="ADX_CLIENTSIDE" class="ad adx-clientside-ad hidden"></div>
+</body>
+</html>
