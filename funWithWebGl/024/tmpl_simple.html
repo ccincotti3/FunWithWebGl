@@ -58,7 +58,7 @@
 			//Setup and Preperations
 
 			colorID = idToColor(cID)
-			blankID = idToColor(0)
+			blankID = idToColor(0) // black color
 			Fungi.Init("FungiCanvas").fClearColor("FFFFFF").fFitScreen(1, 1).fClear();
 
 			Fungi.Render.onItemRendered = function (itm) {
@@ -163,6 +163,10 @@
 	<div><canvas id="FungiCanvas"></canvas></div>
 	<span id="lblFPS">0</div>
 
+		<!-- 
+			During the real draw we set blankColorID as uColorID, and thus we draw the colors below the first conditional.
+
+		-->
 		<script id="vertex_shader" type="x-shader/x-vertex">#version 300 es
 		layout(location=0) in vec4 a_position;
 		layout(location=1) in vec3 a_norm;
