@@ -1,13 +1,19 @@
 Fungi.Primatives = {
-  Quad:function(){
-    if(Fungi.Res.Vao["FungiQuad"]) return Fungi.Res.Vao["FungiQuad"];
+  Quad2U:function(){
+    if(Fungi.Res.Vao["FungiQuad2U"]) return Fungi.Res.Vao["FungiQuad2U"];
+    var aVert	= [-1,1,0,	-1,-1,0,	1,-1,0,	1,-1,0,	1,1,0,	-1,1,0],
+      aUV		= [ 0,0, 	0,1,		1,1,	1,1,	1,0,	0,0];
+    return Fungi.Shaders.VAO.standardMesh("FungiQuad2U",3,aVert,null,aUV,null,false);
+  },
+
+  Quad1U:function(){
+    if(Fungi.Res.Vao["FungiQuad1U"]) return Fungi.Res.Vao["FungiQuad1U"];
 
     var aVert = [ -0.5,0.5,0, -0.5,-0.5,0, 0.5,-0.5,0, 0.5,0.5,0 ],
       aUV = [ 0,0, 0,1, 1,1, 1,0 ],
       aIndex = [ 0,1,2, 2,3,0 ];
-    return Fungi.Shaders.VAO.standardMesh("FungiQuad",3,aVert,null,aUV,aIndex,false);
+    return Fungi.Shaders.VAO.standardMesh("FungiQuad1U",3,aVert,null,aUV,aIndex,false);
   },
-
   FacedCube:function(keepRawData){
     var width = 1, height = 1, depth = 1, x = 0, y = 0, z = 0;
     var w = width*0.5, h = height*0.5, d = depth*0.5;
@@ -54,7 +60,7 @@ Fungi.Primatives = {
 
     //Build UV data for each vertex
     var aUV = [];
-    for(var i=0; i < 6; i++) aUV.push(0,0,	0,1,  1,1,  1,0);
+    for(i=0; i < 6; i++) aUV.push(0,0,	0,1,  1,1,  1,0);
 
     //Build Normal data for each vertex
     var aNorm = [

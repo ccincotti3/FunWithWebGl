@@ -285,8 +285,12 @@ var Fungi = (function(){
     }
 
     draw(){
-      if(this.vao.isIndexed)	gl.drawElements(this.material.drawMode, this.vao.count, gl.UNSIGNED_SHORT, 0); 
-      else					gl.drawArrays(this.material.drawMode, 0, this.vao.count);
+      if(this.vao.isIndexed)	{
+        gl.drawElements(this.material.drawMode, this.vao.count, gl.UNSIGNED_SHORT, 0); 
+      }
+      else	{
+        gl.drawArrays(this.material.drawMode, 0, this.vao.count);
+      }	     
     }
   }
 
@@ -1295,7 +1299,7 @@ var Fungi = (function(){
       return this;
     }
 
-    //Takes in unlimited arguments. Its grouped by two so for example (UniformName,CacheTextureName): "uMask01","tex001";
+    //Takes in unlimited arguments. Its grouped by two so for example (UniformName,CacheTextureName): "uMask01","01";
     prepareTextures(uName,TextureCacheName){
       if(arguments.length % 2 != 0){ console.log("prepareTextures needs arguments to be in pairs."); return this; }
 			
@@ -1314,10 +1318,13 @@ var Fungi = (function(){
     // Setters Getters
     //---------------------------------------------------
     //Uses a 2 item group argument array. Uniform_Name, Uniform_Value;
-    setUniforms(uName,uValue){
+    // Treating textures as a uniform (7:00)
+    setUniforms(){
       if(arguments.length % 2 != 0){ console.log("setUniforms needs arguments to be in pairs."); return this; }
 
-      var name;
+      var texCnt = 0, // keep track of the texture order
+        name;
+
       for(var i=0; i < arguments.length; i+=2){
         name = arguments[i];
         if(this._UniformList[name] === undefined){ console.log("uniform not found " + name); return this; }
@@ -1327,6 +1334,12 @@ var Fungi = (function(){
           case "vec3":	gl.uniform3fv(this._UniformList[name].loc, arguments[i+1]); break;
           case "vec4":	gl.uniform4fv(this._UniformList[name].loc, arguments[i+1]); break;
           case "mat4":	gl.uniformMatrix4fv(this._UniformList[name].loc,false,arguments[i+1]); break;
+          case "tex":
+            gl.activeTexture(gl["TEXTURE" + texCnt]);
+            gl.bindTexture(gl.TEXTURE_2D,arguments[i+1]);
+            gl.uniform1i(this._UniformList[name].loc,texCnt);
+            texCnt++;
+            break;
           default: console.log("unknown uniform type for " + name); break;
         }
       }
@@ -1669,7 +1682,29 @@ var Fungi = (function(){
   }
 
   class FBO{
+    static build(name,colorCnt,useDepth,wSize,hSize){
+      var rtn = {}
+      if(wSize === undefined || wSize == null) wSize = gl.fWidth;
+      if(hSize === undefined || wSize == null) hSize = gl.fHeight;
+
+      //Create and Set Depth
+      FBO.create(rtn);
+      if(useDepth == true) FBO.depthBuffer(rtn,wSize,hSize);
+
+      //Build color buffers
+      var cBufAry = [];
+      for(var i=0; i < colorCnt; i++){
+        cBufAry.push( gl.COLOR_ATTACHMENT0 + i ); // 16 is maximum... need to save this in array and pass in drawBuffers (see below)
+        FBO.texColorBuffer(rtn,i,wSize,hSize);
+      }
+      if(cBufAry.length > 1)gl.drawBuffers(cBufAry); // need to set how many draw buffers we have if it's more than 1 (multi targeted rendering)
+			
+      //All Done.
+      FBO.finalize(rtn,name);
+      return rtn;
+    }
     static create(out){
+      out.colorBuf = []; // An array now because we can use more than 1
       out.id = gl.createFramebuffer();
       gl.bindFramebuffer(gl.FRAMEBUFFER, out.id); // set to null to go back to canvas diaply buffer.
       return this;
@@ -1677,24 +1712,25 @@ var Fungi = (function(){
     
     // We need atleast one color buffer for a FBO to work, can add mutiple (theres a limit though)
     // Here we create a color buffer from a texture.
-    static texColorBuffer(out,cAttachNum){
-      out.texColor = gl.createTexture();
-      gl.bindTexture(gl.TEXTURE_2D, out.texColor);
-      gl.texImage2D(gl.TEXTURE_2D,0, gl.RGBA, gl.fWidth, gl.fHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, null); // we need our custom frame buffer to be just as big as our default canvas buffer. (we are drawing both twice).. hence the width and height of canvas.
+    static texColorBuffer(out,cAttachNum, w,h){
+      //Up to 16 texture attachments 0 to 15
+      out.colorBuf[cAttachNum] = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, out.colorBuf[cAttachNum]);
+      gl.texImage2D(gl.TEXTURE_2D,0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null); // we need our custom frame buffer to be just as big as our default canvas buffer. (we are drawing both twice).. hence the width and height of canvas.
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);	//Stretch image to X position
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);	//Stretch image to Y position
 
-      gl.framebufferTexture2D(gl.FRAMEBUFFER, cAttachNum, gl.TEXTURE_2D, out.texColor, 0);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0+cAttachNum, gl.TEXTURE_2D, out.colorBuf[cAttachNum], 0);
       return this;
     }
 
     // create depth buffer for depth testing. Can add just one to FBO.
-    static depthBuffer(out){
+    static depthBuffer(out,w,h){
       out.depth = gl.createRenderbuffer();
       gl.bindRenderbuffer(gl.RENDERBUFFER, out.depth);
-      gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, gl.fWidth, gl.fHeight); // each pixel is going to be 16 bytes (so 4 floats - so position x,y,z,w bc depth buffer does not store color.)
+      gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, w, h); // each pixel is going to be 16 bytes (so 4 floats - so position x,y,z,w bc depth buffer does not store color.)
       gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, out.depth); // only one depth buffer allowed, hence the static DEPTH_ATTACHMENT (see color buffer)
       return this;
     }
@@ -1703,7 +1739,7 @@ var Fungi = (function(){
     static colorDepthFBO(name){
       var rtn = {};
       return FBO.create(rtn)
-        .texColorBuffer(rtn,gl.COLOR_ATTACHMENT0) // attach color buffer to color attachment 0 of fbo.
+        .texColorBuffer(rtn,0) // attach color buffer to color attachment 0 of fbo.
         .depthBuffer(rtn)
         .finalize(rtn,name);
     }
@@ -1728,13 +1764,15 @@ var Fungi = (function(){
     }
 
     // important for picking. Allows to read pixel from color buffer in custom fbo.
-    static readPixel(fbo,x,y){
-      var p = new Uint8Array(4); //[r,g,b,a]
-      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo.id);
+    static readPixel(fbo,x,y,cAttachNum){
+      var p = new Uint8Array(4);
+      gl.bindFramebuffer(gl.READ_FRAMEBUFFER, fbo.id); // use READ_FRAMEBUFFER so you don't have to bind it and switch from the draw layer buffer
+      gl.readBuffer(gl.COLOR_ATTACHMENT0 + cAttachNum); // tell what color attachment to use.
       gl.readPixels(x, y, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, p);
-      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
-      return p; // will return color array
+      gl.bindFramebuffer(gl.READ_FRAMEBUFFER, null);
+      return p;
     }
+
     
     static activate(fbo){ gl.bindFramebuffer(gl.FRAMEBUFFER,fbo.id); return this; }
     static deactivate(){ gl.bindFramebuffer(gl.FRAMEBUFFER,null); return this; }

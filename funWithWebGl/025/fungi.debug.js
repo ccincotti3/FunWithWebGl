@@ -20,8 +20,9 @@ Fungi.Debug.GridFloor = class{
 			'void main(void){ gl_Position = matProjection * matCameraView * uModalMatrix * vec4(a_position.xyz, 1.0); }';
     var fShader = '#version 300 es\n' +
 			'precision mediump float;' +
-			'out vec4 finalColor;' +
-			'void main(void){ finalColor = vec4(0.8,0.8,0.8,1.0); }';
+			'layout(location=0) out vec4 finalColor;' +
+			'layout(location=1) out vec4 dummyColor;' +
+			'void main(void){ finalColor = vec4(0.8,0.8,0.8,1.0); dummyColor = finalColor; }';
 
     Fungi.Shaders.New("FungiGridFloor",vShader,fShader)
       .prepareUniforms(Fungi.UNI_MODEL_MAT_NAME,"mat4")
