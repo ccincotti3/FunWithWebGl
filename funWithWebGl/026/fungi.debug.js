@@ -70,7 +70,12 @@ Fungi.Debug.Lines = class{
 				'gl_Position = matProjection * matCameraView * vec4(a_position.xyz, 1.0); '+
 			'}';
 
-    var fShader = '#version 300 es\n precision mediump float; in vec4 color; out vec4 finalColor; void main(void){ finalColor = color; }';
+    var fShader = '#version 300 es\n' +
+      'precision mediump float;' +
+      'in vec4 color;' +
+			'layout(location=0) out vec4 finalColor;' +
+			'layout(location=1) out vec4 dummyColor;' +
+			'void main(void){ finalColor = color; dummyColor = finalColor; }';
 
     Fungi.Shaders.New("FungiDebugLine",vShader,fShader)
       .prepareUniforms("uColorAry","vec3")
@@ -107,12 +112,14 @@ Fungi.Debug.Lines = class{
     this.vao.count = 0;
   }
 
+  draw(){ if(this.vao.count > 0) Fungi.gl.drawArrays(Fungi.gl.LINES, 0, this.vao.count); }
+
   update(){
     if(!this._isModified) return;
 		
     //If there is no verts, set this to invisible to disable rendering.
     this._isModified = false;
-    if(this._verts.length == 0){ this.visible = false; return; }
+    if(this._verts.length == 0){ this.visible = false; return this; }
     this.visible = true;
 		
     //Calc how many vec4 elements we have
@@ -127,6 +134,7 @@ Fungi.Debug.Lines = class{
     this.material.shader.activate();
     this.material.shader.setUniforms("uColorAry",this._colorArray);
     this.material.shader.deactivate();
+    return this;
   }
 
   reset(){
@@ -135,12 +143,14 @@ Fungi.Debug.Lines = class{
     this._colorList.length = 0;
     this.vao.count = 0;
     this._isModified = true;
+    return this;
   }
 
   addVector(v1,v2,color){
     var idx = this.addColor(color);
     this._verts.push(v1[0],v1[1],v1[2],idx, v2[0],v2[1],v2[2],idx);
     this._isModified = true;
+    return this
   }
 
   addColor(c){

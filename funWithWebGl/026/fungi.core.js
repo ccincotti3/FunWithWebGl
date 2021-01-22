@@ -159,6 +159,20 @@ var Fungi = (function(){
     //Normalize x value to x range, then normalize to lerp the z range.
     static map(x, xMin,xMax, zMin,zMax){ return (x - xMin) / (xMax - xMin) * (zMax-zMin) + zMin; }
 
+    //Get a number between A and B from a normalized number.
+    static lerp(a,b,t){ return a + t * (b-a); }
+
+    // Determine the point closest on a line no matter where the mouse is. Used for gizmo.
+    static pointCloseToLine(x0,y0,x1,y1,px,py){
+      var dx	= x1 - x0,
+        dy	= y1 - y0,
+        t	= ((px-x0)*dx + (py-y0)*dy) / (dx*dx+dy*dy),
+        x	= Util.lerp(x0, x1, t),
+        y	= Util.lerp(y0, y1, t);
+      return [x,y]
+    }
+
+
     static clamp(v,min,max){ return Math.max(min,Math.min(max,v)); }
 
     static smoothStep(edge1, edge2, val){ //https://en.wikipedia.org/wiki/Smoothstep
@@ -1675,6 +1689,8 @@ var Fungi = (function(){
       if(aryNorm)	VAO.floatArrayBuffer(rtn,"norm",aryNorm,Fungi.ATTR_NORM_LOC,3,0,0,true,keepData);
       if(aryUV)	VAO.floatArrayBuffer(rtn,"uv",aryUV,Fungi.ATTR_UV_LOC,2,0,0,true,keepData);
       if(aryInd)	VAO.indexBuffer(rtn,"index",aryInd,true,keepData);
+
+      if(rtn.count == 0) rtn.count = aryVert.length / vertSize;
 
       VAO.finalize(rtn);
       return rtn;
