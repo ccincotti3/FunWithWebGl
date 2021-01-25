@@ -343,9 +343,9 @@ var Fungi = (function(){
     //Update the Matrices and UBO.
     update(){
       if(this.position.isModified || this.scale.isModified || this.euler.isModified) this.updateMatrix();
-			
+      
       Matrix4.invert(this.invertedLocalMatrix,this.localMatrix);
-      this.ubo.update("matCameraView",this.invertedLocalMatrix);
+      this.ubo.update("matCameraView",this.invertedLocalMatrix, "posCamera", this.position);
     }
 
     setEulerDegrees(x,y,z){ this.euler.set(x * DEG2RAD,y * DEG2RAD,z * DEG2RAD); return this; }
@@ -1301,14 +1301,14 @@ var Fungi = (function(){
       var ind = 0;
       for(var i=0; i < arguments.length; i+=2){
         //ind = gl.getUniformBlockIndex(this.program,arguments[i].blockName); //TODO This function does not return block index, need to pass that value in param
-        console.log("Uniform Block Index",ind,ubo.blockName,ubo.blockPoint);
+        console.log("Uniform Block Index",arguments[i+1],arguments[i].blockName,arguments[i].blockPoint);
 
         gl.uniformBlockBinding(this.program, arguments[i+1], arguments[i].blockPoint);
 				
-        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_DATA_SIZE)); //Get Size of Uniform Block
-        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES));
-        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS));
-        //console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_BINDING));
+        console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_DATA_SIZE)); //Get Size of Uniform Block
+        console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES));
+        console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_ACTIVE_UNIFORMS));
+        console.log(gl.getActiveUniformBlockParameter(this.program, 0, gl.UNIFORM_BLOCK_BINDING));
       }
       return this;
     }
@@ -1414,7 +1414,7 @@ var Fungi = (function(){
       //Get Error data if shader failed compiling
       if(!gl.getShaderParameter(shader, gl.COMPILE_STATUS)){
         console.error("Error compiling shader : " + src, gl.getShaderInfoLog(shader));
-        gl.deleteShader(fungi.shader);
+        gl.deleteShader(shader);
         return null;
       }
 
@@ -1502,7 +1502,7 @@ var Fungi = (function(){
       gl.bindBufferBase(gl.UNIFORM_BUFFER, blockPoint, this.buf);		//Assign to Block Point
     }
 
-    update(name,data){
+    update(){
       //If not float32array, make it so
       //if(! (data instanceof Float32Array)){
       //	if(Array.isArray(data))	data = new Float32Array(data);		//already an array, just convert to float32
@@ -1510,17 +1510,20 @@ var Fungi = (function(){
       //}
 
       gl.bindBuffer(gl.UNIFORM_BUFFER,this.buf);
-      gl.bufferSubData(gl.UNIFORM_BUFFER, this.items[name].offset, data, 0, null);
+      for(var i=0; i < arguments.length; i+=2){
+        gl.bufferSubData(gl.UNIFORM_BUFFER, this.items[ arguments[i] ].offset, arguments[i+1], 0, null);
+      }
       gl.bindBuffer(gl.UNIFORM_BUFFER,null);
       return this;
     }
 
     static createTransformUBO(){
-      return UBO.create(Fungi.UBO_TRANSFORM,0,[ {name:"matProjection",type:"mat4"}, {name:"matCameraView",type:"mat4"} ]);
+      return UBO.create(Fungi.UBO_TRANSFORM,0,[ {name:"matProjection",type:"mat4"}, {name:"matCameraView",type:"mat4"}, {name:"posCamera",type:"vec3"} ]);
     }
 
     static create(blockName,blockPoint,ary){
       var bufSize = UBO.calculate(ary);
+      console.log("Allocating in UBO: ", bufSize)
       Fungi.Res.Ubo[blockName] = new UBO(blockName,blockPoint,bufSize,ary);
       UBO.debugVisualize(Fungi.Res.Ubo[blockName]);
       return Fungi.Res.Ubo[blockName];
@@ -1571,7 +1574,7 @@ var Fungi = (function(){
         ary[i].chunkLen	= size[1];
         ary[i].dataLen	= size[1];
 
-        offset += size[1];
+        offset += size[0];
       }
 
       //Check if the final offset is divisiable by 16, if not add remaining chunk space to last element.
@@ -1694,6 +1697,18 @@ var Fungi = (function(){
 
       VAO.finalize(rtn);
       return rtn;
+    }
+
+    static updateAryBufSubData(bufID,offset,data){ // for updating data that exists the buffer (for dynamic meshes)
+      gl.bindBuffer(gl.ARRAY_BUFFER, bufID);
+      gl.bufferSubData(gl.ARRAY_BUFFER, offset, data, 0, null);
+      gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    }
+
+    static partitionBuffer(attrLoc,size,stride,offset){
+      gl.enableVertexAttribArray(attrLoc);
+      gl.vertexAttribPointer(attrLoc,size,gl.FLOAT,false,stride,offset);
+      return VAO;
     }
   }
 
@@ -1877,46 +1892,51 @@ var Fungi = (function(){
   // Also try to sort the Renderables by Material, Shaders, etc to make sure we shift Shaders/uniforms as little as possible.
   // Also try to find a way to filter out renderables that are not in the line of sight OR beyond our viewing range, no point rendering what we can't see.
   var Renderer = (function(){
-    var material = shader = null;
-
     var f = function(ary){
+      if(f.onPreRender != null) f.onPreRender(f);
+
       for(var i=0; i < ary.length; i++){
         if(ary[i].visible == false) continue;
 
-        //...................................
-        //Check if the next materal to use is different from the last
-        if(material !== ary[i].material){
-          material = ary[i].material;
+        f.prepareNext(ary[i]).draw();
 
-          //Multiple materials can share the same shader, if new shader, turn it on.
-          if(material.shader !== shader) shader = material.shader.activate();
-
-          //Turn on/off any gl features
-          if(material.useCulling != CULLING_STATE)	gl[ ( (CULLING_STATE = (!CULLING_STATE))  )?"enable":"disable" ](gl.CULL_FACE);
-          if(material.useBlending != BLENDING_STATE)	gl[ ( (BLENDING_STATE = (!BLENDING_STATE)) )?"enable":"disable" ](gl.BLEND);
-        }
-
-        //...................................
-        //Prepare Buffers and Uniforms.
-        gl.bindVertexArray(ary[i].vao.id);
-        if(material.useModelMatrix) material.shader.setUniforms(Fungi.UNI_MODEL_MAT_NAME,ary[i].updateMatrix());
-        //(material.useNormalMatrix) 
-
-        //...................................
-        //Render !!!
-        if(ary[i].vao.isIndexed)	gl.drawElements(material.drawMode, ary[i].vao.count, gl.UNSIGNED_SHORT, 0); 
-        else						gl.drawArrays(material.drawMode, 0, ary[i].vao.count);
-
-        // if there is a render callback, call ir after render
-        if(f.onItemRendered) { f.onItemRendered(ary[i]) }
+        if(f.onItemRendered != null) f.onItemRendered(ary[i]);
       }
+
+      if(f.onPostRender != null) f.onPostRender(f);
 
       //...................................
       //Cleanup
       gl.bindVertexArray(null); //After all done rendering, unbind VAO
+    };
 
+    f.onItemRendered	= null;	//Event After an Item has been rendered
+    f.onPreRender		= null;	//Before Rendering starts
+    f.onPostRender		= null;	//After Rendering is complete
+    f.material			= null;
+    f.shader			= null;
+
+    //Prepares the shader for the next item for rendering by dealing with the shader and gl features
+    f.prepareNext = function(itm){
+      //Check if the next materal to use is different from the last
+      if(f.material !== itm.material){
+        f.material = itm.material;
+
+        //Multiple materials can share the same shader, if new shader, turn it on.
+        if(f.material.shader !== f.shader) f.shader = f.material.shader.activate();
+
+        //Turn on/off any gl features
+        if(f.material.useCulling != CULLING_STATE)	gl[ ( (CULLING_STATE = (!CULLING_STATE))  )?"enable":"disable" ](gl.CULL_FACE);
+        if(f.material.useBlending != BLENDING_STATE)	gl[ ( (BLENDING_STATE = (!BLENDING_STATE)) )?"enable":"disable" ](gl.BLEND);
+      }
+
+      //Prepare Buffers and Uniforms.
+      gl.bindVertexArray(itm.vao.id);
+      if(f.material.useModelMatrix) f.material.shader.setUniforms(Fungi.UNI_MODEL_MAT_NAME,itm.updateMatrix());
+
+      return itm;
     }
-    f.onItemRendered = null;
+
     return f;
   })();
 
